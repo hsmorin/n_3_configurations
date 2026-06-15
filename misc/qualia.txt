@@ -1,0 +1,44 @@
+All dim 3, All smooth
+
+I1: No obvious projection
+I4: No obvious projection, degree 5, singular locus projective dimension 2
+I25: No obvious projection, degree 5, singular locus projective dimension 3
+
+I8: No defining ideal => projective
+I9: No defining ideal => projective
+I10: Rational by projection away from x2
+I11: Rational by projection away from x2
+I29: Rational by projection away from x3
+I27: Rational by projection away from x3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Code for smoothness:
+
+S = {};
+for i from 0 to 4 do (S = append(S, (ideal singularLocus I#i)))
+
+for k from 0 to 4 do (
+      print("index", k);
+      Sk = S#k;
+      Lk = L#k;
+      PS = decompose Sk;
+      for i from 0 to length PS - 1 do (
+      irredComponent = PS#i;
+      for j from 0 to length Lk - 1 do (
+      if isSubset(radical(ideal(Lk#j)), irredComponent) then (cond = 1 ; break);
+      cond = 0);
+      if cond == 0 then (print("Not Smooth"); break)))
+
+
