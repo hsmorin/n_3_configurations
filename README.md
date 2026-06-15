@@ -1,0 +1,1 @@
+# n_3_configurations
