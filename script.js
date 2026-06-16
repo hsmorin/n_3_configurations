@@ -74,7 +74,7 @@ function buildCard(variety) {
 
         <div class="info-block">
           <p class="block-label">Defining Polynomial</p>
-          <div class="math-block">${variety.polynomial && variety.polynomial !== '0'
+          <div class="math-block">${variety.polynomial
             ? renderMath(variety.polynomial)
             : '<span class="not-computed">Not yet computed</span>'
         }</div>
