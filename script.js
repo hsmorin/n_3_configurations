@@ -1,12 +1,11 @@
 const STATUS_TEXT = {
-    confirmed: 'Confirmed Calabi-Yau',
-    confirmed_star: 'Likely Calabi-Yau',
-    unconfirmed: 'Unknown Type',
+    confirmed:        'Confirmed Calabi-Yau',
+    confirmed_star:   'Likely Calabi-Yau',
+    unconfirmed:      'Unknown Type',
     unconfirmed_star: 'Rational',
-    unknown: 'Unknown',
+    unknown:          'Unknown',
 };
 
-// KaTeX renderer
 function renderMath(tex) {
     try {
         return katex.renderToString(tex, { throwOnError: false, displayMode: false });
@@ -20,6 +19,18 @@ function renderText(str) {
     return str.replace(/\$([^$]+)\$/g, (_, tex) =>
         katex.renderToString(tex, { throwOnError: false, displayMode: false })
     );
+}
+
+// Render a small metadata pill: label + value
+function metaItem(label, value) {
+    if (value === undefined || value === null || value === '') return '';
+    // Values containing \ are likely LaTeX
+    const rendered = String(value).includes('\\') ? renderMath(value) : value;
+    return `
+      <div class="meta-item">
+        <span class="meta-label">${label}</span>
+        <span class="meta-value">${rendered}</span>
+      </div>`;
 }
 
 const titleEl = document.getElementById('site-title');
@@ -51,12 +62,22 @@ function buildCard(variety) {
     <div class="variety-body">
       <div class="body-section">
 
+        <div class="meta-grid">
+          ${metaItem('Degree', variety.degree)}
+          ${metaItem('Dimension', variety.dimension)}
+          ${metaItem('Dim. of singular locus', variety['dimension of singular locus'])}
+          ${metaItem('Normal in \u{1D538}\u2074', variety['normal in A^4'])}
+          ${metaItem('Rational', variety.rational)}
+        </div>
+
+        <div class="divider"></div>
+
         <div class="info-block">
-          <p class="block-label">Defining Polynomial</p>
+          <p class="block-label">Quantum Spectrum Polynomial</p>
           <div class="math-block">${variety.polynomial && variety.polynomial !== '0'
             ? renderMath(variety.polynomial)
-            : '<span style="color:#aaa;font-family:var(--font-ui);font-size:0.85rem;">Not yet computed</span>'
-        }</div>
+            : '<span class="not-computed">Not yet computed</span>'
+          }</div>
         </div>
 
         ${hasHomogenizations ? `
