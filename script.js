@@ -1,9 +1,9 @@
 const STATUS_TEXT = {
-    confirmed:        'Confirmed Calabi-Yau',
-    confirmed_star:   'Likely Calabi-Yau',
-    unconfirmed:      'Unknown Type',
+    confirmed: 'Confirmed Calabi-Yau',
+    confirmed_star: 'Likely Calabi-Yau',
+    unconfirmed: 'Unknown Type',
     unconfirmed_star: 'Rational',
-    unknown:          'Unknown',
+    unknown: 'Unknown',
 };
 
 function renderMath(tex) {
@@ -73,11 +73,11 @@ function buildCard(variety) {
         <div class="divider"></div>
 
         <div class="info-block">
-          <p class="block-label">Quantum Spectrum Polynomial</p>
+          <p class="block-label">Defining Polynomial</p>
           <div class="math-block">${variety.polynomial && variety.polynomial !== '0'
             ? renderMath(variety.polynomial)
             : '<span class="not-computed">Not yet computed</span>'
-          }</div>
+        }</div>
         </div>
 
         ${hasHomogenizations ? `
