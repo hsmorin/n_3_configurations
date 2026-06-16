@@ -42,3 +42,6 @@ for k from 0 to 4 do (
       if cond == 0 then (print("Not Smooth"); break)))
 
 
+Code for intersections
+
+for i from 1 to length L - 1 do (for j from 0 to i - 1 do (L1 = L#i; L2 = L#j; P = P | {(i, j, L1 + L2)}))
