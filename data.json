@@ -66,7 +66,7 @@
     },
     {
         "id": "I6",
-        "name": "Normal Qunintic",
+        "name": "Normal Quintic",
         "status": "unknown",
         "degree": "5",
         "dimension": "3",
@@ -79,7 +79,7 @@
     },
     {
         "id": "I7",
-        "name": "Normal Quntic",
+        "name": "Normal Quintic",
         "status": "unknown",
         "degree": "5",
         "dimension": "3",
@@ -326,7 +326,7 @@
     },
     {
         "id": "I26",
-        "name": "Normal Quntic",
+        "name": "Normal Quintic",
         "status": "unknown",
         "homogenizations": "something",
         "degree": "5",
