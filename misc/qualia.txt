@@ -44,4 +44,8 @@ for k from 0 to 4 do (
 
 Code for intersections
 
-for i from 1 to length L - 1 do (for j from 0 to i - 1 do (L1 = L#i; L2 = L#j; P = P | {(i, j, L1 + L2)}))
+intersectionData = {}
+for i from 1 to length L - 1 do (for j from 0 to i - 1 do (L1 = L#i; L2 = L#j; intersectionData = intersectionData | {(i, j, L1 + L2)}))
+V = {}
+for i from 0 to length intersectionData - 1 do (tup = intersectionData#i; v = tup_(2); V = V | {v})
+V = unique(V)

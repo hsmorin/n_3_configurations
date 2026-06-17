@@ -49,7 +49,7 @@
         "rational": "Unknown",
         "homogenizations": "something",
         "polynomial": "x^{2}yzw+y^{2}z^{2}w-x^{3}w^{2}-2xyzw^{2}+x^{2}w^{3}+xy^{2}z-y^{2}z^{2}+x^{3}w-x^{2}yw-x^{2}zw-y^{2}zw+x^{2}w^{2}+xyw^{2}+yzw^{2}-xw^{3}-xy^{2}+y^{2}z-x^{2}w+xyw+xzw-yzw",
-        "notes": "Singular locus consists of 10 lines and 5 isolated points"
+        "notes": "Isomorphic to Q3 by linear change of variables described in Q4.m2"
     },
     {
         "id": "Q5",
@@ -150,16 +150,16 @@
         "dimension": "3",
         "dimension of singular locus": "2",
         "normal in A^4": "No",
-        "rational": "Unknown",
+        "rational": "unknown",
         "homogenizations": "something",
         "polynomial": "x^{2}y^{2}z+x^{2}yz^{2}-2xy^{2}z^{2}+x^{2}y^{2}w-4xy^{2}zw+2y^{2}z^{2}w-x^{2}yw^{2}-2xy^{2}w^{2}+2xyzw^{2}+3y^{2}zw^{2}-yz^{2}w^{2}+2xyw^{3}+y^{2}w^{3}-2yzw^{3}-yw^{4}-x^{2}y^{2}-x^{2}yz+3xy^{2}z-x^{2}z^{2}+2xyz^{2}-y^{2}z^{2}+x^{2}yw+3xy^{2}w-x^{2}zw-3y^{2}zw-x^{2}w^{2}-2xyw^{2}-2y^{2}w^{2}+xzw^{2}+yzw^{2}+xw^{3}+yw^{3}-xy^{2}+x^{2}z-2xyz+y^{2}z+x^{2}w+y^{2}w-xw^{2}",
-        "notes": "Singular locus consists of 1 plane, 4 lines, and 1 isolated point"
+        "notes": "Singular locus consists of 1 plane, 4 lines, and 1 isolated point."
     },
     {
         "id": "Q13",
         "name": "Non Normal Quintic",
         "status": "unknown",
-        "homogenizations": "something",
+        "homogenizations": "\\mathbb{P}^3 \\times \\mathbb{P}^1",
         "degree": "5",
         "dimension": "3",
         "dimension of singular locus": "2",
@@ -177,7 +177,7 @@
         "dimension of singular locus": "2",
         "normal in A^4": "No",
         "rational": "Yes",
-        "homogenizations": "something",
+        "homogenizations": "\\mathbb{P}^3 \\times \\mathbb{P}^1",
         "polynomial": "xyz^{2}w+xyzw^{2}-x^{2}w^{3}-yz^{3}-3xyzw-yz^{2}w+x^{2}w^{2}-2xyw^{2}+xzw^{2}+2xw^{3}+3yz^{2}+2xyw+3yzw-z^{2}w-2xw^{2}+yw^{2}-2zw^{2}-w^{3}-3yz-2yw+2zw+2w^{2}+y-w",
         "notes": "Singular locus consists of 1 plane and 7 lines"
     },
