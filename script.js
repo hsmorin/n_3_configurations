@@ -107,9 +107,6 @@ function buildCard(variety) {
 fetch('data.json')
     .then(res => res.json())
     .then(varieties => {
-        varieties.sort((a, b) =>
-            a.id.localeCompare(b.id, undefined, { numeric: true })
-        );
         const list = document.querySelector('.variety-list');
         varieties.forEach(v => list.appendChild(buildCard(v)));
     })
