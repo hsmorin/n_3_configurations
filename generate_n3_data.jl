@@ -5,6 +5,7 @@ using Oscar
 db = Polymake.Polydb.get_db()
 collection = db["Matroids.Small"]
 
+
 if length(ARGS) == 1
     n = parse(Int, ARGS[1])
 else
@@ -40,6 +41,7 @@ end=#
 #Finds n_3 configurations from polymake database
 lst = []
 for matroid in matroid_list
+    tag = matroid.REVLEX_BASIS_ENCODING
     matroid = Matroid(matroid)
     H = hyperplanes(matroid)
     three = 0
@@ -82,7 +84,7 @@ for matroid in matroid_list
         end
         
         if con && count == n
-            push!(lst, matroid)
+            push!(lst, (matroid, tag))
         end
     end
 end
@@ -92,12 +94,12 @@ n_3 = open("./data/$(n)_3.m2", "w")
 n_3_L = open("./data/$(n)_3_avoids.m2", "w")
 
 #Writes data to a file
-for (i, matroid) in enumerate(lst)
+for (i, (matroid, tag)) in enumerate(lst)
         R = realization_space(matroid, ground_ring = QQ)
         display(R)
         I = gens(defining_ideal(R))
         L = inequations(R)
-        I_str = "I$(i) = ideal("
+        I_str = "f$(i) = "
         L_str = "L$(i) = {"
         for f in I
             I_str *= string(f) * ", "
@@ -106,13 +108,14 @@ for (i, matroid) in enumerate(lst)
             L_str *= string(g) * ", "
         end
         I_str = chop(I_str, tail=2)
-        I_str *= ") -- dimension "
+        I_str *= " -- dimension "
         if is_realizable(R)
             I_str *= string(dim(R)) * "\n"
         else
             I_str *= "-∞\n"
         end
-        I_str *= "\n"
+        I_str *= "-- revlex_basis_encoding: " * tag
+        I_str *= "\n\n"
         L_str = chop(L_str, tail=2)
         L_str *= "}\n\n"
         write(n_3, I_str)

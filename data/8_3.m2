@@ -1,2 +1,3 @@
-I1 = ideal(x1^2 - x1 + 1) -- dimension 0
+f1 = x1^2 - x1 + 1 -- dimension 0
+-- revlex_basis_encoding: 0******0******0**********0********0*******0****0**0*****
 
