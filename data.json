@@ -66,7 +66,7 @@
     },
     {
         "id": "Q6",
-        "name": "idk",
+        "name": "Normal Quintic",
         "status": "unknown",
         "degree": "5",
         "dimension": "3",
@@ -118,7 +118,7 @@
     },
     {
         "id": "Q10",
-        "name": "idk",
+        "name": "Normal Quintic",
         "status": "unknown",
         "degree": "5",
         "dimension": "3",
