@@ -81,10 +81,14 @@ function buildCard(variety) {
         </div>
 
         ${hasHomogenizations ? `
-        <div class="info-block">
-          <p class="block-label">Homogenizations</p>
-          <div class="math-block">${renderMath(variety.homogenizations)}</div>
-        </div>` : ''}
+            <div class="info-block">
+  <p class="block-label">Homogenizations</p>
+  <div class="homogenization-list">
+    ${variety.homogenizations.split('\\n').map(h =>
+            `<div class="math-block">${renderMath(h.trim())}</div>`
+        ).join('')}
+  </div>
+</div>` : ''}
 
         ${hasNotes ? `
         <div class="divider"></div>
