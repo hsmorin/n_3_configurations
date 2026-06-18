@@ -84,7 +84,7 @@ function buildCard(variety) {
             <div class="info-block">
   <p class="block-label">Homogenizations</p>
   <div class="homogenization-list">
-    ${variety.homogenizations.split('\\n').map(h =>
+    ${variety.homogenizations.split(/\\n|\n/).map(h =>
             `<div class="math-block">${renderMath(h.trim())}</div>`
         ).join('')}
   </div>
