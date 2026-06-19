@@ -90,7 +90,7 @@ for matroid in matroid_list
 end
 
 
-n_3 = open("./data/$(n)_3.m2", "w")
+n_3 = open("./data/$(n)_3_old_numbering.m2", "w")
 n_3_L = open("./data/$(n)_3_avoids.m2", "w")
 
 #Writes data to a file

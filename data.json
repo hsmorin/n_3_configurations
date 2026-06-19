@@ -7,8 +7,8 @@
         "dimension": "3",
         "dimension of singular locus": "1",
         "normal in A^4": "Yes",
-        "rational": "No",
-        "homogenizations": "\\mathbb{P}^4 \n \\mathbb{P}^2_{x,y,u} \\times \\mathbb{P}^2_{z,w,v} \n \\mathbb{P}^2_{x,z,u} \\times \\mathbb{P}^2_{y,w,v} \n \\mathbb{P}^1_{x, u} \\times \\mathbb{P}^1_{y, v} \\times \\mathbb{P}^2_{z,w,t}",
+        "rational": "Unknown",
+        "homogenizations": "\\mathbb{P}^4 \n \\mathbb{P}^1 \\times \\mathbb{P}^3 \n \\mathbb{P}^2_{x,y,u} \\times \\mathbb{P}^2_{z,w,v} \n \\mathbb{P}^2_{x,z,u} \\times \\mathbb{P}^2_{y,w,v} \n \\mathbb{P}^1_{x, u} \\times \\mathbb{P}^1_{y, v} \\times \\mathbb{P}^2_{z,w,t}",
         "polynomial": "y^{2}z^{3}+xy^{2}zw-2xyz^{2}w+y^{2}z^{2}w-x^{2}yw^{2}+x^{2}zw^{2}-2xyzw^{2}+x^{2}w^{3}+xy^{2}z+xyz^{2}-3y^{2}z^{2}-yz^{3}-x^{2}zw+3xyzw-2y^{2}zw+xz^{2}w-x^{2}w^{2}+2xyw^{2}+yzw^{2}-xw^{3}-xy^{2}-2xyz+2y^{2}z+2yz^{2}+x^{2}w-xyw-xzw+xy-yz",
         "notes": "Singular locus consists of 9 lines intersecting at 8 points"
     },
@@ -20,7 +20,7 @@
         "dimension": "3",
         "dimension of singular locus": "1",
         "normal in A^4": "Yes",
-        "rational": "No",
+        "rational": "Unknown",
         "homogenizations": "\\mathbb{P}^4 \n \\mathbb{P}^2_{x,y,u} \\times \\mathbb{P}^2_{z,w,v} \n \\mathbb{P}^2_{x,z,u} \\times \\mathbb{P}^2_{y,w,v}",
         "polynomial": "y^{3}z^{2}+x^{2}yzw-xy^{2}zw-x^{3}w^{2}-xyzw^{2}+x^{2}w^{3}-x^{2}yz-xy^{2}z-y^{3}z-y^{2}z^{2}+x^{3}w+x^{2}yw+xy^{2}w+xyzw-x^{2}w^{2}+xzw^{2}+yzw^{2}-xw^{3}+2xyz+2y^{2}z-x^{2}w-2xyw-xzw-yzw+2xw^{2}-zw^{2}-yz+zw",
         "notes": "Singular locus consists of 10 lines and 2 isolated points"
@@ -33,8 +33,8 @@
         "dimension": "3",
         "dimension of singular locus": "1",
         "normal in A^4": "Yes",
-        "rational": "No",
-        "homogenizations": "\\mathbb{P}^4 \n \\mathbb{P}^2_{x,y,u} \\times \\mathbb{P}^2_{z,w,v} \n \\mathbb{P}^2_{x,z,u} \\times \\mathbb{P}^2_{y,w,v}",
+        "rational": "Unknown",
+        "homogenizations": "\\mathbb{P}^4 \n \\mathbb{P}^1 \\times \\mathbb{P}^3 \n \\mathbb{P}^2_{x,y,u} \\times \\mathbb{P}^2_{z,w,v} \n \\mathbb{P}^2_{x,z,u} \\times \\mathbb{P}^2_{y,w,v}",
         "polynomial": "xy^{2}z^{2}-2x^{2}yzw+x^{3}w^{2}+xyzw^{2}-x^{2}w^{3}+x^{2}yz-2xy^{2}z-xyz^{2}-x^{3}w+2x^{2}yw+x^{2}zw+2xyzw-yz^{2}w-x^{2}w^{2}-yzw^{2}+xw^{3}-x^{2}y+xy^{2}+yz^{2}+x^{2}w-3xyw-xzw+2yzw+xy-yz",
         "notes": "Singular locus consists of 10 lines and 5 isolated points"
     },
@@ -46,7 +46,7 @@
         "dimension": "3",
         "dimension of singular locus": "1",
         "normal in A^4": "Yes",
-        "rational": "No",
+        "rational": "Unknown",
         "homogenizations": "\\mathbb{P}^4 \n \\mathbb{P}^2_{x,y,u} \\times \\mathbb{P}^2_{z,w,v} \n \\mathbb{P}^2_{x,z,u} \\times \\mathbb{P}^2_{y,w,v}",
         "polynomial": "x^{2}yzw+y^{2}z^{2}w-x^{3}w^{2}-2xyzw^{2}+x^{2}w^{3}+xy^{2}z-y^{2}z^{2}+x^{3}w-x^{2}yw-x^{2}zw-y^{2}zw+x^{2}w^{2}+xyw^{2}+yzw^{2}-xw^{3}-xy^{2}+y^{2}z-x^{2}w+xyw+xzw-yzw",
         "notes": "Isomorphic to Q3 by linear change of variables described in Q4.m2"
@@ -111,8 +111,8 @@
         "dimension": "3",
         "dimension of singular locus": "1",
         "normal in A^4": "Yes",
-        "homogenizations": "\\mathbb{P}^4 \n \\mathbb{P}^3_{x,y,w,u} \\times \\mathbb{P}^1_{z,v} \n \\mathbb{P}^3_{x, z, w, u} \\times \\mathbb{P}^1_{y,v} \n \\mathbb{P}^1_{x, u} \\times \\mathbb{P}^2_{y, z, v} \\times \\mathbb{P}^1_{w,t} \n \\mathbb{P}^2_{x, w, u} \\times \\mathbb{P}^1_{y,v} \\times \\mathbb{P}^1_{z,t} \n \\mathbb{P}^1_{x,u} \\times \\mathbb{P}^1_{y,v} \\times \\mathbb{P}^1_{z, s} \\times \\mathbb{P}^1_{w,t}",
         "rational": "Unknown",
+        "homogenizations": "\\mathbb{P}^4 \n \\mathbb{P}^3_{x,y,w,u} \\times \\mathbb{P}^1_{z,v} \n \\mathbb{P}^3_{x, z, w, u} \\times \\mathbb{P}^1_{y,v} \n \\mathbb{P}^1_{x, u} \\times \\mathbb{P}^2_{y, z, v} \\times \\mathbb{P}^1_{w,t} \n \\mathbb{P}^2_{x, w, u} \\times \\mathbb{P}^1_{y,v} \\times \\mathbb{P}^1_{z,t} \n \\mathbb{P}^1_{x,u} \\times \\mathbb{P}^1_{y,v} \\times \\mathbb{P}^1_{z, s} \\times \\mathbb{P}^1_{w,t}",
         "polynomial": "x^{2}y^{2}z-xy^{2}z^{2}-x^{2}yzw-xy^{2}zw+xyz^{2}w+y^{2}z^{2}w+xyzw^{2}-yz^{2}w^{2}-x^{2}y^{2}+x^{2}yz+xy^{2}z-x^{2}z^{2}+xyz^{2}-y^{2}z^{2}+xy^{2}w+x^{2}zw-3xyzw+yz^{2}w",
         "notes": "Singular locus consists of 12 lines intersecting in 10 points"
     },
@@ -150,7 +150,7 @@
         "dimension": "3",
         "dimension of singular locus": "2",
         "normal in A^4": "No",
-        "rational": "unknown",
+        "rational": "Unknown",
         "homogenizations": "\\mathbb{P}^4 \n \\mathbb{P}^3_{x,z,w,u} \\times \\mathbb{P}^1_{y,v}",
         "polynomial": "x^{2}y^{2}z+x^{2}yz^{2}-2xy^{2}z^{2}+x^{2}y^{2}w-4xy^{2}zw+2y^{2}z^{2}w-x^{2}yw^{2}-2xy^{2}w^{2}+2xyzw^{2}+3y^{2}zw^{2}-yz^{2}w^{2}+2xyw^{3}+y^{2}w^{3}-2yzw^{3}-yw^{4}-x^{2}y^{2}-x^{2}yz+3xy^{2}z-x^{2}z^{2}+2xyz^{2}-y^{2}z^{2}+x^{2}yw+3xy^{2}w-x^{2}zw-3y^{2}zw-x^{2}w^{2}-2xyw^{2}-2y^{2}w^{2}+xzw^{2}+yzw^{2}+xw^{3}+yw^{3}-xy^{2}+x^{2}z-2xyz+y^{2}z+x^{2}w+y^{2}w-xw^{2}",
         "notes": "Singular locus consists of 1 plane, 4 lines, and 1 isolated point."
