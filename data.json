@@ -2,7 +2,7 @@
     {
         "id": "Q1",
         "name": "Normal Quintic",
-        "status": "unknown",
+        "status": "confirmed_star",
         "degree": "5",
         "dimension": "3",
         "dimension of singular locus": "1",
@@ -28,7 +28,7 @@
     {
         "id": "Q3",
         "name": "Quincy",
-        "status": "unknown",
+        "status": "confirmed_star",
         "degree": "5",
         "dimension": "3",
         "dimension of singular locus": "1",
@@ -41,7 +41,7 @@
     {
         "id": "Q4",
         "name": "QuincyP",
-        "status": "unknown",
+        "status": "confirmed_star",
         "degree": "5",
         "dimension": "3",
         "dimension of singular locus": "1",
@@ -53,8 +53,8 @@
     },
     {
         "id": "Q5",
-        "name": "Normal Quintic",
-        "status": "unknown",
+        "name": "confirmed_star",
+        "status": "potential new CY",
         "degree": "5",
         "dimension": "3",
         "dimension of singular locus": "1",

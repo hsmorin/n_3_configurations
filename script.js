@@ -1,9 +1,9 @@
 const STATUS_TEXT = {
-    confirmed: 'Confirmed Calabi-Yau',
-    confirmed_star: 'Likely Calabi-Yau',
+    confirmed: 'Confirmed CY Match',
+    confirmed_star: 'Likely CY Match',
     unconfirmed: 'Unknown Type',
     unconfirmed_star: 'Rational',
-    unknown: 'Unknown',
+    new: 'New CY',
 };
 
 function renderMath(tex) {
