@@ -1,0 +1,32 @@
+R = QQ[x1,x2,x3,x4]
+
+Q9 = x1^2*x2^2*x3 - x1^2*x2^2 - x1^2*x2*x3*x4 + x1^2*x2*x3 - x1^2*x3^2 + x1^2*x3*x4 - x1*x2^2*x3^2 - x1*x2^2*x3*x4 + x1*x2^2*x3 + x1*x2^2*x4 + x1*x2*x3^2*x4 + x1*x2*x3^2 + x1*x2*x3*x4^2 - 3*x1*x2*x3*x4 + x2^2*x3^2*x4 - x2^2*x3^2 - x2*x3^2*x4^2 + x2*x3^2*x4
+
+S = QQ[x,y,z,w,u,v]
+
+phi = map(S, R, {x3 => x, x2 => y, x1 => z, x4 => w})
+
+f = phi Q9
+
+-- Homogenize f into P^1 \times P^3
+T = terms f
+TBar = apply(T, i -> (n = 2 - degree(x, i); m = 4 - degree(y, i) - degree(z, i) - degree(w, i); i * u^n * v^m))
+F = sum TBar
+
+-- Bidegree (2,4)
+-- F = x*y^2*z^2*u-x*y^2*z*w*u-x*y*z^2*w*u+x*y*z*w^2*u-y^2*z^2*u^2+y^2*z*w*u^2-x^2*y^2*z*v+x^2*y^2*w*v+x^2*y*z*w*v-x^2*y*w^2*v+x*y^2*z*u*v+x*y*z^2*u*v-3*x*y*z*w*u*v+x*z^2*w*u*v-x^2*y^2*v^2+x^2*y*z*v^2-x^2*z^2*v^2+x^2*y*w*v^2
+
+-- Analyze Singular Fibres
+
+
+-- Compute Octic
+
+a = (sum select(terms F, m -> degree(x, m) == 2)) / x^2
+b = (sum select(terms F, m -> degree(x, m) == 1)) / x
+c = sum select(terms F, m -> degree(x, m) == 0)
+
+D = (b^2 - 4 * a * c) / u^2
+D = sub(D, S)
+-- D = y^4*z^4-2*y^4*z^3*w-2*y^3*z^4*w+y^4*z^2*w^2+4*y^3*z^3*w^2+y^2*z^4*w^2-2*y^3*z^2*w^3-2*y^2*z^3*w^3+y^2*z^2*w^4-2*y^4*z^3*v+2*y^3*z^4*v+6*y^4*z^2*w*v-6*y^3*z^3*w*v-4*y^4*z*w^2*v+6*y^2*z^3*w^2*v-2*y*z^4*w^2*v+4*y^3*z*w^3*v-6*y^2*z^2*w^3*v+2*y*z^3*w^3*v-3*y^4*z^2*v^2+6*y^3*z^3*v^2-3*y^2*z^4*v^2+4*y^4*z*w*v^2-6*y^3*z^2*w*v^2+2*y*z^4*w*v^2-4*y^3*z*w^2*v^2+9*y^2*z^2*w^2*v^2-6*y*z^3*w^2*v^2+z^4*w^2*v^2
+
+-- Factors into degree 4, quadratic term, and two linears
