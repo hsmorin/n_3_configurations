@@ -49,3 +49,5 @@ for i from 1 to length L - 1 do (for j from 0 to i - 1 do (L1 = L#i; L2 = L#j; i
 V = {}
 for i from 0 to length intersectionData - 1 do (tup = intersectionData#i; v = tup_(2); V = V | {v})
 V = unique(apply(V, i -> mingens i))
+
+for C in V do (print(C); for tup in intersectionData do (if (mingens tup#2) == C then print((tup#0, tup#1))))
