@@ -26,13 +26,35 @@ G = sum TBar
 
 -- Compute octic
 
-a = (sum select(terms G, m -> degree(x, m) == 2)) / x^2
-b = (sum select(terms G, m -> degree(x, m) == 1)) / x
-c = sum select(terms G, m -> degree(x, m) == 0)
+A = (sum select(terms G, m -> degree(x, m) == 2)) / x^2
+B = (sum select(terms G, m -> degree(x, m) == 1)) / x
+C = sum select(terms G, m -> degree(x, m) == 0)
 
-D = b^2 - 4*a*c
+D = B^2 - 4*A*C
 D = D / u^2
 D = sub(D, S)
 
 -- D = y^4*z^2*w^2-2*y^2*z^4*w^2+z^6*w^2+4*y^2*z^3*w^3-4*z^5*w^3-2*y^2*z^2*w^4+6*z^4*w^4-4*z^3*w^5+z^2*w^6-4*y^4*z^2*w*v+6*y^3*z^3*w*v-2*y^2*z^4*w*v+2*y*z^5*w*v-2*z^6*w*v-6*y^3*z^2*w^2*v-2*y*z^4*w^2*v+8*z^5*w^2*v+2*y^2*z^2*w^3*v-2*y*z^3*w^3*v-12*z^4*w^3*v+2*y*z^2*w^4*v+8*z^3*w^4*v-2*z^2*w^5*v+4*y^4*z^2*v^2-8*y^3*z^3*v^2+5*y^2*z^4*v^2-2*y*z^5*v^2+z^6*v^2+2*y^4*z*w*v^2+4*y^3*z^2*w*v^2-2*y*z^4*w*v^2-4*z^5*w*v^2+4*y^3*z*w^2*v^2-7*y^2*z^2*w^2*v^2+10*y*z^3*w^2*v^2+6*z^4*w^2*v^2+2*y^2*z*w^3*v^2-6*y*z^2*w^3*v^2-4*z^3*w^3*v^2+z^2*w^4*v^2-4*y^4*z*v^3+6*y^3*z^2*v^3-6*y^2*z^3*v^3+4*y*z^4*v^3-6*y^3*z*w*v^3+8*y^2*z^2*w*v^3-8*y*z^3*w*v^3-2*y^2*z*w^2*v^3+4*y*z^2*w^2*v^3+y^4*v^4
 -- Prime
+
+-- Compute Singular Fibers
+
+g11 = G(1,1,z,w,u,v)
+g12 = G(1,y,1,w,u,v)
+g13 = G(1,y,z,1,u,v)
+g14 = G(1,y,z,w,u,1)
+g21 = G(x,1,z,w,1,v)
+g22 = G(x,y,1,w,1,v)
+g23 = G(x,y,z,1,1,v)
+g24 = G(x,y,z,w,1,1)
+
+S11 = eliminate({y,z,w,v}, ideal(diff(z, g11), diff(w, g11), diff(v, g11), g11, x - 1, y - 1))
+S12 = eliminate({y,z,w,v}, ideal(diff(y, g12), diff(w, g12), diff(v, g12), g12, x - 1, z - 1))
+S13 = eliminate({y,z,w,v}, ideal(diff(y, g13), diff(z, g13), diff(v, g13), g13, x - 1, w - 1))
+S14 = eliminate({y,z,w,v}, ideal(diff(y, g14), diff(z, g14), diff(w, g14), g14, x - 1, v - 1))
+S21 = eliminate({y,z,w,v}, ideal(diff(z, g21), diff(w, g21), diff(v, g21), g21, u - 1, y - 1))
+S22 = eliminate({y,z,w,v}, ideal(diff(y, g22), diff(w, g22), diff(v, g22), g22, u - 1, z - 1))
+S23 = eliminate({y,z,w,v}, ideal(diff(y, g23), diff(z, g23), diff(v, g23), g23, u - 1, w - 1))
+S24 = eliminate({y,z,w,v}, ideal(diff(y, g24), diff(z, g24), diff(w, g24), g24, u - 1, v - 1))
+
+
