@@ -1,0 +1,7 @@
+{
+  "case": "S5",
+  "error": "No bidegree (2,4) double-octic model was found by the chart search.",
+  "has_octic": false,
+  "path": "../data/11_3.m2",
+  "status": "error"
+}

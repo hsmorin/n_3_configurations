@@ -1,0 +1,18 @@
+[
+  {
+    "chart": "x1",
+    "error_count": 3,
+    "index": 0,
+    "p3": "x0,x2,x4",
+    "qvar": "x3",
+    "status": "error"
+  },
+  {
+    "chart": "x4",
+    "error_count": 3,
+    "index": 1,
+    "p3": "x0,x1,x3",
+    "qvar": "x2",
+    "status": "error"
+  }
+]

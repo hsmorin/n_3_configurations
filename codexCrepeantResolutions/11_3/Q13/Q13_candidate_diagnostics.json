@@ -1,0 +1,82 @@
+[
+  {
+    "chart": "x0",
+    "error_count": 1,
+    "index": 0,
+    "p3": "x2,x3,x4",
+    "qvar": "x1",
+    "status": "error"
+  },
+  {
+    "chart": "x0",
+    "error_count": 1,
+    "index": 1,
+    "p3": "x1,x2,x4",
+    "qvar": "x3",
+    "status": "error"
+  },
+  {
+    "chart": "x1",
+    "error_count": 1,
+    "index": 2,
+    "p3": "x2,x3,x4",
+    "qvar": "x0",
+    "status": "error"
+  },
+  {
+    "chart": "x1",
+    "error_count": 1,
+    "index": 3,
+    "p3": "x0,x3,x4",
+    "qvar": "x2",
+    "status": "error"
+  },
+  {
+    "chart": "x1",
+    "error_count": 1,
+    "index": 4,
+    "p3": "x0,x2,x4",
+    "qvar": "x3",
+    "status": "error"
+  },
+  {
+    "chart": "x1",
+    "error_count": 1,
+    "index": 5,
+    "p3": "x0,x2,x3",
+    "qvar": "x4",
+    "status": "error"
+  },
+  {
+    "chart": "x2",
+    "error_count": 1,
+    "index": 6,
+    "p3": "x0,x3,x4",
+    "qvar": "x1",
+    "status": "error"
+  },
+  {
+    "chart": "x3",
+    "error_count": 1,
+    "index": 7,
+    "p3": "x1,x2,x4",
+    "qvar": "x0",
+    "status": "error"
+  },
+  {
+    "chart": "x3",
+    "error_count": 1,
+    "index": 8,
+    "p3": "x0,x2,x4",
+    "qvar": "x1",
+    "status": "error"
+  },
+  {
+    "chart": "x4",
+    "error_count": 1,
+    "index": 9,
+    "p3": "x0,x2,x3",
+    "qvar": "x1",
+    "status": "error"
+  }
+]

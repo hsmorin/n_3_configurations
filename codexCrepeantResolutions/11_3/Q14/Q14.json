@@ -1,0 +1,487 @@
+{
+  "bad_reduction": {
+    "detected_primes": [
+      2
+    ],
+    "note": "2 is always included; odd primes are flagged when the singular-locus component signature changes modulo p.",
+    "tested_primes": [
+      2,
+      3,
+      5,
+      7
+    ]
+  },
+  "blowup_count_correction": {
+    "by_prime": {
+      "3": {
+        "contributions": [
+          {
+            "center_points": 13,
+            "component": 0,
+            "correction": null,
+            "formula": "unsupported",
+            "projective_dimension": 2
+          },
+          {
+            "center_points": 4,
+            "component": 1,
+            "correction": 12,
+            "formula": "p * #C(F_p)",
+            "projective_dimension": 1
+          },
+          {
+            "center_points": 4,
+            "component": 2,
+            "correction": 12,
+            "formula": "p * #C(F_p)",
+            "projective_dimension": 1
+          },
+          {
+            "center_points": 4,
+            "component": 3,
+            "correction": 12,
+            "formula": "p * #C(F_p)",
+            "projective_dimension": 1
+          },
+          {
+            "center_points": 4,
+            "component": 4,
+            "correction": 12,
+            "formula": "p * #C(F_p)",
+            "projective_dimension": 1
+          },
+          {
+            "center_points": 4,
+            "component": 5,
+            "correction": 12,
+            "formula": "p * #C(F_p)",
+            "projective_dimension": 1
+          },
+          {
+            "center_points": 4,
+            "component": 6,
+            "correction": 12,
+            "formula": "p * #C(F_p)",
+            "projective_dimension": 1
+          }
+        ],
+        "status": "partial",
+        "total_correction": null
+      },
+      "5": {
+        "contributions": [
+          {
+            "center_points": 31,
+            "component": 0,
+            "correction": null,
+            "formula": "unsupported",
+            "projective_dimension": 2
+          },
+          {
+            "center_points": 6,
+            "component": 1,
+            "correction": 30,
+            "formula": "p * #C(F_p)",
+            "projective_dimension": 1
+          },
+          {
+            "center_points": 6,
+            "component": 2,
+            "correction": 30,
+            "formula": "p * #C(F_p)",
+            "projective_dimension": 1
+          },
+          {
+            "center_points": 6,
+            "component": 3,
+            "correction": 30,
+            "formula": "p * #C(F_p)",
+            "projective_dimension": 1
+          },
+          {
+            "center_points": 6,
+            "component": 4,
+            "correction": 30,
+            "formula": "p * #C(F_p)",
+            "projective_dimension": 1
+          },
+          {
+            "center_points": 6,
+            "component": 5,
+            "correction": 30,
+            "formula": "p * #C(F_p)",
+            "projective_dimension": 1
+          },
+          {
+            "center_points": 6,
+            "component": 6,
+            "correction": 30,
+            "formula": "p * #C(F_p)",
+            "projective_dimension": 1
+          }
+        ],
+        "status": "partial",
+        "total_correction": null
+      },
+      "7": {
+        "contributions": [
+          {
+            "center_points": 57,
+            "component": 0,
+            "correction": null,
+            "formula": "unsupported",
+            "projective_dimension": 2
+          },
+          {
+            "center_points": 8,
+            "component": 1,
+            "correction": 56,
+            "formula": "p * #C(F_p)",
+            "projective_dimension": 1
+          },
+          {
+            "center_points": 8,
+            "component": 2,
+            "correction": 56,
+            "formula": "p * #C(F_p)",
+            "projective_dimension": 1
+          },
+          {
+            "center_points": 8,
+            "component": 3,
+            "correction": 56,
+            "formula": "p * #C(F_p)",
+            "projective_dimension": 1
+          },
+          {
+            "center_points": 8,
+            "component": 4,
+            "correction": 56,
+            "formula": "p * #C(F_p)",
+            "projective_dimension": 1
+          },
+          {
+            "center_points": 8,
+            "component": 5,
+            "correction": 56,
+            "formula": "p * #C(F_p)",
+            "projective_dimension": 1
+          },
+          {
+            "center_points": 8,
+            "component": 6,
+            "correction": 56,
+            "formula": "p * #C(F_p)",
+            "projective_dimension": 1
+          }
+        ],
+        "status": "partial",
+        "total_correction": null
+      }
+    },
+    "note": "For a curve center the blowup replaces the center by a P^1-bundle, contributing p times the center count. For a point center in a threefold it contributes p+p^2. These are first-level center corrections from the ledger below.",
+    "status": "first_level_from_listed_blowup_centers"
+  },
+  "blowup_tree": {
+    "errors": [
+      "component 0 has projective dimension 2; expected curves or points"
+    ],
+    "exceptional_divisor_count_lower_bound": 6,
+    "picard_rank_lower_bound": 7,
+    "root": {
+      "ambient": "P^3",
+      "branch_degree": 8,
+      "centers": [
+        {
+          "branch_multiplicity": 2,
+          "children": [],
+          "crepant_expected_branch_multiplicity": null,
+          "degree": 1,
+          "generators": "matrix {{w}}",
+          "id": "c0",
+          "kind": "unsupported",
+          "projective_dimension": 2,
+          "standard_affine_charts": [
+            {
+              "branch_transform": "D_chart = substitute(D, chart_map)/(w)^2",
+              "cover_variable": "u = (w)^1*u_c0",
+              "pivot": "w",
+              "substitutions": []
+            }
+          ]
+        },
+        {
+          "branch_multiplicity": 2,
+          "children": [],
+          "crepant_expected_branch_multiplicity": 2,
+          "degree": 1,
+          "generators": "matrix {{v, z}}",
+          "id": "c1",
+          "kind": "curve",
+          "projective_dimension": 1,
+          "standard_affine_charts": [
+            {
+              "branch_transform": "D_chart = substitute(D, chart_map)/(v)^2",
+              "cover_variable": "u = (v)^1*u_c1",
+              "pivot": "v",
+              "substitutions": [
+                "z = (v)*u_c1_1"
+              ]
+            },
+            {
+              "branch_transform": "D_chart = substitute(D, chart_map)/(z)^2",
+              "cover_variable": "u = (z)^1*u_c1",
+              "pivot": "z",
+              "substitutions": [
+                "v = (z)*u_c1_0"
+              ]
+            }
+          ]
+        },
+        {
+          "branch_multiplicity": 2,
+          "children": [],
+          "crepant_expected_branch_multiplicity": 2,
+          "degree": 1,
+          "generators": "matrix {{v, z+w}}",
+          "id": "c2",
+          "kind": "curve",
+          "projective_dimension": 1,
+          "standard_affine_charts": [
+            {
+              "branch_transform": "D_chart = substitute(D, chart_map)/(v)^2",
+              "cover_variable": "u = (v)^1*u_c2",
+              "pivot": "v",
+              "substitutions": [
+                "z+w = (v)*u_c2_1"
+              ]
+            },
+            {
+              "branch_transform": "D_chart = substitute(D, chart_map)/(z+w)^2",
+              "cover_variable": "u = (z+w)^1*u_c2",
+              "pivot": "z+w",
+              "substitutions": [
+                "v = (z+w)*u_c2_0"
+              ]
+            }
+          ]
+        },
+        {
+          "branch_multiplicity": 2,
+          "children": [],
+          "crepant_expected_branch_multiplicity": 2,
+          "degree": 1,
+          "generators": "matrix {{v, y}}",
+          "id": "c3",
+          "kind": "curve",
+          "projective_dimension": 1,
+          "standard_affine_charts": [
+            {
+              "branch_transform": "D_chart = substitute(D, chart_map)/(v)^2",
+              "cover_variable": "u = (v)^1*u_c3",
+              "pivot": "v",
+              "substitutions": [
+                "y = (v)*u_c3_1"
+              ]
+            },
+            {
+              "branch_transform": "D_chart = substitute(D, chart_map)/(y)^2",
+              "cover_variable": "u = (y)^1*u_c3",
+              "pivot": "y",
+              "substitutions": [
+                "v = (y)*u_c3_0"
+              ]
+            }
+          ]
+        },
+        {
+          "branch_multiplicity": 2,
+          "children": [],
+          "crepant_expected_branch_multiplicity": 2,
+          "degree": 1,
+          "generators": "matrix {{w-v, z}}",
+          "id": "c4",
+          "kind": "curve",
+          "projective_dimension": 1,
+          "standard_affine_charts": [
+            {
+              "branch_transform": "D_chart = substitute(D, chart_map)/(w-v)^2",
+              "cover_variable": "u = (w-v)^1*u_c4",
+              "pivot": "w-v",
+              "substitutions": [
+                "z = (w-v)*u_c4_1"
+              ]
+            },
+            {
+              "branch_transform": "D_chart = substitute(D, chart_map)/(z)^2",
+              "cover_variable": "u = (z)^1*u_c4",
+              "pivot": "z",
+              "substitutions": [
+                "w-v = (z)*u_c4_0"
+              ]
+            }
+          ]
+        },
+        {
+          "branch_multiplicity": 2,
+          "children": [],
+          "crepant_expected_branch_multiplicity": 2,
+          "degree": 2,
+          "generators": "matrix {{w-v, y*z-2*y*v+v^2}}",
+          "id": "c5",
+          "kind": "curve",
+          "projective_dimension": 1,
+          "standard_affine_charts": [
+            {
+              "branch_transform": "D_chart = substitute(D, chart_map)/(w-v)^2",
+              "cover_variable": "u = (w-v)^1*u_c5",
+              "pivot": "w-v",
+              "substitutions": [
+                "y*z-2*y*v+v^2 = (w-v)*u_c5_1"
+              ]
+            },
+            {
+              "branch_transform": "D_chart = substitute(D, chart_map)/(y*z-2*y*v+v^2)^2",
+              "cover_variable": "u = (y*z-2*y*v+v^2)^1*u_c5",
+              "pivot": "y*z-2*y*v+v^2",
+              "substitutions": [
+                "w-v = (y*z-2*y*v+v^2)*u_c5_0"
+              ]
+            }
+          ]
+        },
+        {
+          "branch_multiplicity": 2,
+          "children": [],
+          "crepant_expected_branch_multiplicity": 2,
+          "degree": 1,
+          "generators": "matrix {{z-v, y-v}}",
+          "id": "c6",
+          "kind": "curve",
+          "projective_dimension": 1,
+          "standard_affine_charts": [
+            {
+              "branch_transform": "D_chart = substitute(D, chart_map)/(z-v)^2",
+              "cover_variable": "u = (z-v)^1*u_c6",
+              "pivot": "z-v",
+              "substitutions": [
+                "y-v = (z-v)*u_c6_1"
+              ]
+            },
+            {
+              "branch_transform": "D_chart = substitute(D, chart_map)/(y-v)^2",
+              "cover_variable": "u = (y-v)^1*u_c6",
+              "pivot": "y-v",
+              "substitutions": [
+                "z-v = (y-v)*u_c6_0"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "status": "error"
+  },
+  "case": "Q14",
+  "corrected_first_level_finite_field_counts": {},
+  "finite_field_counts": {
+    "3": 51,
+    "5": 205,
+    "7": 539
+  },
+  "has_octic": true,
+  "model_search": {
+    "candidate_count": 2,
+    "chart": "x0",
+    "p3_variables_from_projective_coordinates": "x2,x3,x4",
+    "quadratic_variable": "x1",
+    "selected_candidate_index": 0,
+    "u_power_removed_from_discriminant": 2
+  },
+  "octic": "y^2*z^4*w^2+2*y^2*z^3*w^3+y^2*z^2*w^4-6*y^2*z^3*w^2*v-10*y^2*z^2*w^3*v-2*y*z^3*w^3*v-4*y^2*z*w^4*v+2*y*z^2*w^4*v+4*y*z*w^5*v+13*y^2*z^2*w^2*v^2+4*y*z^3*w^2*v^2+16*y^2*z*w^3*v^2+6*y*z^2*w^3*v^2+4*y^2*w^4*v^2-8*y*z*w^4*v^2-3*z^2*w^4*v^2-4*y*w^5*v^2-4*z*w^5*v^2-12*y^2*z*w^2*v^3-12*y*z^2*w^2*v^3-8*y^2*w^3*v^3-8*y*z*w^3*v^3+4*z^2*w^3*v^3+4*y*w^4*v^3+12*z*w^4*v^3+4*w^5*v^3+4*y^2*w^2*v^4+12*y*z*w^2*v^4+4*y*w^3*v^4-8*z*w^3*v^4-8*w^4*v^4-4*y*w^2*v^5+4*w^3*v^5",
+  "path": "../data/11_3.m2",
+  "picard_rank": {
+    "lower_bound": 7,
+    "note": "Computed from the first-level crepant-candidate centers found on the branch octic."
+  },
+  "singular_kulikov_fibers": {
+    "note": "This 11_3 batch constructs double-octic branch models only; no uniform K3 pencil was selected.",
+    "status": "not_computed"
+  },
+  "singular_locus": {
+    "characteristic": 0,
+    "component_count": 7,
+    "components": [
+      {
+        "branch_multiplicity": 2,
+        "cone_dimension": 3,
+        "degree": 1,
+        "generators": "matrix {{w}}",
+        "index": 0,
+        "projective_dimension": 2
+      },
+      {
+        "branch_multiplicity": 2,
+        "cone_dimension": 2,
+        "degree": 1,
+        "generators": "matrix {{v, z}}",
+        "index": 1,
+        "projective_dimension": 1
+      },
+      {
+        "branch_multiplicity": 2,
+        "cone_dimension": 2,
+        "degree": 1,
+        "generators": "matrix {{v, z+w}}",
+        "index": 2,
+        "projective_dimension": 1
+      },
+      {
+        "branch_multiplicity": 2,
+        "cone_dimension": 2,
+        "degree": 1,
+        "generators": "matrix {{v, y}}",
+        "index": 3,
+        "projective_dimension": 1
+      },
+      {
+        "branch_multiplicity": 2,
+        "cone_dimension": 2,
+        "degree": 1,
+        "generators": "matrix {{w-v, z}}",
+        "index": 4,
+        "projective_dimension": 1
+      },
+      {
+        "branch_multiplicity": 2,
+        "cone_dimension": 2,
+        "degree": 2,
+        "generators": "matrix {{w-v, y*z-2*y*v+v^2}}",
+        "index": 5,
+        "projective_dimension": 1
+      },
+      {
+        "branch_multiplicity": 2,
+        "cone_dimension": 2,
+        "degree": 1,
+        "generators": "matrix {{z-v, y-v}}",
+        "index": 6,
+        "projective_dimension": 1
+      }
+    ],
+    "raw": "PROFILE|characteristic|0\nPROFILE|component_count|7\nCOMP|0|3|1|2|matrix {{w}}\nCOMP|1|2|1|2|matrix {{v, z}}\nCOMP|2|2|1|2|matrix {{v, z+w}}\nCOMP|3|2|1|2|matrix {{v, y}}\nCOMP|4|2|1|2|matrix {{w-v, z}}\nCOMP|5|2|2|2|matrix {{w-v, y*z-2*y*v+v^2}}\nCOMP|6|2|1|2|matrix {{z-v, y-v}}\n"
+  },
+  "singular_model_finite_field_counts": {
+    "3": 51,
+    "5": 205,
+    "7": 539
+  },
+  "status": "error",
+  "term_count": 33,
+  "variables": [
+    "y",
+    "z",
+    "w",
+    "v"
+  ]
+}

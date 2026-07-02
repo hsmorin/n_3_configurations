@@ -1,0 +1,2363 @@
+{
+  "affine_chart_tree": [
+    {
+      "base_center_id": "L1",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "a",
+        "b"
+      ],
+      "id": "L1_1",
+      "kind": "curve",
+      "note": "generic cA8 chain",
+      "order": 1,
+      "repeat": 4,
+      "repeat_index": 1,
+      "stage": "old branch line chains",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(a)^2",
+          "cover_variable": "R = (a)^1*R_L1_1",
+          "pivot": "a",
+          "substitutions": [
+            "b = (a)*u_L1_1_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(b)^2",
+          "cover_variable": "R = (b)^1*R_L1_1",
+          "pivot": "b",
+          "substitutions": [
+            "a = (b)*u_L1_1_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "L1",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "a",
+        "b"
+      ],
+      "id": "L1_2",
+      "kind": "curve",
+      "note": "generic cA8 chain",
+      "order": 2,
+      "repeat": 4,
+      "repeat_index": 2,
+      "stage": "old branch line chains",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(a)^2",
+          "cover_variable": "R = (a)^1*R_L1_2",
+          "pivot": "a",
+          "substitutions": [
+            "b = (a)*u_L1_2_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(b)^2",
+          "cover_variable": "R = (b)^1*R_L1_2",
+          "pivot": "b",
+          "substitutions": [
+            "a = (b)*u_L1_2_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "L1",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "a",
+        "b"
+      ],
+      "id": "L1_3",
+      "kind": "curve",
+      "note": "generic cA8 chain",
+      "order": 3,
+      "repeat": 4,
+      "repeat_index": 3,
+      "stage": "old branch line chains",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(a)^2",
+          "cover_variable": "R = (a)^1*R_L1_3",
+          "pivot": "a",
+          "substitutions": [
+            "b = (a)*u_L1_3_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(b)^2",
+          "cover_variable": "R = (b)^1*R_L1_3",
+          "pivot": "b",
+          "substitutions": [
+            "a = (b)*u_L1_3_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "L1",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "a",
+        "b"
+      ],
+      "id": "L1_4",
+      "kind": "curve",
+      "note": "generic cA8 chain",
+      "order": 4,
+      "repeat": 4,
+      "repeat_index": 4,
+      "stage": "old branch line chains",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(a)^2",
+          "cover_variable": "R = (a)^1*R_L1_4",
+          "pivot": "a",
+          "substitutions": [
+            "b = (a)*u_L1_4_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(b)^2",
+          "cover_variable": "R = (b)^1*R_L1_4",
+          "pivot": "b",
+          "substitutions": [
+            "a = (b)*u_L1_4_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "L2",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "a-b",
+        "c"
+      ],
+      "id": "L2_1",
+      "kind": "curve",
+      "note": "generic cA4 chain",
+      "order": 5,
+      "repeat": 2,
+      "repeat_index": 1,
+      "stage": "old branch line chains",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(a-b)^2",
+          "cover_variable": "R = (a-b)^1*R_L2_1",
+          "pivot": "a-b",
+          "substitutions": [
+            "c = (a-b)*u_L2_1_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(c)^2",
+          "cover_variable": "R = (c)^1*R_L2_1",
+          "pivot": "c",
+          "substitutions": [
+            "a-b = (c)*u_L2_1_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "L2",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "a-b",
+        "c"
+      ],
+      "id": "L2_2",
+      "kind": "curve",
+      "note": "generic cA4 chain",
+      "order": 6,
+      "repeat": 2,
+      "repeat_index": 2,
+      "stage": "old branch line chains",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(a-b)^2",
+          "cover_variable": "R = (a-b)^1*R_L2_2",
+          "pivot": "a-b",
+          "substitutions": [
+            "c = (a-b)*u_L2_2_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(c)^2",
+          "cover_variable": "R = (c)^1*R_L2_2",
+          "pivot": "c",
+          "substitutions": [
+            "a-b = (c)*u_L2_2_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "L3",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "a",
+        "d"
+      ],
+      "id": "L3_1",
+      "kind": "curve",
+      "note": "generic cA7 chain",
+      "order": 7,
+      "repeat": 4,
+      "repeat_index": 1,
+      "stage": "old branch line chains",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(a)^2",
+          "cover_variable": "R = (a)^1*R_L3_1",
+          "pivot": "a",
+          "substitutions": [
+            "d = (a)*u_L3_1_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(d)^2",
+          "cover_variable": "R = (d)^1*R_L3_1",
+          "pivot": "d",
+          "substitutions": [
+            "a = (d)*u_L3_1_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "L3",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "a",
+        "d"
+      ],
+      "id": "L3_2",
+      "kind": "curve",
+      "note": "generic cA7 chain",
+      "order": 8,
+      "repeat": 4,
+      "repeat_index": 2,
+      "stage": "old branch line chains",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(a)^2",
+          "cover_variable": "R = (a)^1*R_L3_2",
+          "pivot": "a",
+          "substitutions": [
+            "d = (a)*u_L3_2_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(d)^2",
+          "cover_variable": "R = (d)^1*R_L3_2",
+          "pivot": "d",
+          "substitutions": [
+            "a = (d)*u_L3_2_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "L3",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "a",
+        "d"
+      ],
+      "id": "L3_3",
+      "kind": "curve",
+      "note": "generic cA7 chain",
+      "order": 9,
+      "repeat": 4,
+      "repeat_index": 3,
+      "stage": "old branch line chains",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(a)^2",
+          "cover_variable": "R = (a)^1*R_L3_3",
+          "pivot": "a",
+          "substitutions": [
+            "d = (a)*u_L3_3_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(d)^2",
+          "cover_variable": "R = (d)^1*R_L3_3",
+          "pivot": "d",
+          "substitutions": [
+            "a = (d)*u_L3_3_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "L3",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "a",
+        "d"
+      ],
+      "id": "L3_4",
+      "kind": "curve",
+      "note": "generic cA7 chain",
+      "order": 10,
+      "repeat": 4,
+      "repeat_index": 4,
+      "stage": "old branch line chains",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(a)^2",
+          "cover_variable": "R = (a)^1*R_L3_4",
+          "pivot": "a",
+          "substitutions": [
+            "d = (a)*u_L3_4_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(d)^2",
+          "cover_variable": "R = (d)^1*R_L3_4",
+          "pivot": "d",
+          "substitutions": [
+            "a = (d)*u_L3_4_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "L4",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "b",
+        "c-d"
+      ],
+      "id": "L4_1",
+      "kind": "curve",
+      "note": "generic cA8 chain",
+      "order": 11,
+      "repeat": 4,
+      "repeat_index": 1,
+      "stage": "old branch line chains",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(b)^2",
+          "cover_variable": "R = (b)^1*R_L4_1",
+          "pivot": "b",
+          "substitutions": [
+            "c-d = (b)*u_L4_1_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(c-d)^2",
+          "cover_variable": "R = (c-d)^1*R_L4_1",
+          "pivot": "c-d",
+          "substitutions": [
+            "b = (c-d)*u_L4_1_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "L4",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "b",
+        "c-d"
+      ],
+      "id": "L4_2",
+      "kind": "curve",
+      "note": "generic cA8 chain",
+      "order": 12,
+      "repeat": 4,
+      "repeat_index": 2,
+      "stage": "old branch line chains",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(b)^2",
+          "cover_variable": "R = (b)^1*R_L4_2",
+          "pivot": "b",
+          "substitutions": [
+            "c-d = (b)*u_L4_2_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(c-d)^2",
+          "cover_variable": "R = (c-d)^1*R_L4_2",
+          "pivot": "c-d",
+          "substitutions": [
+            "b = (c-d)*u_L4_2_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "L4",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "b",
+        "c-d"
+      ],
+      "id": "L4_3",
+      "kind": "curve",
+      "note": "generic cA8 chain",
+      "order": 13,
+      "repeat": 4,
+      "repeat_index": 3,
+      "stage": "old branch line chains",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(b)^2",
+          "cover_variable": "R = (b)^1*R_L4_3",
+          "pivot": "b",
+          "substitutions": [
+            "c-d = (b)*u_L4_3_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(c-d)^2",
+          "cover_variable": "R = (c-d)^1*R_L4_3",
+          "pivot": "c-d",
+          "substitutions": [
+            "b = (c-d)*u_L4_3_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "L4",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "b",
+        "c-d"
+      ],
+      "id": "L4_4",
+      "kind": "curve",
+      "note": "generic cA8 chain",
+      "order": 14,
+      "repeat": 4,
+      "repeat_index": 4,
+      "stage": "old branch line chains",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(b)^2",
+          "cover_variable": "R = (b)^1*R_L4_4",
+          "pivot": "b",
+          "substitutions": [
+            "c-d = (b)*u_L4_4_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(c-d)^2",
+          "cover_variable": "R = (c-d)^1*R_L4_4",
+          "pivot": "c-d",
+          "substitutions": [
+            "b = (c-d)*u_L4_4_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "L5",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "a",
+        "c-d"
+      ],
+      "id": "L5",
+      "kind": "curve",
+      "note": "generic cA1 chain",
+      "order": 15,
+      "repeat": 1,
+      "repeat_index": 1,
+      "stage": "old branch line chains",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(a)^2",
+          "cover_variable": "R = (a)^1*R_L5",
+          "pivot": "a",
+          "substitutions": [
+            "c-d = (a)*u_L5_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(c-d)^2",
+          "cover_variable": "R = (c-d)^1*R_L5",
+          "pivot": "c-d",
+          "substitutions": [
+            "a = (c-d)*u_L5_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "L6",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "c",
+        "d"
+      ],
+      "id": "L6_1",
+      "kind": "curve",
+      "note": "generic cA7 chain",
+      "order": 16,
+      "repeat": 4,
+      "repeat_index": 1,
+      "stage": "old branch line chains",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(c)^2",
+          "cover_variable": "R = (c)^1*R_L6_1",
+          "pivot": "c",
+          "substitutions": [
+            "d = (c)*u_L6_1_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(d)^2",
+          "cover_variable": "R = (d)^1*R_L6_1",
+          "pivot": "d",
+          "substitutions": [
+            "c = (d)*u_L6_1_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "L6",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "c",
+        "d"
+      ],
+      "id": "L6_2",
+      "kind": "curve",
+      "note": "generic cA7 chain",
+      "order": 17,
+      "repeat": 4,
+      "repeat_index": 2,
+      "stage": "old branch line chains",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(c)^2",
+          "cover_variable": "R = (c)^1*R_L6_2",
+          "pivot": "c",
+          "substitutions": [
+            "d = (c)*u_L6_2_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(d)^2",
+          "cover_variable": "R = (d)^1*R_L6_2",
+          "pivot": "d",
+          "substitutions": [
+            "c = (d)*u_L6_2_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "L6",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "c",
+        "d"
+      ],
+      "id": "L6_3",
+      "kind": "curve",
+      "note": "generic cA7 chain",
+      "order": 18,
+      "repeat": 4,
+      "repeat_index": 3,
+      "stage": "old branch line chains",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(c)^2",
+          "cover_variable": "R = (c)^1*R_L6_3",
+          "pivot": "c",
+          "substitutions": [
+            "d = (c)*u_L6_3_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(d)^2",
+          "cover_variable": "R = (d)^1*R_L6_3",
+          "pivot": "d",
+          "substitutions": [
+            "c = (d)*u_L6_3_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "L6",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "c",
+        "d"
+      ],
+      "id": "L6_4",
+      "kind": "curve",
+      "note": "generic cA7 chain",
+      "order": 19,
+      "repeat": 4,
+      "repeat_index": 4,
+      "stage": "old branch line chains",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(c)^2",
+          "cover_variable": "R = (c)^1*R_L6_4",
+          "pivot": "c",
+          "substitutions": [
+            "d = (c)*u_L6_4_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(d)^2",
+          "cover_variable": "R = (d)^1*R_L6_4",
+          "pivot": "d",
+          "substitutions": [
+            "c = (d)*u_L6_4_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "L7",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "a-d",
+        "b+c-d"
+      ],
+      "id": "L7",
+      "kind": "curve",
+      "note": "generic cA1 chain",
+      "order": 20,
+      "repeat": 1,
+      "repeat_index": 1,
+      "stage": "old branch line chains",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(a-d)^2",
+          "cover_variable": "R = (a-d)^1*R_L7",
+          "pivot": "a-d",
+          "substitutions": [
+            "b+c-d = (a-d)*u_L7_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(b+c-d)^2",
+          "cover_variable": "R = (b+c-d)^1*R_L7",
+          "pivot": "b+c-d",
+          "substitutions": [
+            "a-d = (b+c-d)*u_L7_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "P13",
+      "branch_multiplicity": 4,
+      "codimension": 3,
+      "discrepancy_term": 0,
+      "equations": [
+        "a",
+        "b",
+        "d"
+      ],
+      "id": "P13",
+      "kind": "point",
+      "note": "[0:0:1:0]",
+      "order": 21,
+      "repeat": 1,
+      "repeat_index": 1,
+      "stage": "multiplicity-four points",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(a)^4",
+          "cover_variable": "R = (a)^2*R_P13",
+          "pivot": "a",
+          "substitutions": [
+            "b = (a)*u_P13_1",
+            "d = (a)*u_P13_2"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(b)^4",
+          "cover_variable": "R = (b)^2*R_P13",
+          "pivot": "b",
+          "substitutions": [
+            "a = (b)*u_P13_0",
+            "d = (b)*u_P13_2"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(d)^4",
+          "cover_variable": "R = (d)^2*R_P13",
+          "pivot": "d",
+          "substitutions": [
+            "a = (d)*u_P13_0",
+            "b = (d)*u_P13_1"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "P145",
+      "branch_multiplicity": 4,
+      "codimension": 3,
+      "discrepancy_term": 0,
+      "equations": [
+        "a",
+        "b",
+        "c-d"
+      ],
+      "id": "P145",
+      "kind": "point",
+      "note": "[0:0:1:1]",
+      "order": 22,
+      "repeat": 1,
+      "repeat_index": 1,
+      "stage": "multiplicity-four points",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(a)^4",
+          "cover_variable": "R = (a)^2*R_P145",
+          "pivot": "a",
+          "substitutions": [
+            "b = (a)*u_P145_1",
+            "c-d = (a)*u_P145_2"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(b)^4",
+          "cover_variable": "R = (b)^2*R_P145",
+          "pivot": "b",
+          "substitutions": [
+            "a = (b)*u_P145_0",
+            "c-d = (b)*u_P145_2"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(c-d)^4",
+          "cover_variable": "R = (c-d)^2*R_P145",
+          "pivot": "c-d",
+          "substitutions": [
+            "a = (c-d)*u_P145_0",
+            "b = (c-d)*u_P145_1"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "P27",
+      "branch_multiplicity": 4,
+      "codimension": 3,
+      "discrepancy_term": 0,
+      "equations": [
+        "a-d",
+        "b+c-d",
+        "c"
+      ],
+      "id": "P27",
+      "kind": "point",
+      "note": "[1:0:0:1] up to scale",
+      "order": 23,
+      "repeat": 1,
+      "repeat_index": 1,
+      "stage": "multiplicity-four points",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(a-d)^4",
+          "cover_variable": "R = (a-d)^2*R_P27",
+          "pivot": "a-d",
+          "substitutions": [
+            "b+c-d = (a-d)*u_P27_1",
+            "c = (a-d)*u_P27_2"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(b+c-d)^4",
+          "cover_variable": "R = (b+c-d)^2*R_P27",
+          "pivot": "b+c-d",
+          "substitutions": [
+            "a-d = (b+c-d)*u_P27_0",
+            "c = (b+c-d)*u_P27_2"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(c)^4",
+          "cover_variable": "R = (c)^2*R_P27",
+          "pivot": "c",
+          "substitutions": [
+            "a-d = (c)*u_P27_0",
+            "b+c-d = (c)*u_P27_1"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "P356",
+      "branch_multiplicity": 4,
+      "codimension": 3,
+      "discrepancy_term": 0,
+      "equations": [
+        "a",
+        "c",
+        "d"
+      ],
+      "id": "P356",
+      "kind": "point",
+      "note": "[0:1:0:0]",
+      "order": 24,
+      "repeat": 1,
+      "repeat_index": 1,
+      "stage": "multiplicity-four points",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(a)^4",
+          "cover_variable": "R = (a)^2*R_P356",
+          "pivot": "a",
+          "substitutions": [
+            "c = (a)*u_P356_1",
+            "d = (a)*u_P356_2"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(c)^4",
+          "cover_variable": "R = (c)^2*R_P356",
+          "pivot": "c",
+          "substitutions": [
+            "a = (c)*u_P356_0",
+            "d = (c)*u_P356_2"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(d)^4",
+          "cover_variable": "R = (d)^2*R_P356",
+          "pivot": "d",
+          "substitutions": [
+            "a = (d)*u_P356_0",
+            "c = (d)*u_P356_1"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "P46",
+      "branch_multiplicity": 4,
+      "codimension": 3,
+      "discrepancy_term": 0,
+      "equations": [
+        "b",
+        "c-d",
+        "c"
+      ],
+      "id": "P46",
+      "kind": "point",
+      "note": "[1:0:0:0] in local P46 chart",
+      "order": 25,
+      "repeat": 1,
+      "repeat_index": 1,
+      "stage": "multiplicity-four points",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(b)^4",
+          "cover_variable": "R = (b)^2*R_P46",
+          "pivot": "b",
+          "substitutions": [
+            "c-d = (b)*u_P46_1",
+            "c = (b)*u_P46_2"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(c-d)^4",
+          "cover_variable": "R = (c-d)^2*R_P46",
+          "pivot": "c-d",
+          "substitutions": [
+            "b = (c-d)*u_P46_0",
+            "c = (c-d)*u_P46_2"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(c)^4",
+          "cover_variable": "R = (c)^2*R_P46",
+          "pivot": "c",
+          "substitutions": [
+            "b = (c)*u_P46_0",
+            "c-d = (c)*u_P46_1"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "P47",
+      "branch_multiplicity": 4,
+      "codimension": 3,
+      "discrepancy_term": 0,
+      "equations": [
+        "b",
+        "c-d",
+        "a-d"
+      ],
+      "id": "P47",
+      "kind": "point",
+      "note": "[1:0:1:1]",
+      "order": 26,
+      "repeat": 1,
+      "repeat_index": 1,
+      "stage": "multiplicity-four points",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(b)^4",
+          "cover_variable": "R = (b)^2*R_P47",
+          "pivot": "b",
+          "substitutions": [
+            "c-d = (b)*u_P47_1",
+            "a-d = (b)*u_P47_2"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(c-d)^4",
+          "cover_variable": "R = (c-d)^2*R_P47",
+          "pivot": "c-d",
+          "substitutions": [
+            "b = (c-d)*u_P47_0",
+            "a-d = (c-d)*u_P47_2"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(a-d)^4",
+          "cover_variable": "R = (a-d)^2*R_P47",
+          "pivot": "a-d",
+          "substitutions": [
+            "b = (a-d)*u_P47_0",
+            "c-d = (a-d)*u_P47_1"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "E145_x",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "x",
+        "exceptional_145"
+      ],
+      "id": "E145_x",
+      "kind": "curve",
+      "note": "local chart center from Table 5",
+      "order": 27,
+      "repeat": 1,
+      "repeat_index": 1,
+      "stage": "exceptional curves after point blow-ups",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(x)^2",
+          "cover_variable": "R = (x)^1*R_E145_x",
+          "pivot": "x",
+          "substitutions": [
+            "exceptional_145 = (x)*u_E145_x_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(exceptional_145)^2",
+          "cover_variable": "R = (exceptional_145)^1*R_E145_x",
+          "pivot": "exceptional_145",
+          "substitutions": [
+            "x = (exceptional_145)*u_E145_x_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "E145_z",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "z",
+        "exceptional_145"
+      ],
+      "id": "E145_z",
+      "kind": "curve",
+      "note": "local chart center from Table 5",
+      "order": 28,
+      "repeat": 1,
+      "repeat_index": 1,
+      "stage": "exceptional curves after point blow-ups",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(z)^2",
+          "cover_variable": "R = (z)^1*R_E145_z",
+          "pivot": "z",
+          "substitutions": [
+            "exceptional_145 = (z)*u_E145_z_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(exceptional_145)^2",
+          "cover_variable": "R = (exceptional_145)^1*R_E145_z",
+          "pivot": "exceptional_145",
+          "substitutions": [
+            "z = (exceptional_145)*u_E145_z_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "E356_x",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "x",
+        "exceptional_356"
+      ],
+      "id": "E356_x",
+      "kind": "curve",
+      "note": "local chart center from Table 5",
+      "order": 29,
+      "repeat": 1,
+      "repeat_index": 1,
+      "stage": "exceptional curves after point blow-ups",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(x)^2",
+          "cover_variable": "R = (x)^1*R_E356_x",
+          "pivot": "x",
+          "substitutions": [
+            "exceptional_356 = (x)*u_E356_x_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(exceptional_356)^2",
+          "cover_variable": "R = (exceptional_356)^1*R_E356_x",
+          "pivot": "exceptional_356",
+          "substitutions": [
+            "x = (exceptional_356)*u_E356_x_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "E356_z",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "z",
+        "exceptional_356"
+      ],
+      "id": "E356_z",
+      "kind": "curve",
+      "note": "local chart center from Table 5",
+      "order": 30,
+      "repeat": 1,
+      "repeat_index": 1,
+      "stage": "exceptional curves after point blow-ups",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(z)^2",
+          "cover_variable": "R = (z)^1*R_E356_z",
+          "pivot": "z",
+          "substitutions": [
+            "exceptional_356 = (z)*u_E356_z_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(exceptional_356)^2",
+          "cover_variable": "R = (exceptional_356)^1*R_E356_z",
+          "pivot": "exceptional_356",
+          "substitutions": [
+            "z = (exceptional_356)*u_E356_z_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "E46_q",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "q",
+        "exceptional_46"
+      ],
+      "id": "E46_q",
+      "kind": "curve",
+      "note": "local chart center from Table 5",
+      "order": 31,
+      "repeat": 1,
+      "repeat_index": 1,
+      "stage": "exceptional curves after point blow-ups",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(q)^2",
+          "cover_variable": "R = (q)^1*R_E46_q",
+          "pivot": "q",
+          "substitutions": [
+            "exceptional_46 = (q)*u_E46_q_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(exceptional_46)^2",
+          "cover_variable": "R = (exceptional_46)^1*R_E46_q",
+          "pivot": "exceptional_46",
+          "substitutions": [
+            "q = (exceptional_46)*u_E46_q_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "Gamma_46",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "e",
+        "(T-1)*(r-e)+T"
+      ],
+      "id": "Gamma_46",
+      "kind": "curve",
+      "note": "main residual curve",
+      "order": 32,
+      "repeat": 1,
+      "repeat_index": 1,
+      "stage": "residual Gamma_46",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(e)^2",
+          "cover_variable": "R = (e)^1*R_Gamma_46",
+          "pivot": "e",
+          "substitutions": [
+            "(T-1)*(r-e)+T = (e)*u_Gamma_46_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/((T-1)*(r-e)+T)^2",
+          "cover_variable": "R = ((T-1)*(r-e)+T)^1*R_Gamma_46",
+          "pivot": "(T-1)*(r-e)+T",
+          "substitutions": [
+            "e = ((T-1)*(r-e)+T)*u_Gamma_46_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "Gamma_46_T1_a",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "n",
+        "tau"
+      ],
+      "id": "Gamma_46_T1_a",
+      "kind": "curve",
+      "note": "first finite endpoint blowup",
+      "order": 33,
+      "repeat": 1,
+      "repeat_index": 1,
+      "stage": "Gamma_46 endpoint T=1",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(n)^2",
+          "cover_variable": "R = (n)^1*R_Gamma_46_T1_a",
+          "pivot": "n",
+          "substitutions": [
+            "tau = (n)*u_Gamma_46_T1_a_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(tau)^2",
+          "cover_variable": "R = (tau)^1*R_Gamma_46_T1_a",
+          "pivot": "tau",
+          "substitutions": [
+            "n = (tau)*u_Gamma_46_T1_a_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "Gamma_46_T1_b",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "m",
+        "tau"
+      ],
+      "id": "Gamma_46_T1_b",
+      "kind": "curve",
+      "note": "second finite endpoint blowup",
+      "order": 34,
+      "repeat": 1,
+      "repeat_index": 1,
+      "stage": "Gamma_46 endpoint T=1",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(m)^2",
+          "cover_variable": "R = (m)^1*R_Gamma_46_T1_b",
+          "pivot": "m",
+          "substitutions": [
+            "tau = (m)*u_Gamma_46_T1_b_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(tau)^2",
+          "cover_variable": "R = (tau)^1*R_Gamma_46_T1_b",
+          "pivot": "tau",
+          "substitutions": [
+            "m = (tau)*u_Gamma_46_T1_b_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "Gamma_46_Tinf_a",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "e",
+        "K"
+      ],
+      "id": "Gamma_46_Tinf_a",
+      "kind": "curve",
+      "note": "first infinite endpoint blowup",
+      "order": 35,
+      "repeat": 1,
+      "repeat_index": 1,
+      "stage": "Gamma_46 endpoint T=infinity",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(e)^2",
+          "cover_variable": "R = (e)^1*R_Gamma_46_Tinf_a",
+          "pivot": "e",
+          "substitutions": [
+            "K = (e)*u_Gamma_46_Tinf_a_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(K)^2",
+          "cover_variable": "R = (K)^1*R_Gamma_46_Tinf_a",
+          "pivot": "K",
+          "substitutions": [
+            "e = (K)*u_Gamma_46_Tinf_a_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "base_center_id": "Gamma_46_Tinf_b",
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "m",
+        "U"
+      ],
+      "id": "Gamma_46_Tinf_b",
+      "kind": "curve",
+      "note": "second infinite endpoint blowup",
+      "order": 36,
+      "repeat": 1,
+      "repeat_index": 1,
+      "stage": "Gamma_46 endpoint T=infinity",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(m)^2",
+          "cover_variable": "R = (m)^1*R_Gamma_46_Tinf_b",
+          "pivot": "m",
+          "substitutions": [
+            "U = (m)*u_Gamma_46_Tinf_b_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(U)^2",
+          "cover_variable": "R = (U)^1*R_Gamma_46_Tinf_b",
+          "pivot": "U",
+          "substitutions": [
+            "m = (U)*u_Gamma_46_Tinf_b_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    }
+  ],
+  "atlas_note": "affine_chart_tree expands repeated line-chain blow-ups into individual ordered occurrences. Each occurrence lists every standard affine chart for that blow-up.",
+  "bad_primes": [
+    2,
+    3,
+    13
+  ],
+  "case": "Q1",
+  "centers": [
+    {
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "a",
+        "b"
+      ],
+      "id": "L1",
+      "kind": "curve",
+      "note": "generic cA8 chain",
+      "repeat": 4,
+      "stage": "old branch line chains",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(a)^2",
+          "cover_variable": "R = (a)^1*R_L1",
+          "pivot": "a",
+          "substitutions": [
+            "b = (a)*u_L1_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(b)^2",
+          "cover_variable": "R = (b)^1*R_L1",
+          "pivot": "b",
+          "substitutions": [
+            "a = (b)*u_L1_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "a-b",
+        "c"
+      ],
+      "id": "L2",
+      "kind": "curve",
+      "note": "generic cA4 chain",
+      "repeat": 2,
+      "stage": "old branch line chains",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(a-b)^2",
+          "cover_variable": "R = (a-b)^1*R_L2",
+          "pivot": "a-b",
+          "substitutions": [
+            "c = (a-b)*u_L2_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(c)^2",
+          "cover_variable": "R = (c)^1*R_L2",
+          "pivot": "c",
+          "substitutions": [
+            "a-b = (c)*u_L2_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "a",
+        "d"
+      ],
+      "id": "L3",
+      "kind": "curve",
+      "note": "generic cA7 chain",
+      "repeat": 4,
+      "stage": "old branch line chains",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(a)^2",
+          "cover_variable": "R = (a)^1*R_L3",
+          "pivot": "a",
+          "substitutions": [
+            "d = (a)*u_L3_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(d)^2",
+          "cover_variable": "R = (d)^1*R_L3",
+          "pivot": "d",
+          "substitutions": [
+            "a = (d)*u_L3_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "b",
+        "c-d"
+      ],
+      "id": "L4",
+      "kind": "curve",
+      "note": "generic cA8 chain",
+      "repeat": 4,
+      "stage": "old branch line chains",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(b)^2",
+          "cover_variable": "R = (b)^1*R_L4",
+          "pivot": "b",
+          "substitutions": [
+            "c-d = (b)*u_L4_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(c-d)^2",
+          "cover_variable": "R = (c-d)^1*R_L4",
+          "pivot": "c-d",
+          "substitutions": [
+            "b = (c-d)*u_L4_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "a",
+        "c-d"
+      ],
+      "id": "L5",
+      "kind": "curve",
+      "note": "generic cA1 chain",
+      "repeat": 1,
+      "stage": "old branch line chains",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(a)^2",
+          "cover_variable": "R = (a)^1*R_L5",
+          "pivot": "a",
+          "substitutions": [
+            "c-d = (a)*u_L5_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(c-d)^2",
+          "cover_variable": "R = (c-d)^1*R_L5",
+          "pivot": "c-d",
+          "substitutions": [
+            "a = (c-d)*u_L5_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "c",
+        "d"
+      ],
+      "id": "L6",
+      "kind": "curve",
+      "note": "generic cA7 chain",
+      "repeat": 4,
+      "stage": "old branch line chains",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(c)^2",
+          "cover_variable": "R = (c)^1*R_L6",
+          "pivot": "c",
+          "substitutions": [
+            "d = (c)*u_L6_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(d)^2",
+          "cover_variable": "R = (d)^1*R_L6",
+          "pivot": "d",
+          "substitutions": [
+            "c = (d)*u_L6_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "a-d",
+        "b+c-d"
+      ],
+      "id": "L7",
+      "kind": "curve",
+      "note": "generic cA1 chain",
+      "repeat": 1,
+      "stage": "old branch line chains",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(a-d)^2",
+          "cover_variable": "R = (a-d)^1*R_L7",
+          "pivot": "a-d",
+          "substitutions": [
+            "b+c-d = (a-d)*u_L7_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(b+c-d)^2",
+          "cover_variable": "R = (b+c-d)^1*R_L7",
+          "pivot": "b+c-d",
+          "substitutions": [
+            "a-d = (b+c-d)*u_L7_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "branch_multiplicity": 4,
+      "codimension": 3,
+      "discrepancy_term": 0,
+      "equations": [
+        "a",
+        "b",
+        "d"
+      ],
+      "id": "P13",
+      "kind": "point",
+      "note": "[0:0:1:0]",
+      "repeat": 1,
+      "stage": "multiplicity-four points",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(a)^4",
+          "cover_variable": "R = (a)^2*R_P13",
+          "pivot": "a",
+          "substitutions": [
+            "b = (a)*u_P13_1",
+            "d = (a)*u_P13_2"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(b)^4",
+          "cover_variable": "R = (b)^2*R_P13",
+          "pivot": "b",
+          "substitutions": [
+            "a = (b)*u_P13_0",
+            "d = (b)*u_P13_2"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(d)^4",
+          "cover_variable": "R = (d)^2*R_P13",
+          "pivot": "d",
+          "substitutions": [
+            "a = (d)*u_P13_0",
+            "b = (d)*u_P13_1"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "branch_multiplicity": 4,
+      "codimension": 3,
+      "discrepancy_term": 0,
+      "equations": [
+        "a",
+        "b",
+        "c-d"
+      ],
+      "id": "P145",
+      "kind": "point",
+      "note": "[0:0:1:1]",
+      "repeat": 1,
+      "stage": "multiplicity-four points",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(a)^4",
+          "cover_variable": "R = (a)^2*R_P145",
+          "pivot": "a",
+          "substitutions": [
+            "b = (a)*u_P145_1",
+            "c-d = (a)*u_P145_2"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(b)^4",
+          "cover_variable": "R = (b)^2*R_P145",
+          "pivot": "b",
+          "substitutions": [
+            "a = (b)*u_P145_0",
+            "c-d = (b)*u_P145_2"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(c-d)^4",
+          "cover_variable": "R = (c-d)^2*R_P145",
+          "pivot": "c-d",
+          "substitutions": [
+            "a = (c-d)*u_P145_0",
+            "b = (c-d)*u_P145_1"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "branch_multiplicity": 4,
+      "codimension": 3,
+      "discrepancy_term": 0,
+      "equations": [
+        "a-d",
+        "b+c-d",
+        "c"
+      ],
+      "id": "P27",
+      "kind": "point",
+      "note": "[1:0:0:1] up to scale",
+      "repeat": 1,
+      "stage": "multiplicity-four points",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(a-d)^4",
+          "cover_variable": "R = (a-d)^2*R_P27",
+          "pivot": "a-d",
+          "substitutions": [
+            "b+c-d = (a-d)*u_P27_1",
+            "c = (a-d)*u_P27_2"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(b+c-d)^4",
+          "cover_variable": "R = (b+c-d)^2*R_P27",
+          "pivot": "b+c-d",
+          "substitutions": [
+            "a-d = (b+c-d)*u_P27_0",
+            "c = (b+c-d)*u_P27_2"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(c)^4",
+          "cover_variable": "R = (c)^2*R_P27",
+          "pivot": "c",
+          "substitutions": [
+            "a-d = (c)*u_P27_0",
+            "b+c-d = (c)*u_P27_1"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "branch_multiplicity": 4,
+      "codimension": 3,
+      "discrepancy_term": 0,
+      "equations": [
+        "a",
+        "c",
+        "d"
+      ],
+      "id": "P356",
+      "kind": "point",
+      "note": "[0:1:0:0]",
+      "repeat": 1,
+      "stage": "multiplicity-four points",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(a)^4",
+          "cover_variable": "R = (a)^2*R_P356",
+          "pivot": "a",
+          "substitutions": [
+            "c = (a)*u_P356_1",
+            "d = (a)*u_P356_2"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(c)^4",
+          "cover_variable": "R = (c)^2*R_P356",
+          "pivot": "c",
+          "substitutions": [
+            "a = (c)*u_P356_0",
+            "d = (c)*u_P356_2"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(d)^4",
+          "cover_variable": "R = (d)^2*R_P356",
+          "pivot": "d",
+          "substitutions": [
+            "a = (d)*u_P356_0",
+            "c = (d)*u_P356_1"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "branch_multiplicity": 4,
+      "codimension": 3,
+      "discrepancy_term": 0,
+      "equations": [
+        "b",
+        "c-d",
+        "c"
+      ],
+      "id": "P46",
+      "kind": "point",
+      "note": "[1:0:0:0] in local P46 chart",
+      "repeat": 1,
+      "stage": "multiplicity-four points",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(b)^4",
+          "cover_variable": "R = (b)^2*R_P46",
+          "pivot": "b",
+          "substitutions": [
+            "c-d = (b)*u_P46_1",
+            "c = (b)*u_P46_2"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(c-d)^4",
+          "cover_variable": "R = (c-d)^2*R_P46",
+          "pivot": "c-d",
+          "substitutions": [
+            "b = (c-d)*u_P46_0",
+            "c = (c-d)*u_P46_2"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(c)^4",
+          "cover_variable": "R = (c)^2*R_P46",
+          "pivot": "c",
+          "substitutions": [
+            "b = (c)*u_P46_0",
+            "c-d = (c)*u_P46_1"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "branch_multiplicity": 4,
+      "codimension": 3,
+      "discrepancy_term": 0,
+      "equations": [
+        "b",
+        "c-d",
+        "a-d"
+      ],
+      "id": "P47",
+      "kind": "point",
+      "note": "[1:0:1:1]",
+      "repeat": 1,
+      "stage": "multiplicity-four points",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(b)^4",
+          "cover_variable": "R = (b)^2*R_P47",
+          "pivot": "b",
+          "substitutions": [
+            "c-d = (b)*u_P47_1",
+            "a-d = (b)*u_P47_2"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(c-d)^4",
+          "cover_variable": "R = (c-d)^2*R_P47",
+          "pivot": "c-d",
+          "substitutions": [
+            "b = (c-d)*u_P47_0",
+            "a-d = (c-d)*u_P47_2"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(a-d)^4",
+          "cover_variable": "R = (a-d)^2*R_P47",
+          "pivot": "a-d",
+          "substitutions": [
+            "b = (a-d)*u_P47_0",
+            "c-d = (a-d)*u_P47_1"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "x",
+        "exceptional_145"
+      ],
+      "id": "E145_x",
+      "kind": "curve",
+      "note": "local chart center from Table 5",
+      "repeat": 1,
+      "stage": "exceptional curves after point blow-ups",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(x)^2",
+          "cover_variable": "R = (x)^1*R_E145_x",
+          "pivot": "x",
+          "substitutions": [
+            "exceptional_145 = (x)*u_E145_x_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(exceptional_145)^2",
+          "cover_variable": "R = (exceptional_145)^1*R_E145_x",
+          "pivot": "exceptional_145",
+          "substitutions": [
+            "x = (exceptional_145)*u_E145_x_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "z",
+        "exceptional_145"
+      ],
+      "id": "E145_z",
+      "kind": "curve",
+      "note": "local chart center from Table 5",
+      "repeat": 1,
+      "stage": "exceptional curves after point blow-ups",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(z)^2",
+          "cover_variable": "R = (z)^1*R_E145_z",
+          "pivot": "z",
+          "substitutions": [
+            "exceptional_145 = (z)*u_E145_z_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(exceptional_145)^2",
+          "cover_variable": "R = (exceptional_145)^1*R_E145_z",
+          "pivot": "exceptional_145",
+          "substitutions": [
+            "z = (exceptional_145)*u_E145_z_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "x",
+        "exceptional_356"
+      ],
+      "id": "E356_x",
+      "kind": "curve",
+      "note": "local chart center from Table 5",
+      "repeat": 1,
+      "stage": "exceptional curves after point blow-ups",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(x)^2",
+          "cover_variable": "R = (x)^1*R_E356_x",
+          "pivot": "x",
+          "substitutions": [
+            "exceptional_356 = (x)*u_E356_x_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(exceptional_356)^2",
+          "cover_variable": "R = (exceptional_356)^1*R_E356_x",
+          "pivot": "exceptional_356",
+          "substitutions": [
+            "x = (exceptional_356)*u_E356_x_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "z",
+        "exceptional_356"
+      ],
+      "id": "E356_z",
+      "kind": "curve",
+      "note": "local chart center from Table 5",
+      "repeat": 1,
+      "stage": "exceptional curves after point blow-ups",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(z)^2",
+          "cover_variable": "R = (z)^1*R_E356_z",
+          "pivot": "z",
+          "substitutions": [
+            "exceptional_356 = (z)*u_E356_z_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(exceptional_356)^2",
+          "cover_variable": "R = (exceptional_356)^1*R_E356_z",
+          "pivot": "exceptional_356",
+          "substitutions": [
+            "z = (exceptional_356)*u_E356_z_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "q",
+        "exceptional_46"
+      ],
+      "id": "E46_q",
+      "kind": "curve",
+      "note": "local chart center from Table 5",
+      "repeat": 1,
+      "stage": "exceptional curves after point blow-ups",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(q)^2",
+          "cover_variable": "R = (q)^1*R_E46_q",
+          "pivot": "q",
+          "substitutions": [
+            "exceptional_46 = (q)*u_E46_q_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(exceptional_46)^2",
+          "cover_variable": "R = (exceptional_46)^1*R_E46_q",
+          "pivot": "exceptional_46",
+          "substitutions": [
+            "q = (exceptional_46)*u_E46_q_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "e",
+        "(T-1)*(r-e)+T"
+      ],
+      "id": "Gamma_46",
+      "kind": "curve",
+      "note": "main residual curve",
+      "repeat": 1,
+      "stage": "residual Gamma_46",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(e)^2",
+          "cover_variable": "R = (e)^1*R_Gamma_46",
+          "pivot": "e",
+          "substitutions": [
+            "(T-1)*(r-e)+T = (e)*u_Gamma_46_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/((T-1)*(r-e)+T)^2",
+          "cover_variable": "R = ((T-1)*(r-e)+T)^1*R_Gamma_46",
+          "pivot": "(T-1)*(r-e)+T",
+          "substitutions": [
+            "e = ((T-1)*(r-e)+T)*u_Gamma_46_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "n",
+        "tau"
+      ],
+      "id": "Gamma_46_T1_a",
+      "kind": "curve",
+      "note": "first finite endpoint blowup",
+      "repeat": 1,
+      "stage": "Gamma_46 endpoint T=1",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(n)^2",
+          "cover_variable": "R = (n)^1*R_Gamma_46_T1_a",
+          "pivot": "n",
+          "substitutions": [
+            "tau = (n)*u_Gamma_46_T1_a_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(tau)^2",
+          "cover_variable": "R = (tau)^1*R_Gamma_46_T1_a",
+          "pivot": "tau",
+          "substitutions": [
+            "n = (tau)*u_Gamma_46_T1_a_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "m",
+        "tau"
+      ],
+      "id": "Gamma_46_T1_b",
+      "kind": "curve",
+      "note": "second finite endpoint blowup",
+      "repeat": 1,
+      "stage": "Gamma_46 endpoint T=1",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(m)^2",
+          "cover_variable": "R = (m)^1*R_Gamma_46_T1_b",
+          "pivot": "m",
+          "substitutions": [
+            "tau = (m)*u_Gamma_46_T1_b_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(tau)^2",
+          "cover_variable": "R = (tau)^1*R_Gamma_46_T1_b",
+          "pivot": "tau",
+          "substitutions": [
+            "m = (tau)*u_Gamma_46_T1_b_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "e",
+        "K"
+      ],
+      "id": "Gamma_46_Tinf_a",
+      "kind": "curve",
+      "note": "first infinite endpoint blowup",
+      "repeat": 1,
+      "stage": "Gamma_46 endpoint T=infinity",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(e)^2",
+          "cover_variable": "R = (e)^1*R_Gamma_46_Tinf_a",
+          "pivot": "e",
+          "substitutions": [
+            "K = (e)*u_Gamma_46_Tinf_a_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(K)^2",
+          "cover_variable": "R = (K)^1*R_Gamma_46_Tinf_a",
+          "pivot": "K",
+          "substitutions": [
+            "e = (K)*u_Gamma_46_Tinf_a_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    },
+    {
+      "branch_multiplicity": 2,
+      "codimension": 2,
+      "discrepancy_term": 0,
+      "equations": [
+        "m",
+        "U"
+      ],
+      "id": "Gamma_46_Tinf_b",
+      "kind": "curve",
+      "note": "second infinite endpoint blowup",
+      "repeat": 1,
+      "stage": "Gamma_46 endpoint T=infinity",
+      "standard_affine_charts": [
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(m)^2",
+          "cover_variable": "R = (m)^1*R_Gamma_46_Tinf_b",
+          "pivot": "m",
+          "substitutions": [
+            "U = (m)*u_Gamma_46_Tinf_b_1"
+          ]
+        },
+        {
+          "branch_transform": "D_chart = substitute(D, chart_map)/(U)^2",
+          "cover_variable": "R = (U)^1*R_Gamma_46_Tinf_b",
+          "pivot": "U",
+          "substitutions": [
+            "m = (U)*u_Gamma_46_Tinf_b_0"
+          ]
+        }
+      ],
+      "status": "crepant"
+    }
+  ],
+  "divisorial_blowup_count": 36,
+  "euler_characteristic": 132,
+  "explicit_affine_chart_count": 78,
+  "finite_field_count_formula": "#X1(F_p) = 1 + p^3 + 66*(p^2+p) - a_p(13.4.a.a), for p not in {2,3,13}",
+  "hodge_numbers": {
+    "h11": 66,
+    "h21": 0
+  },
+  "isomorphism_with_repository_q1_octic": {
+    "certificate_script": "codexCrepeantResolutions/q1_compare_models.m2",
+    "reason": "Macaulay2 singular-locus signatures differ: paper model has seven singular lines plus one point; repository K3_Fibration octic has eight singular lines plus one point.",
+    "status": "not_projectively_isomorphic"
+  },
+  "model": {
+    "Delta": "(a^2*b*c+a^2*b*d+a^2*c^2-a^2*c*d+a*b^2*d-a*b*c^2+a*b*c*d-2*a*b*d^2-2*a*c^2*d+3*a*c*d^2-a*d^3+b*c^2*d-2*b*c*d^2+b*d^3)^2-4*(a*d*(b+c-d))*(a^3*b*c+a^2*b^2*d-a^2*b*c^2-a^2*b*c*d-a*b^2*d^2+2*a*b*c*d^2-a*b*d^3-b^2*c*d^2+b^2*d^3)",
+    "ambient": "P^3_{a,b,c,d}",
+    "double_cover": "R^2 = Delta",
+    "projected_quadratic": "u^2*q3 + u*q4 + q5",
+    "projection_center": "[1:1:0:1:0]",
+    "projection_substitution": {
+      "X0": "u+a",
+      "X1": "u+b",
+      "X2": "c",
+      "X3": "u",
+      "X4": "d"
+    },
+    "q3": "a*d*(b+c-d)",
+    "q4": "a^2*b*c+a^2*b*d+a^2*c^2-a^2*c*d+a*b^2*d-a*b*c^2+a*b*c*d-2*a*b*d^2-2*a*c^2*d+3*a*c*d^2-a*d^3+b*c^2*d-2*b*c*d^2+b*d^3",
+    "q5": "a^3*b*c+a^2*b^2*d-a^2*b*c^2-a^2*b*c*d-a*b^2*d^2+2*a*b*c*d^2-a*b*d^3-b^2*c*d^2+b^2*d^3"
+  },
+  "model_search": {
+    "candidate_count": "not from chart search",
+    "chart": "projection from [1:1:0:1:0]",
+    "p3_variables_from_projective_coordinates": "a,b,c,d",
+    "quadratic_variable": "u",
+    "selected_candidate_index": "project-report projection",
+    "u_power_removed_from_discriminant": 0
+  },
+  "ordinary_double_points": [
+    "N13_0",
+    "N13_half",
+    "N46_0",
+    "N46_qt"
+  ],
+  "path": "q1_final_q5style_report.pdf",
+  "picard_rank": 66,
+  "point_count_correction": {
+    "bad_primes": [
+      2,
+      3,
+      13
+    ],
+    "formula": "#X1(F_p) = #Y0(F_p) + 58*p^2 + 82*p",
+    "rows": [
+      {
+        "crepant_correction": 768,
+        "good_prime": false,
+        "p": 3,
+        "resolved_count": 830,
+        "singular_model_count": 62,
+        "trace_a_p": -10
+      },
+      {
+        "crepant_correction": 1860,
+        "good_prime": true,
+        "p": 5,
+        "resolved_count": 2113,
+        "singular_model_count": 253,
+        "trace_a_p": -7
+      },
+      {
+        "crepant_correction": 3416,
+        "good_prime": true,
+        "p": 7,
+        "resolved_count": 4053,
+        "singular_model_count": 637,
+        "trace_a_p": -13
+      },
+      {
+        "crepant_correction": 7920,
+        "good_prime": true,
+        "p": 11,
+        "resolved_count": 10070,
+        "singular_model_count": 2150,
+        "trace_a_p": -26
+      },
+      {
+        "crepant_correction": 672816,
+        "good_prime": true,
+        "p": 107,
+        "resolved_count": 1988424,
+        "singular_model_count": 1315608,
+        "trace_a_p": -684
+      }
+    ],
+    "symbolic_decomposition": {
+      "Gamma_46_main": "p^2 + 4*p",
+      "report_components": [
+        "old branch-line chains",
+        "six multiplicity-four point blow-ups",
+        "five exceptional curve blow-ups",
+        "Gamma_46 main curve and endpoint chains",
+        "four projective small resolutions"
+      ],
+      "total": "58*p^2 + 82*p"
+    },
+    "trace_formula": "a_p = 1 + p^3 + 66*(p^2+p) - #X1(F_p)"
+  },
+  "singular_kulikov_fibers": {
+    "-1": "II",
+    "0": "III",
+    "2": "I",
+    "infinity": "III"
+  },
+  "small_resolution_divisors": [
+    {
+      "equations": [
+        "b-a",
+        "R-a*c*(a^2+c*d-d^2)"
+      ],
+      "id": "Dab_plus",
+      "nodes_resolved": [
+        "N13_0"
+      ],
+      "order": 1
+    },
+    {
+      "equations": [
+        "b",
+        "R+a*(c-d)*(a*c-2*c*d+d^2)"
+      ],
+      "id": "Db_minus",
+      "nodes_resolved": [
+        "N13_half",
+        "N46_0"
+      ],
+      "order": 2
+    },
+    {
+      "equations": [
+        "d",
+        "R+a*c*(a*b+a*c-b*c)"
+      ],
+      "id": "Dd_minus",
+      "nodes_resolved": [
+        "N46_qt"
+      ],
+      "order": 3
+    }
+  ],
+  "status": "crepant_resolution"
+}

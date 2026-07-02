@@ -1,0 +1,188 @@
+[
+  {
+    "case": "F1",
+    "path": "../data/11_3.m2",
+    "report": "11_3/F1/F1.md",
+    "status": "error"
+  },
+  {
+    "case": "F2",
+    "path": "../data/11_3.m2",
+    "report": "11_3/F2/F2.md",
+    "status": "error"
+  },
+  {
+    "case": "H1",
+    "path": "../data/11_3.m2",
+    "report": "11_3/H1/H1.md",
+    "status": "error"
+  },
+  {
+    "case": "H2",
+    "path": "../data/11_3.m2",
+    "report": "11_3/H2/H2.md",
+    "status": "error"
+  },
+  {
+    "case": "H3",
+    "path": "../data/11_3.m2",
+    "report": "11_3/H3/H3.md",
+    "status": "error"
+  },
+  {
+    "case": "H4",
+    "path": "../data/11_3.m2",
+    "report": "11_3/H4/H4.md",
+    "status": "error"
+  },
+  {
+    "case": "Q1",
+    "path": "q1_final_q5style_report.pdf",
+    "report": "11_3/Q1/Q1.md",
+    "status": "crepant_resolution"
+  },
+  {
+    "case": "Q2",
+    "path": "../data/11_3.m2",
+    "report": "11_3/Q2/Q2.md",
+    "status": "candidate"
+  },
+  {
+    "case": "Q3",
+    "path": "../data/11_3.m2",
+    "report": "11_3/Q3/Q3.md",
+    "status": "candidate"
+  },
+  {
+    "case": "Q4",
+    "path": "../data/11_3.m2",
+    "report": "11_3/Q4/Q4.md",
+    "status": "candidate"
+  },
+  {
+    "case": "Q5",
+    "path": "../data/11_3.m2",
+    "report": "11_3/Q5/Q5.md",
+    "status": "candidate"
+  },
+  {
+    "case": "Q6",
+    "path": "../data/11_3.m2",
+    "report": "11_3/Q6/Q6.md",
+    "status": "candidate"
+  },
+  {
+    "case": "Q7",
+    "path": "../data/11_3.m2",
+    "report": "11_3/Q7/Q7.md",
+    "status": "error"
+  },
+  {
+    "case": "Q8",
+    "path": "../data/11_3.m2",
+    "report": "11_3/Q8/Q8.md",
+    "status": "error"
+  },
+  {
+    "case": "Q9",
+    "path": "../data/11_3.m2",
+    "report": "11_3/Q9/Q9.md",
+    "status": "error"
+  },
+  {
+    "case": "Q10",
+    "path": "../data/11_3.m2",
+    "report": "11_3/Q10/Q10.md",
+    "status": "candidate"
+  },
+  {
+    "case": "Q11",
+    "path": "../data/11_3.m2",
+    "report": "11_3/Q11/Q11.md",
+    "status": "error"
+  },
+  {
+    "case": "Q12",
+    "path": "../data/11_3.m2",
+    "report": "11_3/Q12/Q12.md",
+    "status": "error"
+  },
+  {
+    "case": "Q13",
+    "path": "../data/11_3.m2",
+    "report": "11_3/Q13/Q13.md",
+    "status": "error"
+  },
+  {
+    "case": "Q14",
+    "path": "../data/11_3.m2",
+    "report": "11_3/Q14/Q14.md",
+    "status": "error"
+  },
+  {
+    "case": "Q15",
+    "path": "../data/11_3.m2",
+    "report": "11_3/Q15/Q15.md",
+    "status": "error"
+  },
+  {
+    "case": "Q16",
+    "path": "../data/11_3.m2",
+    "report": "11_3/Q16/Q16.md",
+    "status": "error"
+  },
+  {
+    "case": "Q17",
+    "path": "../data/11_3.m2",
+    "report": "11_3/Q17/Q17.md",
+    "status": "error"
+  },
+  {
+    "case": "S1",
+    "path": "../data/11_3.m2",
+    "report": "11_3/S1/S1.md",
+    "status": "candidate"
+  },
+  {
+    "case": "S2",
+    "path": "../data/11_3.m2",
+    "report": "11_3/S2/S2.md",
+    "status": "error"
+  },
+  {
+    "case": "S3",
+    "path": "../data/11_3.m2",
+    "report": "11_3/S3/S3.md",
+    "status": "candidate"
+  },
+  {
+    "case": "S4",
+    "path": "../data/11_3.m2",
+    "report": "11_3/S4/S4.md",
+    "status": "error"
+  },
+  {
+    "case": "S5",
+    "path": "../data/11_3.m2",
+    "report": "11_3/S5/S5.md",
+    "status": "error"
+  },
+  {
+    "case": "V1",
+    "path": "../data/11_3.m2",
+    "report": "11_3/V1/V1.md",
+    "status": "error"
+  },
+  {
+    "case": "V2",
+    "path": "../data/11_3.m2",
+    "report": "11_3/V2/V2.md",
+    "status": "error"
+  },
+  {
+    "case": "V3",
+    "path": "../data/11_3.m2",
+    "report": "11_3/V3/V3.md",
+    "status": "error"
+  }
+]

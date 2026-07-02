@@ -1,0 +1,7 @@
+{
+  "case": "F1",
+  "error": "/home/linuxbrew/.linuxbrew/Cellar/macaulay2/1.25.11_3/share/Macaulay2/Core/methods.m2:170:23:(1):[6]: error: no method found for applying homogenize to:\n     argument 1 :  0 (of class ZZ)\n     argument 2 :  x0 (of class R)\n/tmp/tmpmbgy1kiz.m2:3:14:(3):[5]: --back trace--\n/var/tmp/macaulay2-20260202-47994-46iycv/M2-release-1.25.11/M2/Macaulay2/m2/startup.m2.in:65:23:(0):[5]: --back trace--\n/home/linuxbrew/.linuxbrew/Cellar/macaulay2/1.25.11_3/share/Macaulay2/Core/Core.m2:126:61:(1):[4]: --back trace--\n/home/linuxbrew/.linuxbrew/Cellar/macaulay2/1.25.11_3/share/Macaulay2/Core/Core.m2:138:29:(1):[2]: --back trace--\n/var/tmp/macaulay2-20260202-47994-46iycv/M2-release-1.25.11/M2/Macaulay2/m2/startup.m2.in:533:66:(0):[1]: --back trace--\n/var/tmp/macaulay2-20260202-47994-46iycv/M2-release-1.25.11/M2/Macaulay2/m2/startup.m2.in:623:30:(0): --back trace--",
+  "has_octic": false,
+  "path": "../data/11_3.m2",
+  "status": "error"
+}
