@@ -7,18 +7,26 @@ const STATUS_TEXT = {
 };
 
 function renderMath(tex) {
+    if (typeof katex === 'undefined' || typeof katex.renderToString !== 'function') {
+        return escapeHtml(tex);
+    }
+
     try {
         return katex.renderToString(tex, { throwOnError: false, displayMode: false });
     } catch (e) {
-        return `<span style="color:red;">${tex}</span>`;
+        return `<span style="color:red;">${escapeHtml(tex)}</span>`;
     }
+}
+
+function escapeHtml(value) {
+    const el = document.createElement('span');
+    el.textContent = String(value);
+    return el.innerHTML;
 }
 
 function renderText(str) {
     if (!str) return '';
-    return str.replace(/\$([^$]+)\$/g, (_, tex) =>
-        katex.renderToString(tex, { throwOnError: false, displayMode: false })
-    );
+    return str.replace(/\$([^$]+)\$/g, (_, tex) => renderMath(tex));
 }
 
 // Render a small metadata pill: label + value
