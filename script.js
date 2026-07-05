@@ -1,6 +1,7 @@
 const STATUS_TEXT = {
     confirmed: 'Confirmed CY Match',
     confirmed_star: 'Likely CY Match',
+    unknown: 'Unknown Type',
     unconfirmed: 'Unknown Type',
     unconfirmed_star: 'Rational',
     new: 'New CY',
@@ -41,16 +42,18 @@ function metaItem(label, value) {
       </div>`;
 }
 
-const titleEl = document.getElementById('site-title');
-titleEl.innerHTML = renderText(titleEl.textContent);
+document.querySelectorAll('[data-render-math]').forEach(el => {
+    el.innerHTML = renderText(el.innerHTML);
+});
 
 function buildCard(variety) {
     const card = document.createElement('div');
+    const status = variety.status ?? 'unknown';
     card.className = 'variety-card';
     card.dataset.id = variety.id;
-    card.dataset.status = variety.status ?? 'unknown';
+    card.dataset.status = status;
 
-    const statusLabel = STATUS_TEXT[variety.status] ?? '—';
+    const statusLabel = STATUS_TEXT[status] ?? 'Unknown Type';
     const hasNotes = variety.notes && variety.notes.trim() !== '';
     const hasHomogenizations = variety.homogenizations &&
         variety.homogenizations.trim() !== '' &&
@@ -116,7 +119,7 @@ function buildCard(variety) {
     return card;
 }
 
-fetch('data.json')
+fetch('data.json?v=20260705')
     .then(res => res.json())
     .then(varieties => {
         const list = document.querySelector('.variety-list');
