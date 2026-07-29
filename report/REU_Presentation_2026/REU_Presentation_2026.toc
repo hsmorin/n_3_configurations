@@ -1,0 +1,2 @@
+\beamer@sectionintoc {1}{Calabi-Yau Manifolds}{2}{0}{1}
+\beamer@sectionintoc {2}{$n_3$ Configurations}{10}{0}{2}

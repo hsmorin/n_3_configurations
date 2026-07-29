@@ -90,7 +90,7 @@ for matroid in matroid_list
 end
 
 
-n_3 = open("./data/$(n)_3_test.m2", "w")
+n_3 = open("./data/$(n)_3_makingSureIAmNotGoingInsane.m2", "w")
 #n_3_L = open("./data/$(n)_3_avoids.m2", "w")
 
 #Writes data to a file
@@ -116,13 +116,13 @@ for (i, (matroid, tag)) in enumerate(lst)
         end
         I_str *= "-- revlex_basis_encoding: " * tag
         I_str *= "\n\n"
-        L_str = chop(L_str, tail=2)
-        L_str *= "}\n\n"
+        #L_str = chop(L_str, tail=2)
+        #L_str *= "}\n\n"
         write(n_3, I_str)
         #write(n_3_L, L_str)
         print("\n")
 end
 
 close(n_3)
-close(n_3_L)
+#close(n_3_L)
 

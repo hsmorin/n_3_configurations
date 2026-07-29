@@ -1,0 +1,94 @@
+\documentclass{article}
+\usepackage{graphicx} 
+\usepackage{upgreek}
+\usepackage{pdfpages}
+\usepackage{bbm}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[export]{adjustbox}
+\usepackage[shortlabels]{enumitem}
+\usepackage{mathtools}
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\vspan}{span}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\Syl}{\textit{Syl}}
+\DeclareMathOperator{\im}{im} 
+\DeclareMathOperator{\id}{id} 
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\norm}{\trianglelefteq}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\A}{\mathbb{A}}
+\DeclareMathOperator{\ZZ}{\mathbb{Z}}
+\DeclareMathOperator{\QQ}{\mathbb{Q}}
+\DeclareMathOperator{\RR}{\mathbb{R}}
+\DeclareMathOperator{\CC}{\mathbb{C}}
+\DeclareMathOperator{\PP}{\mathbb{P}}
+\DeclareMathOperator{\Sing}{\text{Sing}}
+\DeclareMathOperator{\RP}{\mathbb{RP}}
+\DeclareMathOperator{\CP}{\mathbb{CP}}
+\usepackage{amssymb}% Required for inserting images
+\usepackage{mathrsfs}
+\usepackage{tikz-cd}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{centernot}
+\usepackage{framed}
+%\usepackage{parskip}
+%\setlength{\parindent}{0cm}
+\title{End of July Progress Report}
+\author{Henry Morin}
+\date{July 29, 2026}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{\S 1. Introduction and General Goals}
+
+This document serves to recap what progress has been made on the classification of the moduli spaces of $11_3$ configurations, and to outline future directions of work in service of constructing crepant resolutions. As such it will be helpful to spend some time now discussing the general goals of the project. The game is to take some variety $X \subset \PP^4$ defined by an equation over $\QQ$, and resolve its singular locus $\Sing X$ by a sequence of blowups. Of special interest is when $X$ is defined by a quintic. In this case the adjunction formula would suggest that the canonical class $\omega_X = 0$, that is a smooth resolution of $X$ should be Calabi-Yau. Unfortunately not just any smooth resolution respects the canonical class. In particular, if $\sigma : \widetilde{X} \to X$ is a resolution of singularities (that is a birational map), we require that $\sigma^*(\omega_X) = \omega_{\widetilde{X}}$. If this is the case we say that $\sigma$ is a crepant resolution and $\widetilde{X}$ is a Calabi-Yau manifold.
+
+However, finding a crepant resolution is no easy task. It is unreasonable to perform the computations by hand (that is just in Macaulay2), and in general there is no good algorithm to compute blowups (the main tool used in desingularization). Our solution thus far has been to follow the following three step process.
+\begin{enumerate}
+\item Find a convenient birational model of $X$
+\item Ask gpt 5.6 to find a sequence of blowups
+\item Construct this sequence of blowups using python, Macaulay2, and other software
+\end{enumerate}
+Currently steps $1$ and $2$ have been completed on some examples. The complication comes with step $3$, as computing blowups is computationally expensive and difficult to perform in general. 
+
+The remainder of this report is devoted to summarizing some successes with steps $1$ and $2$, what has been tried in step $3$, and what future directions remain to solve the problem of constructing crepant resolutions. In $\S 2$ we summarize what is currently known about birational models, in $\S 3$ we discuss complications which have arrised in step $3$, and in $\S 4$ we give some possibilities for how to proceed.
+
+\subsection*{\S 2. Scattered Results}
+
+There are $31$ line configurations each yielding a smooth $3$-dimensional quasi-projective variety. Taking the Zariski closure gives $31$ varieties, most of which being somewhat singular. In particular, we have $17$ given by quintic equations, $5$ sextic equations, $3$ septic equations, $4$ octic equations, and two given by $F = 0$ in $\PP^3$. For the remainder of this report, we will be interested in the quintic case, and specifically the normal quintic case. This is because non normal varieties do not admit crepant resolutions, thus the corresponding smooth manifold will not be Calabi-Yau. These have been numbered $Q1$ through $Q17$, but only $Q1$ through $Q11$ are normal. In particular, we also have that $Q9$ is rational, since $[1 : 0 : 0 : 0 : 0]$ has multiplicity $4$. Rational examples cannot yield Calabi-Yau resolutions so they will excluded from the rest of this report.
+
+In general, there are two birational models which are of interest in the classification problem. The first, which is possible for all examples, is a double cover of $\PP^3$ which is branched along an octic surface $D$. That is a map $\pi : \PP^4 \to \PP^3$ which is generically $2 : 1$ except along some locus given by $D$. This map, in all cases, can be obtained by projection away from a multiplicity $3$, that is if we take $P = [1 : 0 : \cdots : 0]$, then $\pi([x_0 : \cdots : x_4]) = [x_1 : \cdots : x_4] \in \PP^3$. Obtaining a crepant resolution to $X$ is then equivalent to finding a crepant resolution of $D \subset \PP^3$. The upside to this approach is that the theory of surface singularities is well understood and one can obtain many different non isomorphic surfaces $D$.
+
+In all current examples we see that $D$ is either a irreducible octic, or $D = LF$ where $L$ is a linear term and $F$ is a degree $7$ term. This is with the notable exception of $Q7$ which has both a model as a irreducible octic, and as a highly reducible octic in the form $L_1^2L_2^2L_3^2F$ for some quadratic $F$.
+
+The second model is give as compactification in $\PP^3 \times \PP^1$. In particular, this gives a $K3$-fibration structure on $X$ which is highly profitable in the study of resolutions. Although this model does not exist for all examples, it can potentially simplify computations extensively as discussed in $\S 4$. For the remainder of this report, we will use $Q1$ as a case study, but all other quintics can be treated similarly.
+
+\subsection*{\S 3. Complications}
+
+After obtaining the irreducible octic surface $D_1$ corresponding to $Q1$ we asked gpt 5.6 to give a crepant resolution. It found the following sequence of blowups listed in \textit{Q1\_Initial\_Report.pdf}. In order to verify the sequence of blowups listed, I began by using codex to construct a program in Rust to compute blowups of hypersurfaces in affine charts. After seeing that this gave the correct output on the standard examples of singularities in the literature, I then gave gpt 5.6 (using codex) full acess to the rust program, the previously generated report, the thesis written by myer, and the standard textbooks in the literature. It worked for over $12$ hours on my local machine and was unable to fully obtain a resolution in explicit affine charts due to the complexity of the calculation. In addition, it claims to have found mistakes in the previous report. It has generated a new ($50$ page) report given in \textit{Q1\_New\_Report} with descrepancies between the two highlighted in red. In particular this new report disagrees with the transversal singularity types and the final ODP counts. It was at this point which the Rust code began to produce some analysis which was incorrect. 
+
+Because the Rust code is producing some incorect analysis, it makes sense to do a manual rewrite of the software. Currently I am working in python using sage's Macaulay2 interface to perform the calculations in a given affine chart tree. The main difficult in writing the software is determining what the birational maps $\sigma_i : \A^n \to \A^n$ are, and how they give rise to pullback maps $\sigma_i^* : k[\A^n]  \to k[\A^n]$. This is currently being worked out through Gr\"{o}bner basis elimination on the Pl\"{u}cker type blowup ideal $B = (t_i f_j - t_j f_i)$. In particular we compute the charts of $\text{Bl}_I(\A^n)$ where $I = (f_1,\dots,f_r)$ and $B \subset k[\A^n \times \PP^{r - 1}]$ with $t_1,\dots,t_{r}$ being the variables of $\PP^{r - 1}$. Currently the Gr\"{o}bner basis elimination is working as intended, but some functionality is missing. In particular, we still need to implement the change to the singular locus after each blowup and to compute the maps $\sigma_i^*$ associated to the blowup.
+
+\subsection*{\S 4. Current Work and Future Directions}
+
+One possible interpretation from the Rust experiment is that the number of blowups required to give an explicit crepant resolution is too great to give results. For instance, in the case of $Q1$, at least $31$ blowups of $D_1$ are required before we need to find small resolutions of the remaining ODPs. One possible solution to this problem is as follows. First take $F \in \QQ[\PP^1 \times \PP^3]$ to be a birational model of $Q1$ which is a compactification in $\PP^1 \times \PP^3$. We have that $F$ has a $K3$-fibration onto $\PP^1$ with the generic fiber being singular. Some singular lines of $F$ are contained within particular fibers and some are generic in that they are contained in all fibers. If we begin the desingularization process by blowing up these generic lines, then the final singularities are contained within a finite number of generic fibers. Then $F$ can be resolved the standard methods of the resolution of $K3$-surface singularities.
+
+In the case of $Q1$, this should reduce the number of blowups needed from $32$ to around $22$ until we are out of the generic singularities according to gpt 5.6. As such, this method is promising in actually computing an explicit model of $Q1$. Of course, to conduct this research I need to finish the python software first which is currently my first priority.
+
+Another possible method to achieve confirmation of the gpt output would be to construct local models around each singularity of $D_1$, and do manual analysis by constructing analytically equivalent models. Right now this seems more labor intensive and is less of a priority in the computation.
+
+Once the python is completed, it will be very easy to quickly run experiments with resolutions, and at least get to final ODP counts. After that, finding small resolutions should just be a matter of prompting gpt and verifying the output. All relevant code is included in the github. The Rust is under \textit{codexCerpantResolutions} and the Python is under \textit{pythonBlowups}. All confirmed results have been updated to the website (That is to say that $Q9$ is rational). After we confirm more of the gpt output it makes sense to add compartments for modularity results including the corresponding modular form and finite field counts. Ideally next month we can finish the python code and verify as many of the gpt results as possible.
+\end{document}
+

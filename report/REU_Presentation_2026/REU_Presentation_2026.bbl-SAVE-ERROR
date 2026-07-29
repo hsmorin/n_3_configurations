@@ -1,0 +1,152 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global/global}
+    \entry{bringhurst2004}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=26e95fb42484f0ba33bccaf28955982e}{%
+           family={Bringhurst},
+           familyi={B\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Vancouver}%
+      }
+      \list{publisher}{1}{%
+        {Hartley \& Marks}%
+      }
+      \strng{namehash}{26e95fb42484f0ba33bccaf28955982e}
+      \strng{fullhash}{26e95fb42484f0ba33bccaf28955982e}
+      \strng{fullhashraw}{26e95fb42484f0ba33bccaf28955982e}
+      \strng{bibnamehash}{26e95fb42484f0ba33bccaf28955982e}
+      \strng{authorbibnamehash}{26e95fb42484f0ba33bccaf28955982e}
+      \strng{authornamehash}{26e95fb42484f0ba33bccaf28955982e}
+      \strng{authorfullhash}{26e95fb42484f0ba33bccaf28955982e}
+      \strng{authorfullhashraw}{26e95fb42484f0ba33bccaf28955982e}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{3rd}
+      \field{title}{The Elements of Typographic Style}
+      \field{year}{2004}
+    \endentry
+    \entry{greenberg1984}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=7e8575e5bfd6ba6f24222756b1a792dc}{%
+           family={Greenberg},
+           familyi={G\bibinitperiod},
+           given={Cara},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {Harmony Books}%
+      }
+      \strng{namehash}{7e8575e5bfd6ba6f24222756b1a792dc}
+      \strng{fullhash}{7e8575e5bfd6ba6f24222756b1a792dc}
+      \strng{fullhashraw}{7e8575e5bfd6ba6f24222756b1a792dc}
+      \strng{bibnamehash}{7e8575e5bfd6ba6f24222756b1a792dc}
+      \strng{authorbibnamehash}{7e8575e5bfd6ba6f24222756b1a792dc}
+      \strng{authornamehash}{7e8575e5bfd6ba6f24222756b1a792dc}
+      \strng{authorfullhash}{7e8575e5bfd6ba6f24222756b1a792dc}
+      \strng{authorfullhashraw}{7e8575e5bfd6ba6f24222756b1a792dc}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Mid-Century Modern: Furniture of the 1950s}
+      \field{year}{1984}
+    \endentry
+    \entry{müller-brockmann1981}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=b4dcfcf037d1200f381a1a0edfcfdfea}{%
+           family={Müller-Brockmann},
+           familyi={M\bibinithyphendelim B\bibinitperiod},
+           given={Josef},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Sulgen, Switzerland}%
+      }
+      \list{publisher}{1}{%
+        {Niggli}%
+      }
+      \strng{namehash}{b4dcfcf037d1200f381a1a0edfcfdfea}
+      \strng{fullhash}{b4dcfcf037d1200f381a1a0edfcfdfea}
+      \strng{fullhashraw}{b4dcfcf037d1200f381a1a0edfcfdfea}
+      \strng{bibnamehash}{b4dcfcf037d1200f381a1a0edfcfdfea}
+      \strng{authorbibnamehash}{b4dcfcf037d1200f381a1a0edfcfdfea}
+      \strng{authornamehash}{b4dcfcf037d1200f381a1a0edfcfdfea}
+      \strng{authorfullhash}{b4dcfcf037d1200f381a1a0edfcfdfea}
+      \strng{authorfullhashraw}{b4dcfcf037d1200f381a1a0edfcfdfea}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Grid Systems in Graphic Design}
+      \field{year}{1981}
+    \endentry
+    \entry{wikipedia2024}{misc}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=b6aea1a416c89509a7df1cbb69249cb6}{%
+           family={{Wikipedia contributors}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{bibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorbibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authornamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed April 2026}
+      \field{title}{Mid-century modern}
+      \field{year}{2026}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/wiki/Mid-century_modern
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/wiki/Mid-century_modern
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

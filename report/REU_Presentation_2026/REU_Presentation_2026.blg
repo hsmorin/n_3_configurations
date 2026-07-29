@@ -1,0 +1,9 @@
+[0] Config.pm:328> INFO - This is Biber 2.21
+[0] Config.pm:331> INFO - Logfile is 'REU_Presentation_2026.blg'
+[36] biber:342> INFO - === Fri Jul 24, 2026, 14:26:08
+[44] Biber.pm:421> INFO - Reading 'REU_Presentation_2026.bcf'
+[81] Biber.pm:1002> INFO - Found 0 citekeys in bib section 0
+[89] bbl.pm:676> INFO - Writing 'REU_Presentation_2026.bbl' with encoding 'UTF-8'
+[89] bbl.pm:779> INFO - Output to REU_Presentation_2026.bbl
+[89] Biber.pm:132> WARN - The file 'REU_Presentation_2026.bcf' does not contain any citations!
+[89] Biber.pm:134> INFO - WARNINGS: 1

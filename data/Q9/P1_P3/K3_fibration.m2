@@ -2,6 +2,8 @@ R = QQ[x1,x2,x3,x4]
 
 Q9 = x1^2*x2^2*x3 - x1^2*x2^2 - x1^2*x2*x3*x4 + x1^2*x2*x3 - x1^2*x3^2 + x1^2*x3*x4 - x1*x2^2*x3^2 - x1*x2^2*x3*x4 + x1*x2^2*x3 + x1*x2^2*x4 + x1*x2*x3^2*x4 + x1*x2*x3^2 + x1*x2*x3*x4^2 - 3*x1*x2*x3*x4 + x2^2*x3^2*x4 - x2^2*x3^2 - x2*x3^2*x4^2 + x2*x3^2*x4
 
+-- 0 has multiplicity 4 => rational by Bezout's
+
 S = QQ[x,y,z,w,u,v]
 
 phi = map(S, R, {x3 => x, x2 => y, x1 => z, x4 => w})

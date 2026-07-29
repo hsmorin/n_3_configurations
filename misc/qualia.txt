@@ -11,6 +11,13 @@ I11: Rational by projection away from x2
 I29: Rational by projection away from x3
 I27: Rational by projection away from x3
 
+New numbering
+
+Q1: P3 \times P1 gives D
+Q8: Projection away from any e_i gives octic. Three reducible, two irreducible.
+Q9: Projective by point of multiplicity 4
+
+
 
 
 
@@ -51,3 +58,16 @@ for i from 0 to length intersectionData - 1 do (tup = intersectionData#i; v = tu
 V = unique(apply(V, i -> mingens i))
 
 for C in V do (print(C); for tup in intersectionData do (if (mingens tup#2) == C then print((tup#0, tup#1))))
+
+
+Compute D (degree 2 in x0):
+
+A = (sum select(terms F, m -> degree(x0, m) == 2)) / x0^2
+B = (sum select(terms F, m -> degree(x0, m) == 1)) / x0
+C = sum select(terms F, m -> degree(x0, m) == 0)
+
+D = B^2 - 4*A*C
+D = sub(D, R)
+
+
+

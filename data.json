@@ -111,10 +111,10 @@
         "dimension": "3",
         "dimension of singular locus": "1",
         "normal in A^4": "Yes",
-        "rational": "Unknown",
+        "rational": "Yes",
         "homogenizations": "\\mathbb{P}^4 \n \\mathbb{P}^3_{x,y,w,u} \\times \\mathbb{P}^1_{z,v} \n \\mathbb{P}^3_{x, z, w, u} \\times \\mathbb{P}^1_{y,v} \n \\mathbb{P}^1_{x, u} \\times \\mathbb{P}^2_{y, z, v} \\times \\mathbb{P}^1_{w,t} \n \\mathbb{P}^2_{x, w, u} \\times \\mathbb{P}^1_{y,v} \\times \\mathbb{P}^1_{z,t} \n \\mathbb{P}^1_{x,u} \\times \\mathbb{P}^1_{y,v} \\times \\mathbb{P}^1_{z, s} \\times \\mathbb{P}^1_{w,t}",
         "polynomial": "x^{2}y^{2}z-xy^{2}z^{2}-x^{2}yzw-xy^{2}zw+xyz^{2}w+y^{2}z^{2}w+xyzw^{2}-yz^{2}w^{2}-x^{2}y^{2}+x^{2}yz+xy^{2}z-x^{2}z^{2}+xyz^{2}-y^{2}z^{2}+xy^{2}w+x^{2}zw-3xyzw+yz^{2}w",
-        "notes": "Singular locus consists of 12 lines intersecting in 10 points, D factors into a degree 4, a quadric, and two linears"
+        "notes": "After homogenizing with t, rational by projection away from t"
     },
     {
         "id": "Q10",
