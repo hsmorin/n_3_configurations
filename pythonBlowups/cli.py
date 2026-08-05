@@ -33,13 +33,15 @@ if __name__ == "__main__":
     N = dimension
 
     # Sets R = QQ[x_0,...,x_N] to be the working ring
-    variables = vars_list("x", N)
+    variables = VarsList("x", N)
     R = m2(f'QQ[{variables.callable()}]')
 
     F = False
-    F = m2('x0^2*x2 - x1^2*(x1 + x2)')
-    F = m2('x0^2*x2 - x1^3')
-    F = m2('x0^4*x1^2*x2^2-2*x0^2*x1^4*x2^2+x1^6*x2^2-2*x0^3*x1^2*x2^3+2*x0^2*x1^3*x2^3+2*x0*x1^4*x2^3-2*x1^5*x2^3+x0^2*x1^2*x2^4-2*x0*x1^3*x2^4+x1^4*x2^4-2*x0^5*x1*x2*x3+2*x0^3*x1^3*x2*x3+6*x0^4*x1*x2^2*x3-4*x0^3*x1^2*x2^2*x3-2*x0^2*x1^3*x2^2*x3+2*x0*x1^4*x2^2*x3-2*x1^5*x2^2*x3-6*x0^3*x1*x2^3*x3+6*x0^2*x1^2*x2^3*x3-2*x0*x1^3*x2^3*x3+2*x1^4*x2^3*x3+2*x0^2*x1*x2^4*x3-2*x0*x1^2*x2^4*x3+x0^6*x3^2-4*x0^5*x2*x3^2+2*x0^4*x1*x2*x3^2-2*x0*x1^4*x2*x3^2+6*x0^4*x2^2*x3^2-4*x0^3*x1*x2^2*x3^2+3*x0^2*x1^2*x2^2*x3^2+x1^4*x2^2*x3^2-4*x0^3*x2^3*x3^2+2*x0^2*x1*x2^3*x3^2-2*x0*x1^2*x2^3*x3^2+x0^2*x2^4*x3^2+2*x0^4*x1*x3^3-6*x0^3*x1*x2*x3^3-2*x0^2*x1^2*x2*x3^3+4*x0*x1^3*x2*x3^3+4*x0^2*x1*x2^2*x3^3-2*x0*x1^2*x2^2*x3^3-2*x0^4*x3^4+x0^2*x1^2*x3^4+4*x0^3*x2*x3^4+2*x0^2*x1*x2*x3^4-2*x0*x1^2*x2*x3^4-2*x0^2*x2^2*x3^4-2*x0^2*x1*x3^5+x0^2*x3^6')
+    #F = m2('x0^2*x2 - x1^2*(x1 + x2)')
+    #F = m2('x0^2*x2 - x1^3')
+    F = m2('x0^7*x1^4 - x2^11')
+    #F = m2('x0')
+    #F = m2('x0^4*x1^2*x2^2-2*x0^2*x1^4*x2^2+x1^6*x2^2-2*x0^3*x1^2*x2^3+2*x0^2*x1^3*x2^3+2*x0*x1^4*x2^3-2*x1^5*x2^3+x0^2*x1^2*x2^4-2*x0*x1^3*x2^4+x1^4*x2^4-2*x0^5*x1*x2*x3+2*x0^3*x1^3*x2*x3+6*x0^4*x1*x2^2*x3-4*x0^3*x1^2*x2^2*x3-2*x0^2*x1^3*x2^2*x3+2*x0*x1^4*x2^2*x3-2*x1^5*x2^2*x3-6*x0^3*x1*x2^3*x3+6*x0^2*x1^2*x2^3*x3-2*x0*x1^3*x2^3*x3+2*x1^4*x2^3*x3+2*x0^2*x1*x2^4*x3-2*x0*x1^2*x2^4*x3+x0^6*x3^2-4*x0^5*x2*x3^2+2*x0^4*x1*x2*x3^2-2*x0*x1^4*x2*x3^2+6*x0^4*x2^2*x3^2-4*x0^3*x1*x2^2*x3^2+3*x0^2*x1^2*x2^2*x3^2+x1^4*x2^2*x3^2-4*x0^3*x2^3*x3^2+2*x0^2*x1*x2^3*x3^2-2*x0*x1^2*x2^3*x3^2+x0^2*x2^4*x3^2+2*x0^4*x1*x3^3-6*x0^3*x1*x2*x3^3-2*x0^2*x1^2*x2*x3^3+4*x0*x1^3*x2*x3^3+4*x0^2*x1*x2^2*x3^3-2*x0*x1^2*x2^2*x3^3-2*x0^4*x3^4+x0^2*x1^2*x3^4+4*x0^3*x2*x3^4+2*x0^2*x1*x2*x3^4-2*x0*x1^2*x2*x3^4-2*x0^2*x2^2*x3^4-2*x0^2*x1*x3^5+x0^2*x3^6')
 
     while not F:
         F = input("Enter the defining polynomial: ")
@@ -57,10 +59,10 @@ if __name__ == "__main__":
             F = False
 
     #Records affine chart information
-    tree = chart_tree(F, N)
+    tree = ChartTree(F, N)
 
     #Records information about the singular locus
-    ledger = singular_ledger(F, tree)
+    ledger = SingularLedger(F, tree)
     print(ledger.components)
 
     if not ledger.components:
@@ -90,6 +92,9 @@ if __name__ == "__main__":
                 print(f"{i} is not a valid input, please enter an integer from 0 to {l - 1}")
 
         blowup_component(ledger, i)
+        ledger.print_state()
+        print(ledger.tree)
+    print("All singularities have been resolved!")
         
 
 
