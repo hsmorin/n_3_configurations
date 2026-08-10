@@ -37,7 +37,7 @@ if __name__ == "__main__":
     R = m2(f'QQ[{variables.callable()}]')
 
     F = False
-    #F = m2('x0^2*x2 - x1^2*(x1 + x2)')
+    F = m2('x0^2*x2 - x1^2*(x1 + x2)')
     #F = m2('x0^2*x2 - x1^3')
     F = m2('x0^7*x1^4 - x2^11')
     #F = m2('x0')
@@ -63,7 +63,7 @@ if __name__ == "__main__":
 
     #Records information about the singular locus
     ledger = SingularLedger(F, tree)
-    print(ledger.components)
+    print(ledger)
 
     if not ledger.components:
         print("F is smooth!")
@@ -72,28 +72,43 @@ if __name__ == "__main__":
     #Asks the user for a blowup until all singularities are resolved
     while ledger.components:
         l = len(ledger.components)
+        admissible_idx = ledger.admissible_indices()
         
         valid = False
         i = 0
         while not valid:
-            i = input('Blowup component: ')
+            i = input(f'Blowup component (crepant options: {admissible_idx}): ')
 
             if i == 'exit':
                 exit('User terminated program')
+
+            if i == 'detail':
+                ledger.print_state()
+                continue
 
             try:
                 i = int(i)
                 if i >= l or i < 0:
                     print(f'{i} is not a valid input, please enter an integer from 0 to {l - 1}')
                 else:
+                    if i not in admissible_idx:
+                        confirmation = input("WARNING: The blowup you are about to compute is not admissible, are you sure you want to continue? yes / no:")
+                        if confirmation != 'yes':
+                            print(f"Blowup at index {i} was not computed.")
+                            continue
+
                     valid = True
 
             except:
                 print(f"{i} is not a valid input, please enter an integer from 0 to {l - 1}")
 
         blowup_component(ledger, i)
-        ledger.print_state()
+        print(ledger)
         print(ledger.tree)
+
+        if ledger.admissible_indices() == []:
+            print("No more admissible blowups exist!")
+
     print("All singularities have been resolved!")
         
 

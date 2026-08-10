@@ -9,7 +9,7 @@ collection = db["Matroids.Small"]
 if length(ARGS) == 1
     n = parse(Int, ARGS[1])
 else
-    exit("Usage: julia get_n_3_data.jl n")
+    exit("Usage: julia generate_n3_data.jl n")
 end
 
 #Gets polymake data
@@ -45,7 +45,7 @@ for matroid in matroid_list
     matroid = Matroid(matroid)
     H = hyperplanes(matroid)
     three = 0
-    two = 0 
+    two = 0
     cond = true
     for l in H
         if length(l) == 2
@@ -62,7 +62,7 @@ for matroid in matroid_list
         continue
     end
 
-    if three == n && two == binomial(n,2) - 3 * n
+    if three == n && two == binomial(n, 2) - 3 * n
         points = Dict()
         for l in H
             if length(l) == 3
@@ -82,7 +82,7 @@ for matroid in matroid_list
                 con = false
             end
         end
-        
+
         if con && count == n
             push!(lst, (matroid, tag))
         end
@@ -95,32 +95,32 @@ n_3 = open("./data/$(n)_3_makingSureIAmNotGoingInsane.m2", "w")
 
 #Writes data to a file
 for (i, (matroid, tag)) in enumerate(lst)
-        R = realization_space(matroid, ground_ring = QQ)
-        display(R)
-        I = gens(defining_ideal(R))
-        L = inequations(R)
-        I_str = "f$(i) = "
-        L_str = "L$(i) = {"
-        for f in I
-            I_str *= string(f) * ", "
-        end
-        for g in L
-            L_str *= string(g) * ", "
-        end
-        I_str = chop(I_str, tail=2)
-        I_str *= " -- dimension "
-        if is_realizable(R)
-            I_str *= string(dim(R)) * "\n"
-        else
-            I_str *= "-∞\n"
-        end
-        I_str *= "-- revlex_basis_encoding: " * tag
-        I_str *= "\n\n"
-        #L_str = chop(L_str, tail=2)
-        #L_str *= "}\n\n"
-        write(n_3, I_str)
-        #write(n_3_L, L_str)
-        print("\n")
+    R = realization_space(matroid, ground_ring=QQ)
+    display(R)
+    I = gens(defining_ideal(R))
+    L = inequations(R)
+    I_str = "f$(i) = "
+    L_str = "L$(i) = {"
+    for f in I
+        I_str *= string(f) * ", "
+    end
+    for g in L
+        L_str *= string(g) * ", "
+    end
+    I_str = chop(I_str, tail=2)
+    I_str *= " -- dimension "
+    if is_realizable(R)
+        I_str *= string(dim(R)) * "\n"
+    else
+        I_str *= "-∞\n"
+    end
+    I_str *= "-- revlex_basis_encoding: " * tag
+    I_str *= "\n\n"
+    #L_str = chop(L_str, tail=2)
+    #L_str *= "}\n\n"
+    write(n_3, I_str)
+    #write(n_3_L, L_str)
+    print("\n")
 end
 
 close(n_3)
