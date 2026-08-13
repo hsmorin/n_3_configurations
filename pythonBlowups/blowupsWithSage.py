@@ -57,10 +57,17 @@ class AffineChart():
         self.inclusion = inclusion
 
     def __str__(self) -> str:
-        base = f'{self.id}: {self.f.sage()}'
+        f = str(self.f.sage())
+        if len(f) <= 20:
+            base = f'{self.id}: ' + f
+        else:
+            base = f'{self.id}: f omitted' 
+
+        #Clutters output
         if self.blowup_ideal:
             base += f" [blown up along {self.blowup_ideal}]"
         return base
+
 
 #Takes in an ideal in A^n and gives the strict transform in a given chart
 def strict_transform(sigma_i, I, blowup_ideal):
@@ -110,7 +117,7 @@ class ChartTree():
         for leaf in self.depth_first_search():
             for chart in leaf:
                 if isinstance(chart.data, AffineChart):
-                    output += str(chart)
+                    output += str(chart) + "\n"
                 else:
                     output += "0\n"
             output += "\n"
@@ -176,22 +183,22 @@ def is_smooth_center(I):
 def discrepancy(f, I):
     #Returns {codim, mult, discrepancy, crepant, smooth} for blowing up {f = 0} along center I
     c = I.codim().sage()
-    print("c", c)
     m = order_along_ideal(f, I)
-    print("m", m)
     a = (c - 1) - (m // 2)
-    print(a)
     smooth = is_smooth_center(I)
-    print(smooth)
     return {"codim" : c, "mult" : m, "discrepancy" : a, "admissible" : (a == 0), "smooth" : smooth}
 
 #Class which keeps track of the components of the singular locus
 class SingularLedger():
     def __init__(self, F, tree):
         self.tree = tree
-        L = F.ideal().singularLocus().ideal().decompose()
+        L = F.ideal().singularLocus().ideal()
+        L = list(L.decompose())
         self.components = []
-        for I in L:
+        self.initial_intersections = []
+        intersections = []
+
+        for i, I in enumerate(L):
             # Computes and lists the intersection of I with each active chart
             active_charts = []
             for chart in tree.depth_first_search():
@@ -199,20 +206,61 @@ class SingularLedger():
                 phi_I = I_in_chart(chart, I)
                 if phi_I == m2(f'ideal(1_{phi_I.ring().name()})'):
                     continue
-                else:
-                    active_charts.append(id)
+
+                active_charts.append(id)
             mult_info = discrepancy(F, I)
-            self.components.append(SingularComponent([SubComponent(I, "0", active_charts)], mult_info))
+            if active_charts:
+                self.components.append(SingularComponent([SubComponent(I, "0", active_charts)], mult_info))
+
+            if I.dim() == 0:
+                continue
+
+            for J in L[0:i]:
+                if J.dim() == 0:
+                    continue
+                intersection = (I + J).radical()
+                already_present = False
+                for previous_comp in intersections:
+                    if m2(f'{intersection.name()} === {previous_comp.name()}'):
+                        already_present = True
+                        break
+                if not already_present:
+                    intersections.append(intersection)
+
+        for intersection in intersections:
+            intersection_active_charts = []
+            for chart in tree.depth_first_search():
+                id = chart[-1].data.id
+                intersection_in_chart = I_in_chart(chart, intersection)
+                if intersection_in_chart == m2(f'ideal(1_{intersection_in_chart.ring().name()})'):
+                    continue
+                intersection_active_charts.append(id)
+            mult_info = discrepancy(F, intersection)
+            if intersection_active_charts:
+                self.initial_intersections.append(SingularComponent([SubComponent(intersection, "0", intersection_active_charts)], mult_info))
+
+
+                
 
     def __str__(self) -> str: #Less detailed
         if not self.components:
             return "SingularLedger: no components"
 
-        lines = [f"SingularLedger: {len(self.components)} component(s)"]
+        lines = [f"Singular Ledger: {len(self.components)} component(s)"]
         for i, comp in enumerate(self.components):
             lines.append(f"[{i}] {str(comp)} Admissible: {comp.mult_info["admissible"]}")
 
+        if not self.initial_intersections:
+            return "\n".join(lines)
+
+        lines.append("")
+
+        lines.append(f"Intersection Points: {len(self.initial_intersections)} point(s)")
+        for i, comp in enumerate(self.initial_intersections):
+            lines.append(f"[{i}] {str(comp)} Admissible: {comp.mult_info["admissible"]}")
+
         return "\n".join(lines)
+
 
     #Needs to be fixed
     def print_state(self): #More detailed
@@ -332,7 +380,7 @@ def blowup_affine_space(chart, I):
                 #Generate Affine Chart
                 pi = m2(f'map({Elim_ring.name()}, {A.name()}, {E_vars_ord.name()})')
                 phi_i_sub = []
-                for var in Elim_vars_ord:
+                for var in Elim_vars:
                     if var.member(dep_vars_elim):
                         phi_i_sub.append(relations[var])
                     else:
@@ -340,14 +388,8 @@ def blowup_affine_space(chart, I):
 
                 phi_i_sub = to_m2_list(phi_i_sub)
                 phi_i = m2(f'map({Elim_ring.name()}, {Elim_ring.name()}, {phi_i_sub.name()})')
-                sub_vars = []
-                j = 0
-                for var in Elim_vars_ord:
-                    if var.member(dep_vars_elim):
-                        sub_vars.append(m2('1'))
-                    else:
-                        sub_vars.append(A_vars[j])
-                        j += 1
+                sub_vars = [m2(f'1_{A.name()}') for i in range(r - 1)]
+                sub_vars += [var for var in A_vars]
                 sub_i = m2(f'map({A.name()}, {Elim_ring.name()}, {(to_m2_list(sub_vars)).name()})')
                 sigma_i = sub_i * phi_i * pi
                 Blf = ((strict_transform(sigma_i, f.ideal(), I)).mingens().entries().flatten())[0]
@@ -359,15 +401,21 @@ def blowup_affine_space(chart, I):
     return charts
 
 #Computes the affine chart tree corrisponding to blowing up component n
-def blowup_component(ledger : SingularLedger, i : int):
-    singular_component = ledger.components[i]
-    del ledger.components[i]
+def blowup_component(ledger : SingularLedger, i : int, is_intersection_point = False):
+    if is_intersection_point:
+        singular_component = ledger.initial_intersections[i]
+        del ledger.initial_intersections[i]
+    else:
+        singular_component = ledger.components[i]
+        del ledger.components[i]
+
     tree = ledger.tree
     N = tree.N
     
     for sub_component in singular_component.sub_components:
         I = sub_component.defining_ideal
         origin = sub_component.origin
+        print("Origin 1:", origin)
         active_charts = sub_component.active_charts
 
         for end_id in active_charts:
@@ -407,6 +455,20 @@ def blowup_component(ledger : SingularLedger, i : int):
                         if not phi_J == m2(f'ideal(1_{A.name()})'):
                             sub_component.active_charts.append(blowup_chart.id)
 
+            for intersection_component in ledger.initial_intersections:
+                for sub_component in intersection_component.sub_components:
+                    J, sub_comp_origin, sub_comp_active_charts = (sub_component.defining_ideal, sub_component.origin, sub_component.active_charts)
+    
+                    if end_id not in sub_comp_active_charts:
+                        continue
+                
+                    sub_component.active_charts.remove(end_id)
+                    sub_leaf = tree.find_sub_path_from_ids(sub_comp_origin, end_id)
+                    for blowup_chart_node in active_chart_node.children:
+                        blowup_chart = blowup_chart_node.data
+                        phi_J = I_in_chart(sub_leaf + [blowup_chart_node], J)
+                        if not phi_J == m2(f'ideal(1_{A.name()})'):
+                            sub_component.active_charts.append(blowup_chart.id)
 
             print("----------")
             print(f"Blowup of {end_id}:")

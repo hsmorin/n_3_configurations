@@ -37,8 +37,9 @@ if __name__ == "__main__":
     R = m2(f'QQ[{variables.callable()}]')
 
     F = False
-    F = m2('x0^2*x2 - x1^2*(x1 + x2)')
+    #F = m2('x0^2*x2 - x1^2*(x1 + x2)')
     #F = m2('x0^2*x2 - x1^3')
+    #F = m2('x0^2*x3 - x1^2*x2')
     F = m2('x0^7*x1^4 - x2^11')
     #F = m2('x0')
     #F = m2('x0^4*x1^2*x2^2-2*x0^2*x1^4*x2^2+x1^6*x2^2-2*x0^3*x1^2*x2^3+2*x0^2*x1^3*x2^3+2*x0*x1^4*x2^3-2*x1^5*x2^3+x0^2*x1^2*x2^4-2*x0*x1^3*x2^4+x1^4*x2^4-2*x0^5*x1*x2*x3+2*x0^3*x1^3*x2*x3+6*x0^4*x1*x2^2*x3-4*x0^3*x1^2*x2^2*x3-2*x0^2*x1^3*x2^2*x3+2*x0*x1^4*x2^2*x3-2*x1^5*x2^2*x3-6*x0^3*x1*x2^3*x3+6*x0^2*x1^2*x2^3*x3-2*x0*x1^3*x2^3*x3+2*x1^4*x2^3*x3+2*x0^2*x1*x2^4*x3-2*x0*x1^2*x2^4*x3+x0^6*x3^2-4*x0^5*x2*x3^2+2*x0^4*x1*x2*x3^2-2*x0*x1^4*x2*x3^2+6*x0^4*x2^2*x3^2-4*x0^3*x1*x2^2*x3^2+3*x0^2*x1^2*x2^2*x3^2+x1^4*x2^2*x3^2-4*x0^3*x2^3*x3^2+2*x0^2*x1*x2^3*x3^2-2*x0*x1^2*x2^3*x3^2+x0^2*x2^4*x3^2+2*x0^4*x1*x3^3-6*x0^3*x1*x2*x3^3-2*x0^2*x1^2*x2*x3^3+4*x0*x1^3*x2*x3^3+4*x0^2*x1*x2^2*x3^3-2*x0*x1^2*x2^2*x3^3-2*x0^4*x3^4+x0^2*x1^2*x3^4+4*x0^3*x2*x3^4+2*x0^2*x1*x2*x3^4-2*x0*x1^2*x2*x3^4-2*x0^2*x2^2*x3^4-2*x0^2*x1*x3^5+x0^2*x3^6')
@@ -86,12 +87,18 @@ if __name__ == "__main__":
                 ledger.print_state()
                 continue
 
+            is_intersection_point = False
+
+            if i[0] =="i":
+                is_intersection_point = True
+                i = i[1:]
+
             try:
                 i = int(i)
                 if i >= l or i < 0:
                     print(f'{i} is not a valid input, please enter an integer from 0 to {l - 1}')
                 else:
-                    if i not in admissible_idx:
+                    if (i not in admissible_idx) and (i != 0): #Debug, skips confirmation
                         confirmation = input("WARNING: The blowup you are about to compute is not admissible, are you sure you want to continue? yes / no:")
                         if confirmation != 'yes':
                             print(f"Blowup at index {i} was not computed.")
@@ -102,7 +109,7 @@ if __name__ == "__main__":
             except:
                 print(f"{i} is not a valid input, please enter an integer from 0 to {l - 1}")
 
-        blowup_component(ledger, i)
+        blowup_component(ledger, i, is_intersection_point)
         print(ledger)
         print(ledger.tree)
 

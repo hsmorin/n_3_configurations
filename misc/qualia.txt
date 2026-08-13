@@ -71,3 +71,21 @@ D = sub(D, R)
 
 
 
+Code for degree data of double cover models:
+rows = {}
+for l in L do (
+row = {};
+for D in l do (
+    degs = (toString first degree D) | "[";
+    for f in toList factor D do (
+        if f#1 == 1 then (
+            degs = degs | (toString first degree f#0) | ", ";
+            continue;
+            );
+        degs = degs | "{" | (toString first degree f#0) | " : " | (toString f#1) | "}, "
+        );
+    degs = substring(0, #degs - 2, degs) | "]";
+    row = row | {degs};
+    );
+rows = rows | {row};
+);
