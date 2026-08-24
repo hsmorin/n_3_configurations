@@ -2,9 +2,9 @@ import sage.all as sg
 from copy import deepcopy
 from math import prod
 from itertools import combinations
-#The following functions only work if there is already a macaulay2 instance running with a ring QQ[x0,...,xN] and a homogeneous polynomial F initialized.
+#The following functions only work if there is already a Macaulay2 instance running with a ring QQ[x0,...,xN] and a homogeneous polynomial F initialized.
 
-#TO DO: Str Methods, Error Handeling
+#TO DO: Str Methods, Error Handling
 
 #Alias for calling Macaulay2
 m2 = sg.macaulay2
@@ -48,7 +48,7 @@ class Node():
             return str(self.data)
 
 def id_to_string(id : tuple[int, ...]):
-    return "".join([str(i) for i in id])
+    return "".join([str(i) + "l" for i in id])[:-1]
     
 class AffineChart():
     def __init__(self, f, phi, id, blownup_along = False, inclusion = False, pi = False, blowup_ideal = False):
@@ -96,15 +96,18 @@ def generate_transition_map(source : AffineChart, target : AffineChart, tree : C
     source_id = source.id
     target_id = target.id
 
+    #Map already computed
     trans_map = tree.transition_maps.get((source_id, target_id), False)
     if trans_map:
         return trans_map
 
+    #Source[:-1] to target map exists
     old_trans_map = tree.transition_maps.get((source_id[:-1], target_id), False)
     if old_trans_map:
         frac_blowdown_map = m2(f'map({A_frac.name()}, frac {A_frac.name()}, matrix {source.phi.name()})')
         return frac_blowdown_map * old_trans_map
 
+    #Source to target[:-1] exists
     old_trans_map = tree.transition_maps.get((source_id, target_id[:-1]), False)
 
     if old_trans_map: #TO DO: Fix ordering?
@@ -114,6 +117,7 @@ def generate_transition_map(source : AffineChart, target : AffineChart, tree : C
         B_to_S_B = m2(f'map({B_frac.name()}, {target.blowup_fraction_field.name()}, {B_vars.name()} | {target.blownup_along.name()})')
         return old_trans_map * B_to_S_B * target.pi
 
+    #Source[:-1] to target[:-1] exists
     old_trans_map = tree.transition_maps.get((source_id[:-1], target_id[:-1]), False)
     if old_trans_map:
         if not (source.inclusion and target.inclusion and source.pi and target.pi):
@@ -134,7 +138,7 @@ def generate_transition_map(source : AffineChart, target : AffineChart, tree : C
         old_B = old_trans_map.target()
         ones = [m2(f'1_{old_B.name()}') for t in t_vars]
         old_B_to_B_S = m2(f'map({old_B.name()}, {target.blowup_fraction_field.name()}, (flatten entries vars {old_B.name()}) | {to_m2_list(ones).name()})')
-        A_S_to_old_A = m2(f'map({source.fraction_field.name()}, {old_A.name()}, take((flatten entries vars {A_S.name()}), {N})')
+        A_S_to_old_A = m2(f'map({source.fraction_field.name()}, {old_A.name()}, take((flatten entries vars {A_S.name()}), {N}))')
         lifted_transition_map = A_S_to_old_A * old_trans_map * old_B_to_B_S
         phi = m2(f'map({source.blowup_fraction_field.name()}, {target.blowup_fraction_field.name()}, take((flatten entries matrix {lifted_transition_map.name()}), {N}) | {to_m2_list(t_vars).name()})')
         return source.inclusion * phi * target.pi
@@ -171,12 +175,13 @@ def projective_transition_map(A, i : int, j : int):
 #Tree of F in affine charts
 class ChartTree():
 
-    def __init__(self, F, N : int):
+    def __init__(self, F, N : int, mode : str = 'h'):
         new_vars = VarsList("y", N - 1)
         A = m2(f'QQ[{new_vars.callable()}]')
         new_vars = [v for v in A.vars().entries().flatten()]
         R = F.ring()
 
+        self.mode = mode
         self.root = Node(F)
         self.nodes = {(0,) : self.root}
         self.N = N
@@ -219,12 +224,12 @@ class ChartTree():
         return path
 
     def get_active_patch_from_id(self, id : str):
-        O = []
+        O = (0,)
         for i in id:
             if i != 0:
                 break
 
-            O.append(0)
+            O = O + (0,)
 
         path = self.find_sub_path_from_ids(O, id)
         active_patch = m2("ideal()")
@@ -308,13 +313,13 @@ def order_along_ideal(f, I, max_order = 50):
 
 #Jacobian criterion
 def is_smooth_center(I):
+    cod = I.codim()
     J = I.jacobian()
     R = I.ring()
-    minors_ideal = J.ideal()
-    sing_locus = minors_ideal.saturate(R.vars().ideal()) #Saturate with the irrelevent_ideal
-    return (sing_locus == m2(f'ideal(1_{R.name()})'))
+    minors_ideal = m2.minors(cod, J) + I
+    return (minors_ideal == m2(f'ideal(1_{R.name()})'))
 
-def is_non_principle_linear_center(I):
+def is_non_principal_linear_center(I):
     gens = I.mingens().entries().flatten()
 
     if m2(f"1_{I.ring().name()}") in gens:
@@ -332,12 +337,20 @@ def is_non_principle_linear_center(I):
     
     
 
-def discrepancy(f, I):
+def discrepancy_hyperplane(f, I):
+    #Returns {codim, mult, discrepancy, crepant, linear} for blowing up {f = 0} along center I
+    c = I.codim().sage()
+    m = order_along_ideal(f, I)
+    a = c - 1 - m
+    linear = is_non_principal_linear_center(I)
+    return {"codim" : c, "mult" : m, "discrepancy" : a, "admissible" : (a == 0), "linear" : linear}
+
+def discrepancy_double_cover(f, I):
     #Returns {codim, mult, discrepancy, crepant, linear} for blowing up {f = 0} along center I
     c = I.codim().sage()
     m = order_along_ideal(f, I)
     a = (c - 1) - (m // 2)
-    linear = is_non_principle_linear_center(I)
+    linear = is_non_principal_linear_center(I)
     return {"codim" : c, "mult" : m, "discrepancy" : a, "admissible" : (a == 0), "linear" : linear}
 
 #Class which keeps track of the components of the singular locus
@@ -360,7 +373,12 @@ class SingularLedger():
                     continue
 
                 active_charts.append(id)
-            mult_info = discrepancy(F, I)
+
+            if tree.mode == 'h':
+                mult_info = discrepancy_hyperplane(F, I)
+            else:
+                mult_info = discrepancy_double_cover(F, I)
+
             if active_charts:
                 self.components.append(SingularComponent([SubComponent(I, (0,), active_charts)], mult_info))
 
@@ -394,7 +412,11 @@ class SingularLedger():
                 if intersection_in_chart == m2(f'ideal(1_{intersection_in_chart.ring().name()})'):
                     continue
                 intersection_active_charts.append(id)
-            mult_info = discrepancy(F, intersection)
+            if tree.mode == 'h':
+                mult_info = discrepancy_hyperplane(F, intersection)
+            else:
+                mult_info = discrepancy_double_cover(F, intersection)
+
             if intersection_active_charts:
                 self.initial_intersections.append(SingularComponent([SubComponent(intersection, (0,), intersection_active_charts)], mult_info))
 
@@ -423,9 +445,9 @@ class SingularLedger():
         print("Singular components:\n")
         for i, comp in enumerate(self.components):
             info = comp.mult_info
-            origins = "".join([id_to_string(sub_comp.origin) + ", " for sub_comp in comp.sub_comps])[:-2]
-            ideals = "".join([str(sub_comp.defining_ideal) + ", " for sub_comp in comp.sub_comps])[:-2]
-            active_charts = "".join([str(sub_comp.active_charts) + ", " for sub_comp in comp.sub_comps])[:-2]
+            origins = "".join([id_to_string(sub_comp.origin) + ", " for sub_comp in comp.sub_components])[:-2]
+            ideals = "".join([str(sub_comp.defining_ideal) + ", " for sub_comp in comp.sub_components])[:-2]
+            active_charts = "".join([str(sub_comp.active_charts) + ", " for sub_comp in comp.sub_components])[:-2]
             print("Component", i)
             print("Initial chart(s):", origins)
             print("Defining ideal(s)", ideals)
@@ -438,7 +460,7 @@ class SingularLedger():
     def admissible_indices(self):
         return [i for i, c in enumerate(self.components) if c.mult_info['admissible'] and c.mult_info['linear'] == True]
 
-#Blowups up A at I and returns list of maps A -> A corrisponding to affine charts
+#Blowups up A at I and returns list of maps A -> A corresponding to affine charts
 def blowup_affine_space(chart, I):
 
     #Recover information about I
@@ -582,7 +604,7 @@ def translate_and_compare(phi, source_ideal, target_ideal):
     mapped = [phi(m2(f'promote({g.name()}, {frac_source.name()})')) for g in gens]
 
     numerators = [g.numerator() for g in mapped]
-    denominators  = [g.numerator() for g in mapped]
+    denominators  = [g.denominator() for g in mapped]
 
     translated = m2(f'ideal {to_m2_list(numerators).name()}')
     denom_ideal = m2(f'ideal {to_m2_list(denominators).name()}')
@@ -610,7 +632,7 @@ def same_component(sub_comp : SubComponent, other_comp : SubComponent, tree : Ch
     
     return False
 
-#Computes the affine chart tree corrisponding to blowing up component n
+#Computes the affine chart tree corresponding to blowing up component n
 def blowup_component(ledger : SingularLedger, i : int, is_intersection_point = False):
     if is_intersection_point:
         singular_component = ledger.initial_intersections[i]
@@ -719,19 +741,31 @@ def blowup_component(ledger : SingularLedger, i : int, is_intersection_point = F
 
             #Finds new singular components
             for sub_comp in new_singular_sub_components:
+                existing_comp = False
                 if not new_singular_components:
                     chart = tree.nodes[sub_comp.origin].data
-                    new_singular_components.append(SingularComponent([sub_comp], discrepancy(chart.f, sub_comp.defining_ideal)))
+                    
+                    if tree.mode == 'h':
+                        new_singular_components.append(SingularComponent([sub_comp], discrepancy_hyperplane(chart.f, sub_comp.defining_ideal)))
+                    else:
+                        new_singular_components.append(SingularComponent([sub_comp], discrepancy_double_cover(chart.f, sub_comp.defining_ideal)))
                     continue
 
                 for comp in new_singular_components:
                     old_sub_comp = comp.sub_components[0]
                     if same_component(sub_comp, old_sub_comp, tree):
                         comp.sub_components.append(sub_comp)
+                        existing_comp = True
                         break
 
+                if existing_comp:
+                    continue
+
                 chart = tree.nodes[sub_comp.origin].data
-                new_singular_components.append(SingularComponent([sub_comp], discrepancy(chart.f, sub_comp.defining_ideal)))
+                if tree.mode == 'h':
+                    new_singular_components.append(SingularComponent([sub_comp], discrepancy_hyperplane(chart.f, sub_comp.defining_ideal)))
+                else:
+                    new_singular_components.append(SingularComponent([sub_comp], discrepancy_double_cover(chart.f, sub_comp.defining_ideal)))
                 
             ledger.components.extend(new_singular_components)
 
