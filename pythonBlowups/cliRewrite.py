@@ -33,6 +33,9 @@ if __name__ == "__main__":
 
     prime = input("Characteristic of k (0 for QQ, p for GF(p)): ")
 
+    if prime == "exit":
+        exit("User terminated program")
+
     try:
         prime = int(prime)
     except:
@@ -69,7 +72,7 @@ if __name__ == "__main__":
     #F = m2('4*x0^4*x1^2*x2^2+x0^2*x1^4*x2^2-8*x0^3*x1^2*x2^3+4*x0^2*x1^3*x2^3+4*x0^2*x1^2*x2^4-4*x0*x1^3*x2^4+4*x0^5*x1*x2*x3-2*x0^4*x1^2*x2*x3+2*x0^3*x1^3*x2*x3-16*x0^4*x1*x2^2*x3+2*x0^3*x1^2*x2^2*x3-6*x0^2*x1^3*x2^2*x3+20*x0^3*x1*x2^3*x3-8*x0^2*x1^2*x2^3*x3-8*x0^2*x1*x2^4*x3+8*x0*x1^2*x2^4*x3+x0^6*x3^2-2*x0^5*x1*x3^2+x0^4*x1^2*x3^2-6*x0^5*x2*x3^2-4*x0^3*x1^2*x2*x3^2-2*x0^2*x1^3*x2*x3^2+13*x0^4*x2^2*x3^2+10*x0^3*x1*x2^2*x3^2+5*x0^2*x1^2*x2^2*x3^2+2*x0*x1^3*x2^2*x3^2-12*x0^3*x2^3*x3^2-4*x0^2*x1*x2^3*x3^2+4*x0*x1^2*x2^3*x3^2+4*x0^2*x2^4*x3^2-4*x0*x1*x2^4*x3^2-2*x0^5*x3^3+4*x0^4*x1*x3^3-2*x0^3*x1^2*x3^3+10*x0^4*x2*x3^3-6*x0^3*x1*x2*x3^3+8*x0^2*x1^2*x2*x3^3-16*x0^3*x2^2*x3^3+2*x0^2*x1*x2^2*x3^3-6*x0*x1^2*x2^2*x3^3+8*x0^2*x2^3*x3^3-4*x0*x1*x2^3*x3^3+x0^4*x3^4-2*x0^3*x1*x3^4+x0^2*x1^2*x3^4-4*x0^3*x2*x3^4+2*x0^2*x1*x2*x3^4-2*x0*x1^2*x2*x3^4+4*x0^2*x2^2*x3^4+x1^2*x2^2*x3^4') #V2
     #F = m2('x0^4*x1^4-2*x0^4*x1^3*x2+2*x0^3*x1^4*x2+x0^4*x1^2*x2^2-4*x0^3*x1^3*x2^2+x0^2*x1^4*x2^2+2*x0^3*x1^2*x2^3-2*x0^2*x1^3*x2^3+x0^2*x1^2*x2^4+2*x0^4*x1^3*x3-2*x0^4*x1^2*x2*x3+6*x0^3*x1^3*x2*x3-6*x0^3*x1^2*x2^2*x3+4*x0^2*x1^3*x2^2*x3-4*x0^2*x1^2*x2^3*x3+x0^4*x1^2*x3^2-2*x0^3*x1^3*x3^2-6*x0^2*x1^3*x2*x3^2+2*x0^3*x1*x2^2*x3^2-4*x0*x1^3*x2^2*x3^2+6*x0^2*x1*x2^3*x3^2+4*x0*x1*x2^4*x3^2-2*x0^3*x1^2*x3^3-2*x0^3*x1*x2*x3^3+2*x0^2*x1^2*x2*x3^3-2*x0^2*x1*x2^2*x3^3+6*x0*x1^2*x2^2*x3^3-6*x0*x1*x2^3*x3^3+4*x1^2*x2^3*x3^3-4*x1*x2^4*x3^3+x0^2*x1^2*x3^4+4*x0^2*x1*x2*x3^4+x0^2*x2^2*x3^4-2*x0*x1*x2*x3^5-2*x0*x2^2*x3^5+x2^2*x3^6') #H3
     #F = m2('-3*x0^2*x1^4*x2^2+6*x0^2*x1^3*x2^3+2*x0*x1^4*x2^3-3*x0^2*x1^2*x2^4-2*x0*x1^3*x2^4+x1^4*x2^4+2*x0^2*x1^4*x2*x3-6*x0^2*x1^2*x2^3*x3-6*x0*x1^3*x2^3*x3-2*x1^4*x2^3*x3+4*x0^2*x1*x2^4*x3+6*x0*x1^2*x2^4*x3-2*x1^3*x2^4*x3+x0^2*x1^4*x3^2-6*x0^2*x1^3*x2*x3^2-2*x0*x1^4*x2*x3^2+9*x0^2*x1^2*x2^2*x3^2+6*x0*x1^3*x2^2*x3^2+x1^4*x2^2*x3^2-4*x0^2*x1*x2^3*x3^2+4*x1^3*x2^3*x3^2-4*x0*x1*x2^4*x3^2+x1^2*x2^4*x3^2+2*x0*x1^3*x2*x3^3-6*x0*x1^2*x2^2*x3^3-2*x1^3*x2^2*x3^3+4*x0*x1*x2^3*x3^3-2*x1^2*x2^3*x3^3+x1^2*x2^2*x3^4') #Q9
-    F = m2('x0*x1*x2*x3*(x0 + x1)*(x1 + x2)*(x2 + x3)*(x3 + x0)') #pg. 68-1 Myers
+    #F = m2('x0*x1*x2*x3*(x0 + x1)*(x1 + x2)*(x2 + x3)*(x3 + x0)') #pg. 68-1 Myers
     #F = m2('x0*x1*x2*x3*(x0 + x1)*(x2 + x3)')
 
     while not F:
@@ -142,6 +145,31 @@ if __name__ == "__main__":
                 print(f"{i} is not a valid input, please enter an integer from 0 to {l - 1}")
 
         blowup_component(ledger, i, is_intersection_point)
+
+        # Checks transition maps
+        #for id1 in tree.depth_first_search():
+        #id1 = id1[-1].data
+        #ring1 = id1.f.parent()
+        #id1 = id1.id
+        #for id2 in tree.depth_first_search():
+        #id2 = id2[-1].data
+        #ring2 = id2.f.parent()
+        #id2 = id2.id
+        #print(id1, id2)
+        #comp1 = tree.transition_maps[(id1, id2)] * tree.transition_maps[(id2, id1)]
+        #imgens = []
+        #for v in ring1.gens():
+        #imgens.append(comp1(v))
+        #print(imgens)
+        #comp2 = tree.transition_maps[(id2, id1)] * tree.transition_maps[(id1, id2)]
+        #imgens = []
+        #for v in ring1.gens():
+        #imgens.append(comp2(v))
+        #print(imgens)
+
+            
+
+        
         print(ledger)
         print(ledger.tree)
 
@@ -149,6 +177,13 @@ if __name__ == "__main__":
             print("No more admissible blowups exist!")
 
     print("All singularities have been resolved!")
+
+    for affine_chart_leaf in tree.depth_first_search():
+        affine_chart = affine_chart_leaf[-1].data
+        if affine_chart.non_linear == True:
+            print(f"Polynomial {affine_chart.f} in chart {affine_chart.id} was singular along a non linear center.")
+    
+    
         
 
 
