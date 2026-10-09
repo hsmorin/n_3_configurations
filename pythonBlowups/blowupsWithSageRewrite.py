@@ -1,5 +1,7 @@
 import sage.all as sg
 from itertools import combinations
+from sage.rings.polynomial.term_order import TermOrder
+
 #The following functions only work if there is already a Macaulay2 instance running with a ring QQ[x0,...,xN] and a homogeneous polynomial F initialized.
 
 #TO DO: Str Methods, Error Handling
@@ -72,11 +74,11 @@ class AffineChart():
         self.blowup_ideal = blowup_ideal
         self.tau = tau
         self.tau_inv = tau_inv
-        self.non_linear = False
+        self.skipped = False
 
     def __str__(self) -> str:
         f_str = str(self.f)
-        if len(f_str) <= 20:
+        if len(f_str) <= 40:
             base = f'{id_to_string(self.id)}: ' + f_str
         else:
             base = f'{id_to_string(self.id)}: f omitted'
@@ -114,10 +116,10 @@ def generate_transition_map(source : AffineChart, target : AffineChart, tree : C
     #Source[:-1] to target map exists
     old_trans_map = tree.transition_maps.get((source_id[:-1], target_id), False)
     if old_trans_map:
-        tau_inv = tree.nodes[source_id[:-1]].data.tau_inv
-        frac_tau_inv = tau_inv.extend_to_fraction_field()
+        tau = tree.nodes[source_id[:-1]].data.tau
+        frac_tau = tau.extend_to_fraction_field()
         frac_blowdown_map = source.sigma.extend_to_fraction_field()
-        return frac_blowdown_map * frac_tau_inv * old_trans_map
+        return frac_blowdown_map * frac_tau * old_trans_map
 
     #Source to target[:-1] exists
     old_trans_map = tree.transition_maps.get((source_id, target_id[:-1]), False)
@@ -126,10 +128,10 @@ def generate_transition_map(source : AffineChart, target : AffineChart, tree : C
     if old_trans_map:
         if target.sigma_inv is None:
             raise ValueError("Cannot find blowup information (blownup_along and pi)")
-        tau = tree.nodes[target_id[:-1]].data.tau
-        frac_tau = tau.extend_to_fraction_field()
+        tau_inv = tree.nodes[target_id[:-1]].data.tau_inv
+        frac_tau_inv = tau_inv.extend_to_fraction_field()
         frac_sigma_inv = target.sigma_inv.extend_to_fraction_field()
-        return old_trans_map * frac_tau * frac_sigma_inv
+        return old_trans_map * frac_tau_inv * frac_sigma_inv
 
     #Source[:-1] to target[:-1] exists
     old_trans_map = tree.transition_maps.get((source_id[:-1], target_id[:-1]), False)
@@ -278,7 +280,7 @@ class ChartTree():
 
 def I_in_chart(leaf, I):
 
-    if isinstance(leaf[0], AffineChart):
+    if isinstance(leaf[0].data, AffineChart):
         tau = leaf[0].data.tau
     else:
         tau = None
@@ -342,15 +344,16 @@ def order_along_ideal(f, I, max_order = 50):
         Ik = Ik * I
     return k - 1
 
-
+def codim(I):
+    R = I.ring()
+    return R.ngens() - I.dimension()
 
 #Jacobian criterion
 def is_smooth_center(I):
-    cod = I.codim()
-    J = I.jacobian()
+    I = m2(I)
     R = I.ring()
-    minors_ideal = m2.minors(cod, J) + I
-    return (minors_ideal == m2(f'ideal(1_{R.name()})'))
+    singular_locus = I.singularLocus().ideal()
+    return singular_locus == m2(f"ideal 1_{R.name()}")
 
 def is_non_principal_linear_center(minimal_generators : list[sg.polynomial]) -> bool:
 
@@ -370,6 +373,16 @@ def is_non_principal_linear_center(minimal_generators : list[sg.polynomial]) -> 
             return False
 
     return True
+
+def is_non_principal_complete_intersection(generators : list[sg.polynomial]) -> bool:
+    r = len(generators)
+
+    if r <= 1:
+        return False
+
+    I = sg.ideal(generators)
+    
+    return (codim(I) == r)
 
 def is_non_principal_quadratic_center(minimal_generators : list[sg.poylnomial]) -> bool:
     if not minimal_generators:
@@ -709,7 +722,7 @@ def same_component(sub_comp : SubComponent, other_comp : SubComponent, tree : Ch
 
     phi = tree.transition_maps.get((origin_A, origin_B), False)
     if phi:
-        return translate_and_compare(phi, I, J)
+        return translate_and_compare(phi, J, I)
     else:
         raise KeyError(f"ChartTree has no transition map from {origin_A} to {origin_B}")
     
@@ -724,13 +737,17 @@ def lcov_of_linear_center(minimal_generators, R):
     variables = R.gens()
 
     coeff_rows = []
+    b = []
     for f in minimal_generators:
         if f.degree() > 1:
             raise ValueError("All generators must be linear (degree 1) polynomials.")
         row = sg.vector(k, [f.coefficient(xi) for xi in variables])
+        b.append(f.constant_coefficient())
         coeff_rows.append(row)
+    b = b + [R(0)] * (n - r)
 
     M = sg.matrix(k, coeff_rows)
+    b_vec = sg.vector(R, b)
 
     rnk = M.rank()
     if rnk != r:
@@ -757,15 +774,14 @@ def lcov_of_linear_center(minimal_generators, R):
     #Wraps matrices as homomorphisms
     x_vec = sg.vector(R, list(variables))
 
-    foward_images = list(T_inv * x_vec)
+    foward_images = list(T_inv * (x_vec - b_vec))
     tau = R.hom(foward_images, R)
 
-    inverse_images = list(T * x_vec)
+    inverse_images = list(T * x_vec + b_vec)
     tau_inv = R.hom(inverse_images, R)
 
     return tau, tau_inv
 
-#Takes in a quadratic center (L, Q) and returns the map which moves I to ideal(x0,x1 - x2^2) (only works in 3 dimensions)
 def lcov_of_quadratic_center(minimal_generators, R):
     
     n = R.ngens()
@@ -847,8 +863,10 @@ def blowup_affine_space_linear(chart : AffineChart, r : int):
     vars_R = R.gens()
     blowup_center = R.ideal(vars_R[:r])
     n = len(vars_R)
-    if r <= 1 or r > n:
+    if r > n:
         raise ValueError("Number of generators is greater than dimension")
+    elif r <= 1:
+        raise ValueError("Attempted to blowup a principal ideal")
     k = R.base_ring()
 
     #Computes map sigma_i : A^n to A^n by the diagram in Hartshorne p.29
@@ -914,11 +932,12 @@ def blowup_affine_space_linear(chart : AffineChart, r : int):
         restriction_vars = restriction_vars_z + restriction_vars_t
         restriction = frac_R.hom(restriction_vars, frac_S)
 
-        sigma_i_inv_vars = [vars_R[i]]
-        sigma_i_inv_vars += list(vars_R[r :])
-        sigma_i_inv_vars += [
-                vars_R[j] / vars_R[i] for j in range(r) if j != i]
-        sigma_i_inv = frac_R.hom(sigma_i_inv_vars, frac_R)
+        #sigma_i_inv_vars = [vars_R[i]]
+        #sigma_i_inv_vars += list(vars_R[r :])
+        #sigma_i_inv_vars += [
+                #vars_R[j] / vars_R[i] for j in range(r) if j != i]
+        #sigma_i_inv = frac_R.hom(sigma_i_inv_vars, frac_R)
+        sigma_i_inv = frac_R.hom(frac_R.gens(), frac_R)
 
         #print("sigma_i_inv check: ")
 
@@ -959,7 +978,182 @@ def blowup_affine_space_linear(chart : AffineChart, r : int):
     return charts
     
 
+#Helper with gb elimination
+def elimination_gb(ideal, dep_vars):
+    R = ideal.ring()
+    ind_vars = [v for v in R.gens() if v not in dep_vars]
+    order = TermOrder('degrevlex', len(dep_vars)) + TermOrder("degrevlex", len(ind_vars))
+    names = [str(v) for v in dep_vars] + [str(v) for v in ind_vars]
+    E = sg.PolynomialRing(R.base_ring(), names, order=order)
 
+    to_E = R.hom([E(str(v)) for v in R.gens()], E)
+    from_E = E.hom([R.gens_dict()[str(v)] for v in E.gens()], R)
+
+    J = E.ideal([to_E(g) for g in ideal.gens()])
+    return [from_E(g) for g in J.groebner_basis()]
+
+def graph_relations(ideal, dep_vars):
+    dep_vars = list(dep_vars)
+    relations = {}
+    for g in elimination_gb(ideal, dep_vars):
+        support = [c for c in dep_vars if g.degree(c) > 0]
+        if len(support) != 1:
+            return None
+        c = support[0]
+        if g.degree(c) != 1 or c in relations:
+            return None
+        coeff = g.coefficient({c : 1})
+        if not coeff.is_constant():
+            return None
+        relations[c] = -(g - coeff * c) / coeff
+    if len(relations) != len(dep_vars):
+        return None
+    return relations
+
+
+    
+
+
+#TO DO: Write using Plucker Type ideal
+def blowup_affine_space_complete_intersection(chart : AffineChart, mingens, verify = True):
+    R = chart.f.parent()
+    r = len(mingens)
+    f = chart.f
+    id = chart.id
+    vars_R = R.gens()
+    blowup_center = R.ideal(mingens)
+    n = len(vars_R)
+    if r > n:
+        raise ValueError("Number of generators is greater than dimension")
+    elif r <= 1:
+        raise ValueError("Attempted to blowup a principal ideal")
+    k = R.base_ring()
+
+    #Computes map sigma_i : A^n to A^n by the diagram in Hartshorne p.29
+    S = sg.PolynomialRing(k, n + r, 'z')
+    vars_S = S.gens()
+    frac_R = R.fraction_field()
+    frac_S = S.fraction_field()
+    charts = []
+
+    #pi : R \to S
+    pi = R.hom([vars_S[j] for j in range(n)], S)
+    mingens_S = [pi(g) for g in mingens]
+
+
+    for i in range(r):
+        #Construct blowup ideal
+        blowup_ideal_gens = []
+        for j in range(r):
+            if i != j:
+                blowup_ideal_gens.append(mingens_S[i] * vars_S[n + j] - mingens_S[j])
+        blowup_ideal = S.ideal(blowup_ideal_gens)
+
+        is_chart = False
+        for dep_vars in combinations(vars_S[:n], r - 1):
+            
+            #Gets relations from blowup ideal using gb elimination
+            relations = graph_relations(blowup_ideal, dep_vars)
+            if relations is None:
+                continue
+
+            ind_idx = [j for j, v in enumerate(vars_S) if (v not in dep_vars) and (j != n + i)]
+
+            is_graph = True
+
+
+            phi_i_vars = []
+            for j, v in enumerate(vars_S):
+                if v in relations:
+                    phi_i_vars.append(relations[v])
+                elif n + i == j:
+                    phi_i_vars.append(S(1))
+                else:
+                    phi_i_vars.append(v)
+
+            phi_i = S.hom(phi_i_vars, S)
+
+            chart_vars = [R(0)] * (n + r)
+            for pos, j in enumerate(ind_idx):
+                chart_vars[j] = vars_R[pos]
+            chart_map = S.hom(chart_vars, R)
+
+            sigma_i = chart_map * phi_i * pi
+
+            frac_R = R.fraction_field()
+            frac_S = S.fraction_field()
+
+            #inclusion : S \to R (stored as fractional_map)
+            #print("Inclusion", chart_map)
+            inclusion_vars = (chart_map * phi_i).im_gens()
+            inclusion = S.fraction_field().hom(inclusion_vars, R.fraction_field())
+
+            frac_R = R.fraction_field()
+            frac_S = S.fraction_field()
+
+
+            #restriction : R \to S (fractional_map)
+            restriction_vars = [frac_S(vars_S[j]) if j < n 
+                                else frac_S(vars_S[j]) / frac_S(vars_S[n + i]) for j in ind_idx]
+            restriction = frac_R.hom(restriction_vars, frac_S)
+
+            sigma_i_inv_vars = []
+            for j in ind_idx:
+                if j < n:
+                    sigma_i_inv_vars.append(frac_R(vars_R[j]))
+                else:
+                    m = j - n
+                    sigma_i_inv_vars.append(frac_R(mingens[m]) / frac_R(mingens[i]))
+            sigma_i_inv = frac_R.hom(sigma_i_inv_vars, frac_R)
+
+
+            if verify:
+                for x in vars_R:
+                    assert sigma_i_inv(frac_R(sigma_i(x))) == frac_R(x)
+                for w in frac_R.gens():
+                    assert inclusion(restriction(w)) == w
+            #print("sigma_i_inv check: ")
+
+            #comp = sigma_i_inv * sigma_i.extend_to_fraction_field()
+            #comp_vars = [comp(g) for g in frac_R.gens()]
+            #print(frac_R.hom(comp_vars, frac_R).im_gens())
+            #comp = sigma_i.extend_to_fraction_field() * sigma_i_inv
+            #comp_vars = [comp(g) for g in frac_R.gens()]
+            #print(frac_R.hom(comp_vars, frac_R).im_gens())
+
+            #print("inclusion check: ")
+            #comp = inclusion * restriction 
+            #comp_vars = [comp(g) for g in frac_R.gens()]
+            #print(frac_R.hom(comp_vars, frac_R).im_gens())
+            #comp = restriction * inclusion
+            #comp_vars = [comp(g) for g in frac_S.gens()]
+            #print(frac_S.hom(comp_vars, frac_S).im_gens())
+
+            if chart.tau is not None:
+                f_i = strict_transform(sigma_i, chart.tau(R.ideal(f)), blowup_center)
+                f_i = m2(f_i)
+                l = f_i.mingens().flatten().entries()
+                if len(l) == 1:
+                    f_i = l.first().sage()[0]
+                else:
+                    raise ValueError("Blowup ideal is not principal in all charts")
+            else:
+                raise ValueError("Linear change of variables has not been computed")
+
+        #print("f_i", f_i)
+        #print("sigma_i", sigma_i)
+        #print("id", id + (i,))
+        #print("blowup_center", blowup_center)
+        #print("inclusion", inclusion)
+        #print("restriciton", restriction)
+        #print("blowup_ideal", blowup_ideal)
+            charts.append(AffineChart(f_i, sigma_i, id + (i,), blowup_center, inclusion, restriction, blowup_ideal, sigma_inv = sigma_i_inv))
+            is_chart = True
+            break
+
+        if not is_chart:
+            raise ValueError(f"Blowup of {mingens} cannot be expressed in charts")
+    return charts
 
 #Computes the affine chart tree corresponding to blowing up component n
 def blowup_component(ledger : SingularLedger, i : int, is_intersection_point = False):
@@ -985,6 +1179,9 @@ def blowup_component(ledger : SingularLedger, i : int, is_intersection_point = F
             active_chart_node = leaf[-1]
             active_chart = active_chart_node.data
     
+            if active_chart.skipped == True:
+                continue
+
             f = active_chart.f
             A = f.parent()
             if f == A(1):
@@ -995,26 +1192,42 @@ def blowup_component(ledger : SingularLedger, i : int, is_intersection_point = F
             if pullback_I == A.ideal(1):
                 continue
 
+            if not is_smooth_center(pullback_I):
+                raise ValueError(f"Reached a non smooth center {pullback_I}")
+
             print(ideal_to_string(pullback_I))
             pullback_I_m2 = m2(pullback_I)
             generators = [g.sage() for g in pullback_I_m2.mingens().entries().flatten()]
             r = len(generators)
             
             #Extract generator information
-            is_quadratic = False
+            is_non_linear = False
+            #if is_non_principal_linear_center(generators):
             if is_non_principal_linear_center(generators):
                 active_chart.tau, active_chart.tau_inv = lcov_of_linear_center(generators, A)
+            elif is_non_principal_complete_intersection(generators):
+                active_chart.tau, active_chart.tau_inv = A.hom(A.gens(), A), A.hom(A.gens(), A)
+                is_non_linear = True
             else:
-                active_chart.non_linear = True
-                continue
-            #else:
-            #    raise ValueError(f"Blowup center given by {generators} is non principle or has generator with degree > 3")
+                raise ValueError(f"Blowup center given by {generators} is non principle, singular, or not a complete intersection")
 
 
-            if is_quadratic:
-                blowup_charts = blowup_affine_space_quadratic(active_chart)
+            if is_non_linear:
+                #TO DO: Include exceptional divisor in the case of odd multiplicity
+                try:
+                    blowup_charts = blowup_affine_space_complete_intersection(active_chart, generators)
+                except:
+                    active_chart.skipped = True
+                    continue
+                if tree.mode == 'd' and order_along_ideal(f, pullback_I) % 2:
+                    for idx, blowup_chart in enumerate(blowup_charts):
+                        sigma_i = blowup_chart.sigma
+                        blowup_chart.f *= sigma_i(generators[idx])
             else:
                 blowup_charts = blowup_affine_space_linear(active_chart, r)
+                if tree.mode == 'd' and order_along_ideal(f, pullback_I) % 2:
+                    for blowup_chart in blowup_charts:
+                        blowup_chart.f *= A.gen(0)
 
             for blowup_chart in blowup_charts:
                 blowup_chart_node = Node(blowup_chart)
@@ -1070,6 +1283,9 @@ def blowup_component(ledger : SingularLedger, i : int, is_intersection_point = F
                 B = Blf.parent()
                 print("Chart", k)
                 print("f =", Blf)
+                if Blf == B(1):
+                    continue
+
                 E = exceptional_divisor(blowup_chart)
                 singular_locus = m2(f"decompose ideal singularLocus ideal {m2(Blf).name()}")
                 for sub_comp in singular_locus:

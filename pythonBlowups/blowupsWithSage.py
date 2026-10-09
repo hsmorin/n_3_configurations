@@ -580,6 +580,10 @@ def blowup_affine_space(chart, I):
                 sub_i = m2(f'map({A.name()}, {Elim_ring.name()}, {(to_m2_list(sub_vars)).name()})')
 
                 #Chart map A to A
+                print("Maps")
+                print(sub_i)
+                print(phi_i)
+                print(pi)
                 sigma_i = sub_i * phi_i * pi
 
                 #Inclusion A to S

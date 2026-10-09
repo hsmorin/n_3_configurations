@@ -64,13 +64,14 @@ if __name__ == "__main__":
     F = False
     R_m2 = m2(R)
     #F = m2('x0^2*x2 - x1^2*(x1 + x2)')
-    #F = m2('x0^2*x2 - x1^3')
-    #F = m2('x0^2*x3 - x1^2*x2')
-    #F = m2('x0^7*x1^4 - x2^11')
+    #F = m2('(x0 - 1)^2*(x2 + 1) - (x1 + 4)^3')
+    #F = m2('x0^3 - x1^2*x2')
+    #F = m2('(x0 + 1)^7*(x1 - 13)^4 - (x2 + 3)^11')
+    #F = m2('x0^7*x2^4 - x1^11')
     #F = m2('x0')
     #F = m2('x0^4*x1^2*x2^2-2*x0^2*x1^4*x2^2+x1^6*x2^2-2*x0^3*x1^2*x2^3+2*x0^2*x1^3*x2^3+2*x0*x1^4*x2^3-2*x1^5*x2^3+x0^2*x1^2*x2^4-2*x0*x1^3*x2^4+x1^4*x2^4-2*x0^5*x1*x2*x3+2*x0^3*x1^3*x2*x3+6*x0^4*x1*x2^2*x3-4*x0^3*x1^2*x2^2*x3-2*x0^2*x1^3*x2^2*x3+2*x0*x1^4*x2^2*x3-2*x1^5*x2^2*x3-6*x0^3*x1*x2^3*x3+6*x0^2*x1^2*x2^3*x3-2*x0*x1^3*x2^3*x3+2*x1^4*x2^3*x3+2*x0^2*x1*x2^4*x3-2*x0*x1^2*x2^4*x3+x0^6*x3^2-4*x0^5*x2*x3^2+2*x0^4*x1*x2*x3^2-2*x0*x1^4*x2*x3^2+6*x0^4*x2^2*x3^2-4*x0^3*x1*x2^2*x3^2+3*x0^2*x1^2*x2^2*x3^2+x1^4*x2^2*x3^2-4*x0^3*x2^3*x3^2+2*x0^2*x1*x2^3*x3^2-2*x0*x1^2*x2^3*x3^2+x0^2*x2^4*x3^2+2*x0^4*x1*x3^3-6*x0^3*x1*x2*x3^3-2*x0^2*x1^2*x2*x3^3+4*x0*x1^3*x2*x3^3+4*x0^2*x1*x2^2*x3^3-2*x0*x1^2*x2^2*x3^3-2*x0^4*x3^4+x0^2*x1^2*x3^4+4*x0^3*x2*x3^4+2*x0^2*x1*x2*x3^4-2*x0*x1^2*x2*x3^4-2*x0^2*x2^2*x3^4-2*x0^2*x1*x3^5+x0^2*x3^6') #Q1
     #F = m2('4*x0^4*x1^2*x2^2+x0^2*x1^4*x2^2-8*x0^3*x1^2*x2^3+4*x0^2*x1^3*x2^3+4*x0^2*x1^2*x2^4-4*x0*x1^3*x2^4+4*x0^5*x1*x2*x3-2*x0^4*x1^2*x2*x3+2*x0^3*x1^3*x2*x3-16*x0^4*x1*x2^2*x3+2*x0^3*x1^2*x2^2*x3-6*x0^2*x1^3*x2^2*x3+20*x0^3*x1*x2^3*x3-8*x0^2*x1^2*x2^3*x3-8*x0^2*x1*x2^4*x3+8*x0*x1^2*x2^4*x3+x0^6*x3^2-2*x0^5*x1*x3^2+x0^4*x1^2*x3^2-6*x0^5*x2*x3^2-4*x0^3*x1^2*x2*x3^2-2*x0^2*x1^3*x2*x3^2+13*x0^4*x2^2*x3^2+10*x0^3*x1*x2^2*x3^2+5*x0^2*x1^2*x2^2*x3^2+2*x0*x1^3*x2^2*x3^2-12*x0^3*x2^3*x3^2-4*x0^2*x1*x2^3*x3^2+4*x0*x1^2*x2^3*x3^2+4*x0^2*x2^4*x3^2-4*x0*x1*x2^4*x3^2-2*x0^5*x3^3+4*x0^4*x1*x3^3-2*x0^3*x1^2*x3^3+10*x0^4*x2*x3^3-6*x0^3*x1*x2*x3^3+8*x0^2*x1^2*x2*x3^3-16*x0^3*x2^2*x3^3+2*x0^2*x1*x2^2*x3^3-6*x0*x1^2*x2^2*x3^3+8*x0^2*x2^3*x3^3-4*x0*x1*x2^3*x3^3+x0^4*x3^4-2*x0^3*x1*x3^4+x0^2*x1^2*x3^4-4*x0^3*x2*x3^4+2*x0^2*x1*x2*x3^4-2*x0*x1^2*x2*x3^4+4*x0^2*x2^2*x3^4+x1^2*x2^2*x3^4') #V2
-    #F = m2('x0^4*x1^4-2*x0^4*x1^3*x2+2*x0^3*x1^4*x2+x0^4*x1^2*x2^2-4*x0^3*x1^3*x2^2+x0^2*x1^4*x2^2+2*x0^3*x1^2*x2^3-2*x0^2*x1^3*x2^3+x0^2*x1^2*x2^4+2*x0^4*x1^3*x3-2*x0^4*x1^2*x2*x3+6*x0^3*x1^3*x2*x3-6*x0^3*x1^2*x2^2*x3+4*x0^2*x1^3*x2^2*x3-4*x0^2*x1^2*x2^3*x3+x0^4*x1^2*x3^2-2*x0^3*x1^3*x3^2-6*x0^2*x1^3*x2*x3^2+2*x0^3*x1*x2^2*x3^2-4*x0*x1^3*x2^2*x3^2+6*x0^2*x1*x2^3*x3^2+4*x0*x1*x2^4*x3^2-2*x0^3*x1^2*x3^3-2*x0^3*x1*x2*x3^3+2*x0^2*x1^2*x2*x3^3-2*x0^2*x1*x2^2*x3^3+6*x0*x1^2*x2^2*x3^3-6*x0*x1*x2^3*x3^3+4*x1^2*x2^3*x3^3-4*x1*x2^4*x3^3+x0^2*x1^2*x3^4+4*x0^2*x1*x2*x3^4+x0^2*x2^2*x3^4-2*x0*x1*x2*x3^5-2*x0*x2^2*x3^5+x2^2*x3^6') #H3
+    F = m2('x0^4*x1^4-2*x0^4*x1^3*x2+2*x0^3*x1^4*x2+x0^4*x1^2*x2^2-4*x0^3*x1^3*x2^2+x0^2*x1^4*x2^2+2*x0^3*x1^2*x2^3-2*x0^2*x1^3*x2^3+x0^2*x1^2*x2^4+2*x0^4*x1^3*x3-2*x0^4*x1^2*x2*x3+6*x0^3*x1^3*x2*x3-6*x0^3*x1^2*x2^2*x3+4*x0^2*x1^3*x2^2*x3-4*x0^2*x1^2*x2^3*x3+x0^4*x1^2*x3^2-2*x0^3*x1^3*x3^2-6*x0^2*x1^3*x2*x3^2+2*x0^3*x1*x2^2*x3^2-4*x0*x1^3*x2^2*x3^2+6*x0^2*x1*x2^3*x3^2+4*x0*x1*x2^4*x3^2-2*x0^3*x1^2*x3^3-2*x0^3*x1*x2*x3^3+2*x0^2*x1^2*x2*x3^3-2*x0^2*x1*x2^2*x3^3+6*x0*x1^2*x2^2*x3^3-6*x0*x1*x2^3*x3^3+4*x1^2*x2^3*x3^3-4*x1*x2^4*x3^3+x0^2*x1^2*x3^4+4*x0^2*x1*x2*x3^4+x0^2*x2^2*x3^4-2*x0*x1*x2*x3^5-2*x0*x2^2*x3^5+x2^2*x3^6') #H3
     #F = m2('-3*x0^2*x1^4*x2^2+6*x0^2*x1^3*x2^3+2*x0*x1^4*x2^3-3*x0^2*x1^2*x2^4-2*x0*x1^3*x2^4+x1^4*x2^4+2*x0^2*x1^4*x2*x3-6*x0^2*x1^2*x2^3*x3-6*x0*x1^3*x2^3*x3-2*x1^4*x2^3*x3+4*x0^2*x1*x2^4*x3+6*x0*x1^2*x2^4*x3-2*x1^3*x2^4*x3+x0^2*x1^4*x3^2-6*x0^2*x1^3*x2*x3^2-2*x0*x1^4*x2*x3^2+9*x0^2*x1^2*x2^2*x3^2+6*x0*x1^3*x2^2*x3^2+x1^4*x2^2*x3^2-4*x0^2*x1*x2^3*x3^2+4*x1^3*x2^3*x3^2-4*x0*x1*x2^4*x3^2+x1^2*x2^4*x3^2+2*x0*x1^3*x2*x3^3-6*x0*x1^2*x2^2*x3^3-2*x1^3*x2^2*x3^3+4*x0*x1*x2^3*x3^3-2*x1^2*x2^3*x3^3+x1^2*x2^2*x3^4') #Q9
     #F = m2('x0*x1*x2*x3*(x0 + x1)*(x1 + x2)*(x2 + x3)*(x3 + x0)') #pg. 68-1 Myers
     #F = m2('x0*x1*x2*x3*(x0 + x1)*(x2 + x3)')
@@ -112,7 +113,12 @@ if __name__ == "__main__":
         valid = False
         i = 0
         while not valid:
-            i = input(f'Blowup component (crepant options: {admissible_idx}): ')
+            if admissible_idx:
+                is_intersection_point = False
+                i = admissible_idx[0]
+                break
+            else:
+                i = input(f'Blowup component (crepant options: {admissible_idx}): ')
 
             if i == 'exit':
                 exit('User terminated program')
@@ -148,30 +154,32 @@ if __name__ == "__main__":
 
         # Checks transition maps
         #for id1 in tree.depth_first_search():
-        #id1 = id1[-1].data
-        #ring1 = id1.f.parent()
-        #id1 = id1.id
-        #for id2 in tree.depth_first_search():
-        #id2 = id2[-1].data
-        #ring2 = id2.f.parent()
-        #id2 = id2.id
-        #print(id1, id2)
-        #comp1 = tree.transition_maps[(id1, id2)] * tree.transition_maps[(id2, id1)]
-        #imgens = []
-        #for v in ring1.gens():
-        #imgens.append(comp1(v))
-        #print(imgens)
-        #comp2 = tree.transition_maps[(id2, id1)] * tree.transition_maps[(id1, id2)]
-        #imgens = []
-        #for v in ring1.gens():
-        #imgens.append(comp2(v))
-        #print(imgens)
+            #id1 = id1[-1].data
+            #ring1 = id1.f.parent()
+            #id1 = id1.id
+            #for id2 in tree.depth_first_search():
+                #id2 = id2[-1].data
+                #ring2 = id2.f.parent()
+                #id2 = id2.id
+                #print(id1, id2)
+                #comp1 = tree.transition_maps[(id1, id2)] * tree.transition_maps[(id2, id1)]
+                #imgens = []
+                #for v in ring1.gens():
+                    #imgens.append(comp1(v))
+
+                #print(imgens)
+                
+                #comp2 = tree.transition_maps[(id2, id1)] * tree.transition_maps[(id1, id2)]
+                #imgens = []
+                #for v in ring2.gens():
+                    #imgens.append(comp2(v))
+
+                #print(imgens)
 
             
 
         
         print(ledger)
-        print(ledger.tree)
 
         if ledger.admissible_indices() == []:
             print("No more admissible blowups exist!")
@@ -180,8 +188,8 @@ if __name__ == "__main__":
 
     for affine_chart_leaf in tree.depth_first_search():
         affine_chart = affine_chart_leaf[-1].data
-        if affine_chart.non_linear == True:
-            print(f"Polynomial {affine_chart.f} in chart {affine_chart.id} was singular along a non linear center.")
+        if affine_chart.skipped == True:
+            print(f"Polynomial {affine_chart.f} in chart {affine_chart.id} was skipped.")
     
     
         
