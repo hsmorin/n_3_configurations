@@ -317,13 +317,18 @@ def I_in_chart(leaf, I):
     return I
 
 class SubComponent():
-    def __init__(self, I, origin : tuple[int, ...], active_charts : list[tuple[int, ...]]):
+    def __init__(self, I, origin : tuple[int, ...], active_charts : list[tuple[int, ...]], intersection_indices = None):
         self.defining_ideal = I
         self.origin = origin
         self.active_charts = active_charts
+        self.intersection_indices = intersection_indices
 
     def __str__(self) -> str:
-        return id_to_string(self.origin) + ": " + ideal_to_string(self.defining_ideal)
+        return_str = id_to_string(self.origin) + ": " + ideal_to_string(self.defining_ideal)
+        if self.intersection_indices is not None:
+            return return_str + f" intersection of {self.intersection_indices}"
+        return return_str
+
 
 class SingularComponent():
     def __init__(self, sub_components : list[SubComponent], mult_info = None, index : int = 0):
@@ -493,20 +498,21 @@ class SingularLedger():
                 if dimensions[j] <= 0:
                     continue
 
-                intersection = (I + J).radical()
+                intersection_comp = (I + J).radical()
 
-                if intersection == R.ideal(R.gens()):
+                if intersection_comp == R.ideal(R.gens()):
                     continue
 
-                if intersection == R.ideal(1):
+                if intersection_comp == R.ideal(1):
                     continue
 
-                new_indices = [i, j]
+                intersection = [intersection_comp, set([i, j])]
                 already_present = False
-                for old_intersection in intersections:
-                    previous_comp, indices = old_intersection
-                    if previous_comp == intersection:
+                for old_comp in intersections:
+                    previous_comp = old_comp[0]
+                    if previous_comp == intersection[0]:
                         already_present = True
+                        old_comp[1] = old_comp[1].union(intersection[1])
                         break
 
                 if not already_present:
@@ -517,19 +523,19 @@ class SingularLedger():
             for leaf in tree.depth_first_search():
                 chart = leaf[-1].data
                 id = chart.id
-                intersection_in_chart = I_in_chart(leaf, intersection)
+                intersection_in_chart = I_in_chart(leaf, intersection[0])
                 A = intersection_in_chart.ring()
                 if intersection_in_chart == A.ideal(1):
                     continue
                 intersection_active_charts.append(id)
 
             if tree.mode == 'h':
-                mult_info = discrepancy_hyperplane(F, intersection)
+                mult_info = discrepancy_hyperplane(F, intersection[0])
             else:
-                mult_info = discrepancy_double_cover(F, intersection)
+                mult_info = discrepancy_double_cover(F, intersection[0])
 
             if intersection_active_charts:
-                self.initial_intersections.append(SingularComponent([SubComponent(intersection, (0,), intersection_active_charts)], mult_info))
+                self.initial_intersections.append(SingularComponent([SubComponent(intersection[0], (0,), intersection_active_charts, intersection[1])], mult_info))
 
     def __str__(self) -> str: #Less detailed
         if not self.components:
