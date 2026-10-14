@@ -1,0 +1,2 @@
+Recording a run of H3 (Lex Ordering With intersection points first)
+L1: 8 ODPs

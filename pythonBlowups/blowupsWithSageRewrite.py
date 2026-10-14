@@ -276,7 +276,21 @@ class ChartTree():
             output += "\n"
         return output
 
-#TO DO: Test
+
+def transition(tree, a, b):
+    m = tree.transition_maps.get((a,b))
+    if m is not None:
+        return m
+    if len(a) > 2:
+        transition(tree, a[:-1], b)
+    elif len(b) > 2:
+        transition(tree, a, b[:-1])
+    m = generate_transition_map(tree.nodes[a].data, tree.nodes[b].data, tree)
+    tree.transition_maps[(a,b)] = m
+    return m
+
+
+
 
 def I_in_chart(leaf, I):
 
@@ -309,13 +323,14 @@ class SubComponent():
         self.active_charts = active_charts
 
     def __str__(self) -> str:
-        return id_to_string(self.origin) + ": " + str(self.defining_ideal)
+        return id_to_string(self.origin) + ": " + ideal_to_string(self.defining_ideal)
 
 class SingularComponent():
-    def __init__(self, sub_components : list[SubComponent], mult_info = None):
+    def __init__(self, sub_components : list[SubComponent], mult_info = None, index : int = 0):
         self.sub_components = sub_components
         self.mult_info = mult_info
         self.blownup = False
+        self.index = index
 
     def __str__(self) -> str:
         if self.sub_components:
@@ -374,7 +389,7 @@ def is_non_principal_linear_center(minimal_generators : list[sg.polynomial]) -> 
 
     return True
 
-def is_non_principal_complete_intersection(generators : list[sg.polynomial]) -> bool:
+def is_non_principal_complete_intersection_graph(generators : list[sg.polynomial]) -> bool:
     r = len(generators)
 
     if r <= 1:
@@ -432,7 +447,7 @@ class SingularLedger():
     def __init__(self, F, tree):
         self.tree = tree
         R = F.parent()
-        J = R.ideal(F.gradient())
+        J = R.ideal([F] + F.gradient())
         L = J.minimal_associated_primes()
         self.components = []
         self.initial_intersections = []
@@ -458,7 +473,7 @@ class SingularLedger():
                 A = chart.f.parent()
                 id = chart.id
                 sigma_I = I_in_chart(leaf, I)
-                if sigma_I == 1:
+                if sigma_I == A.ideal(1):
                     continue
 
                 active_charts.append(id)
@@ -486,8 +501,10 @@ class SingularLedger():
                 if intersection == R.ideal(1):
                     continue
 
+                new_indices = [i, j]
                 already_present = False
-                for previous_comp in intersections:
+                for old_intersection in intersections:
+                    previous_comp, indices = old_intersection
                     if previous_comp == intersection:
                         already_present = True
                         break
@@ -520,7 +537,10 @@ class SingularLedger():
 
         lines = [f"Singular Ledger: {len(self.components)} component(s)"]
         for i, comp in enumerate(self.components):
-            lines.append(f"[{i}] {str(comp)} Admissible: {comp.mult_info["admissible"]}")
+            if comp.blownup:
+                lines.append(f"[{i}] {str(comp)} In blowup of {i}, already blownup.")
+            else:
+                lines.append(f"[{i}] {str(comp)} In blowup of {i}, Admissible: {comp.mult_info["admissible"]}")
 
         if not self.initial_intersections:
             return "\n".join(lines)
@@ -546,13 +566,13 @@ class SingularLedger():
             print("Initial chart(s):", origins)
             print("Defining ideal(s)", ideals)
             print("Active charts:", active_charts)
-            linear_str = f", Linear = {info['linear']}" if info['linear'] is not None else ""
+            linear_str = f", Linear = {info['linear']}" if info.get('linear') is not None else ""
             print(f"  Codim = {info['codim']}, Mult = {info['mult']}, "
                   f"Discrepancy = {info['discrepancy']}, Admissible = {info['admissible']}{linear_str}")
             print()
 
     def admissible_indices(self):
-        return [i for i, c in enumerate(self.components) if c.mult_info['admissible']]
+        return [i for i, c in enumerate(self.components) if c.mult_info['admissible'] and not c.blownup]
 
 #Blowups up A at I and returns list of maps A -> A corresponding to affine charts
 def blowup_affine_space(chart, I):
@@ -691,26 +711,18 @@ def blowup_affine_space(chart, I):
     return charts
 
 def translate_and_compare(phi, source_ideal, target_ideal):
+    A = target_ideal.ring()
+    if target_ideal.dimension() != source_ideal.dimension():
+        return False
+
+    overlap = A(sg.prod(phi(v).denominator() for v in phi.domain().gens()))
+    if overlap in target_ideal:
+        return False
 
     frac_source = source_ideal.ring().fraction_field()
-    frac_map = frac_source.coerce_map_from(source_ideal.ring())
-    
-    gens = source_ideal.gens()
-    mapped = [phi(frac_map(g)) for g in gens]
-
-    numerators = [g.numerator() for g in mapped]
-    denominators  = [g.denominator() for g in mapped]
-
-    translated = sg.ideal(numerators)
-    denom_ideal = sg.ideal(denominators)
-
-    translated = translated.saturation(denom_ideal)[0]
-
-    return translated.radical() == target_ideal.radical()
-
+    return all(A(phi(frac_source(g)).numerator()) in target_ideal for g in source_ideal.gens())
 
 def same_component(sub_comp : SubComponent, other_comp : SubComponent, tree : ChartTree): 
-
     origin_A = sub_comp.origin
     origin_B = other_comp.origin
 
@@ -718,15 +730,11 @@ def same_component(sub_comp : SubComponent, other_comp : SubComponent, tree : Ch
     J = other_comp.defining_ideal
 
     if origin_A == origin_B:
-        return I.radical() == J.radical()
+        return I == J
 
-    phi = tree.transition_maps.get((origin_A, origin_B), False)
-    if phi:
-        return translate_and_compare(phi, J, I)
-    else:
-        raise KeyError(f"ChartTree has no transition map from {origin_A} to {origin_B}")
-    
-    return False
+    phi = transition(tree, origin_A, origin_B)
+
+    return translate_and_compare(phi, J, I)
 
 #Takes in a linear center I and returns the map which moves I to ideal(x0,x1,...,xi)
 def lcov_of_linear_center(minimal_generators, R):
@@ -856,7 +864,7 @@ def lcov_of_quadratic_center(minimal_generators, R):
 
 #Takes in a chart, and a given number of generators r
 #Returns the standard blowup of ideal(x0,...,x(r-1)) in charts
-def blowup_affine_space_linear(chart : AffineChart, r : int):
+def blowup_affine_space_linear(chart : AffineChart, r : int, verify = True):
     R = chart.f.parent()
     f = chart.f
     id = chart.id
@@ -932,12 +940,11 @@ def blowup_affine_space_linear(chart : AffineChart, r : int):
         restriction_vars = restriction_vars_z + restriction_vars_t
         restriction = frac_R.hom(restriction_vars, frac_S)
 
-        #sigma_i_inv_vars = [vars_R[i]]
-        #sigma_i_inv_vars += list(vars_R[r :])
-        #sigma_i_inv_vars += [
-                #vars_R[j] / vars_R[i] for j in range(r) if j != i]
-        #sigma_i_inv = frac_R.hom(sigma_i_inv_vars, frac_R)
-        sigma_i_inv = frac_R.hom(frac_R.gens(), frac_R)
+        sigma_i_inv_vars = [frac_R.gens()[i]]
+        sigma_i_inv_vars += list(frac_R.gens()[r:])
+        sigma_i_inv_vars += [
+                frac_R.gens()[j] / frac_R.gens()[i] for j in range(r) if j != i]
+        sigma_i_inv = frac_R.hom(sigma_i_inv_vars, frac_R)
 
         #print("sigma_i_inv check: ")
 
@@ -967,6 +974,13 @@ def blowup_affine_space_linear(chart : AffineChart, r : int):
         else:
             raise ValueError("Linear change of variables has not been computed")
 
+        if verify:
+            for x in vars_R:
+                assert sigma_i_inv(frac_R(sigma_i(x))) == frac_R(x)
+            for w in frac_R.gens():
+                assert inclusion(restriction(w)) == w
+
+
         #print("f_i", f_i)
         #print("sigma_i", sigma_i)
         #print("id", id + (i,))
@@ -982,7 +996,9 @@ def blowup_affine_space_linear(chart : AffineChart, r : int):
 def elimination_gb(ideal, dep_vars):
     R = ideal.ring()
     ind_vars = [v for v in R.gens() if v not in dep_vars]
-    order = TermOrder('degrevlex', len(dep_vars)) + TermOrder("degrevlex", len(ind_vars))
+    order = TermOrder('degrevlex', len(dep_vars))
+    if ind_vars:
+        order = order + TermOrder("degrevlex", len(ind_vars))
     names = [str(v) for v in dep_vars] + [str(v) for v in ind_vars]
     E = sg.PolynomialRing(R.base_ring(), names, order=order)
 
@@ -1010,23 +1026,30 @@ def graph_relations(ideal, dep_vars):
         return None
     return relations
 
-
-    
-
+def graph_generators(I):
+    A = I.ring()
+    for dep_vars in combinations(A.gens(), codim(I)):
+        relations = graph_relations(I, dep_vars)
+        if relations is not None:
+            return [v - relations[v] for v in dep_vars]
+    return None
 
 #TO DO: Write using Plucker Type ideal
 def blowup_affine_space_complete_intersection(chart : AffineChart, mingens, verify = True):
     R = chart.f.parent()
-    r = len(mingens)
-    f = chart.f
-    id = chart.id
     vars_R = R.gens()
-    blowup_center = R.ideal(mingens)
     n = len(vars_R)
+    r = len(mingens)
     if r > n:
         raise ValueError("Number of generators is greater than dimension")
     elif r <= 1:
-        raise ValueError("Attempted to blowup a principal ideal")
+        raise ValueError("Attempted to blowup a principle ideal")
+    if codim(R.ideal(mingens)) != r:
+        raise ValueError(f"The ideal defined by {mingens} is not a complete intersection")
+
+    f = chart.f
+    id = chart.id
+    blowup_center = R.ideal(mingens)
     k = R.base_ring()
 
     #Computes map sigma_i : A^n to A^n by the diagram in Hartshorne p.29
@@ -1058,9 +1081,6 @@ def blowup_affine_space_complete_intersection(chart : AffineChart, mingens, veri
                 continue
 
             ind_idx = [j for j, v in enumerate(vars_S) if (v not in dep_vars) and (j != n + i)]
-
-            is_graph = True
-
 
             phi_i_vars = []
             for j, v in enumerate(vars_S):
@@ -1159,14 +1179,13 @@ def blowup_affine_space_complete_intersection(chart : AffineChart, mingens, veri
 def blowup_component(ledger : SingularLedger, i : int, is_intersection_point = False):
     if is_intersection_point:
         singular_component = ledger.initial_intersections[i]
-        del ledger.initial_intersections[i]
     else:
         singular_component = ledger.components[i]
-        del ledger.components[i]
 
     singular_component.blownup = True
     tree = ledger.tree
     N = tree.N
+    new_singular_sub_components = []
     
     for sub_component in singular_component.sub_components:
         I = sub_component.defining_ideal
@@ -1174,7 +1193,7 @@ def blowup_component(ledger : SingularLedger, i : int, is_intersection_point = F
         print("Origin 1:", id_to_string(origin))
         active_charts = sub_component.active_charts
 
-        for end_id in active_charts:
+        for end_id in list(active_charts):
             leaf = tree.find_sub_path_from_ids(origin, end_id)
             active_chart_node = leaf[-1]
             active_chart = active_chart_node.data
@@ -1197,23 +1216,27 @@ def blowup_component(ledger : SingularLedger, i : int, is_intersection_point = F
 
             print(ideal_to_string(pullback_I))
             pullback_I_m2 = m2(pullback_I)
-            generators = [g.sage() for g in pullback_I_m2.mingens().entries().flatten()]
+            generators = graph_generators(pullback_I)
+            if generators is None:
+                generators = [g.sage() for g in pullback_I_m2.mingens().entries().flatten()]
             r = len(generators)
-            
+
             #Extract generator information
             is_non_linear = False
             #if is_non_principal_linear_center(generators):
             if is_non_principal_linear_center(generators):
                 active_chart.tau, active_chart.tau_inv = lcov_of_linear_center(generators, A)
-            elif is_non_principal_complete_intersection(generators):
-                active_chart.tau, active_chart.tau_inv = A.hom(A.gens(), A), A.hom(A.gens(), A)
+            elif is_non_principal_complete_intersection_graph(generators):
                 is_non_linear = True
+                active_chart.tau, active_chart.tau_inv = A.hom(A.gens(), A), A.hom(A.gens(), A)
             else:
-                raise ValueError(f"Blowup center given by {generators} is non principle, singular, or not a complete intersection")
+                print(f"Blowup center given by {generators} is not a graph or not a complete intersection in chart {end_id}; chart skipped.")
+                active_chart.skipped = True
+                continue
+
 
 
             if is_non_linear:
-                #TO DO: Include exceptional divisor in the case of odd multiplicity
                 try:
                     blowup_charts = blowup_affine_space_complete_intersection(active_chart, generators)
                 except:
@@ -1254,6 +1277,9 @@ def blowup_component(ledger : SingularLedger, i : int, is_intersection_point = F
                             sub_component.active_charts.append(blowup_chart.id)
 
             for intersection_component in ledger.initial_intersections:
+                if intersection_component.blownup:
+                    continue
+
                 for sub_component in intersection_component.sub_components:
                     J, sub_comp_origin, sub_comp_active_charts = (sub_component.defining_ideal, sub_component.origin, sub_component.active_charts)
     
@@ -1274,8 +1300,6 @@ def blowup_component(ledger : SingularLedger, i : int, is_intersection_point = F
 
 
             #Finds all new singular sub_componenets
-            new_singular_sub_components = []
-
             for k, blowup_chart_node in enumerate(active_chart_node.children):
                 blowup_chart = blowup_chart_node.data
                 print(blowup_chart.f)
@@ -1287,63 +1311,44 @@ def blowup_component(ledger : SingularLedger, i : int, is_intersection_point = F
                     continue
 
                 E = exceptional_divisor(blowup_chart)
-                singular_locus = m2(f"decompose ideal singularLocus ideal {m2(Blf).name()}")
-                for sub_comp in singular_locus:
-                    sub_comp = B.ideal([B(str(g)) for g in sub_comp.sage().gens()])
-
-                    if E <= sub_comp:
-                        sub_comp_wrapper = SubComponent(sub_comp, blowup_chart.id, [blowup_chart.id])
-                        new_singular_sub_components.append(sub_comp_wrapper)
-
-            new_singular_components = []
-
-            #Updates transition maps 
-            for source_id, target_id in list(tree.transition_maps):
-              if source_id == end_id and target_id == end_id:
-                  for k, child in enumerate(active_chart_node.children):
-                      for l in range(k + 1):
-                          other_child = active_chart_node.children[l] 
-                          tree.transition_maps[(child.data.id, other_child.data.id)] = generate_transition_map(child.data, other_child.data, tree)
-                          tree.transition_maps[(other_child.data.id, child.data.id)] = generate_transition_map(other_child.data, child.data, tree)
-              elif source_id == end_id:
-                  for child in active_chart_node.children:
-                      tree.transition_maps[(child.data.id, target_id)] = generate_transition_map(child.data, tree.nodes[target_id].data, tree)
-              elif target_id == end_id:
-                  for child in active_chart_node.children:
-                      tree.transition_maps[(source_id, child.data.id)] = generate_transition_map(tree.nodes[source_id].data, child.data, tree)
-              else:
-                  continue
-
-
-            #Finds new singular components
-            for sub_comp in new_singular_sub_components:
-                existing_comp = False
-                if not new_singular_components:
-                    chart = tree.nodes[sub_comp.origin].data
-                    
-                    if tree.mode == 'h':
-                        new_singular_components.append(SingularComponent([sub_comp], discrepancy_hyperplane(chart.f, sub_comp.defining_ideal)))
-                    else:
-                        new_singular_components.append(SingularComponent([sub_comp], discrepancy_double_cover(chart.f, sub_comp.defining_ideal)))
+                sing_on_E = B.ideal([Blf] + Blf.gradient()) + E
+                if sing_on_E == sg.ideal(B(1)):
                     continue
+                for sub_comp in sing_on_E.minimal_associated_primes():
+                    sub_comp_wrapper = SubComponent(sub_comp, blowup_chart.id, [blowup_chart.id])
+                    new_singular_sub_components.append(sub_comp_wrapper)
 
-                for comp in new_singular_components:
-                    old_sub_comp = comp.sub_components[0]
-                    if same_component(sub_comp, old_sub_comp, tree):
-                        comp.sub_components.append(sub_comp)
-                        existing_comp = True
-                        break
+    new_singular_components = []
 
-                if existing_comp:
-                    continue
+    #Finds new singular components
+    for sub_comp in new_singular_sub_components:
+        existing_comp = False
+        if not new_singular_components:
+            chart = tree.nodes[sub_comp.origin].data
 
-                chart = tree.nodes[sub_comp.origin].data
-                if tree.mode == 'h':
-                    new_singular_components.append(SingularComponent([sub_comp], discrepancy_hyperplane(chart.f, sub_comp.defining_ideal)))
-                else:
-                    new_singular_components.append(SingularComponent([sub_comp], discrepancy_double_cover(chart.f, sub_comp.defining_ideal)))
+            if tree.mode == 'h':
+                new_singular_components.append(SingularComponent([sub_comp], discrepancy_hyperplane(chart.f, sub_comp.defining_ideal), i))
+            else:
+                new_singular_components.append(SingularComponent([sub_comp], discrepancy_double_cover(chart.f, sub_comp.defining_ideal), i))
+            continue
+
+        for comp in new_singular_components:
+            old_sub_comp = comp.sub_components[0]
+            if same_component(sub_comp, old_sub_comp, tree):
+                comp.sub_components.append(sub_comp)
+                existing_comp = True
+                break
+
+        if existing_comp:
+            continue
+
+        chart = tree.nodes[sub_comp.origin].data
+        if tree.mode == 'h':
+            new_singular_components.append(SingularComponent([sub_comp], discrepancy_hyperplane(chart.f, sub_comp.defining_ideal)))
+        else:
+            new_singular_components.append(SingularComponent([sub_comp], discrepancy_double_cover(chart.f, sub_comp.defining_ideal)))
                 
-            ledger.components.extend(new_singular_components)
+    ledger.components.extend(new_singular_components)
 
 
 

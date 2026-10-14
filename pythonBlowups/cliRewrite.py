@@ -29,6 +29,15 @@ if __name__ == "__main__":
             print(dimension, "is not a valid input, please enter a positive integer.")
             dimension = False
 
+
+    mode = False
+    while not mode:
+        mode = input("Hypersurface or double cover (h/d): ")
+        if mode == "exit":
+            exit("User terminated program")
+        elif (mode != 'd') and (mode != 'h'):
+            mode = 'h'
+
     prime = False
 
     prime = input("Characteristic of k (0 for QQ, p for GF(p)): ")
@@ -43,15 +52,6 @@ if __name__ == "__main__":
 
     if not sg.is_prime(prime):
         prime = 0
-
-    mode = False
-    while not mode:
-        mode = input("Hypersurface or double cover (h/d): ")
-        if mode == "exit":
-            exit("User terminated program")
-        elif (mode != 'd') and (mode != 'h'):
-            mode = 'h'
-
     # Sets N = dimension for convenience
     N = dimension
 
@@ -60,6 +60,11 @@ if __name__ == "__main__":
         R = sg.PolynomialRing(sg.QQ, 'x', N + 1)
     else:
         R = sg.PolynomialRing(sg.GF(prime), 'x', N + 1)
+
+    if prime == 2 and mode == 'd':
+        print("Double cover mode is not supported in characteristic two.")
+        exit()
+
 
     F = False
     R_m2 = m2(R)
@@ -82,9 +87,12 @@ if __name__ == "__main__":
             exit("User terminated program")
 
         try:
-            F = m2('F')
+            F = m2(F)
 
-            if not F.isHomogeneous():
+            if F.degree().first() % 2 == 1 and mode == 'd':
+                print("Polynomials of odd degree are not supported in double cover mode.")
+                F = False
+            elif not F.isHomogeneous():
                 print(F, "is not a valid input, please enter a homogeneous polynomial.") 
                 F = False
         except:
@@ -93,6 +101,7 @@ if __name__ == "__main__":
 
     #Records affine chart information
     print(R_m2)
+    admissible = True
     F = F.sage()
     tree = ChartTree(F, N, mode, prime)
 
@@ -105,20 +114,23 @@ if __name__ == "__main__":
         exit()
         
     #Asks the user for a blowup until all singularities are resolved
-    while ledger.components:
+    while not all([c.blownup for c in ledger.components]):
         l = len(ledger.components)
         l_intersection = len(ledger.initial_intersections)
         admissible_idx = ledger.admissible_indices()
         
+
+
         valid = False
         i = 0
         while not valid:
-            if admissible_idx:
-                is_intersection_point = False
-                i = admissible_idx[0]
-                break
-            else:
-                i = input(f'Blowup component (crepant options: {admissible_idx}): ')
+            #if admissible_idx:
+                #is_intersection_point = False
+                #i = admissible_idx[0]
+                #break
+            #else:
+            i = input(f'Blowup component (crepant options: {admissible_idx}): ')
+
 
             if i == 'exit':
                 exit('User terminated program')
@@ -135,17 +147,26 @@ if __name__ == "__main__":
                     i = i[1:]
 
                 i = int(i)
+
                 invalid_cond = (is_intersection_point and i >= l_intersection) or (not is_intersection_point and i >= l) or (i < 0)
+                
                 if invalid_cond:
                     print(f'{i} is not a valid input, please enter an integer from 0 to {l - 1}')
-                else:
-                    if i not in admissible_idx:
-                        confirmation = input("WARNING: The blowup you are about to compute is not admissible, are you sure you want to continue? yes / no:")
-                        if confirmation != 'yes':
-                            print(f"Blowup at index {i} was not computed.")
-                            continue
+                    continue
 
-                    valid = True
+                chosen = ledger.initial_intersections[i] if is_intersection_point else ledger.components[i]
+
+                if chosen.blownup:
+                    print(f"Component {i} was already blownup.")
+                    continue
+
+                if not chosen.mult_info["admissible"]:
+                    confirmation = input("WARNING: The blowup you are about to compute is not admissible, are you sure you want to continue? yes / no:")
+                    if confirmation != 'yes':
+                        print(f"Blowup at index {i} was not computed.")
+                        continue
+                    admissible = False
+                valid = True
 
             except:
                 print(f"{i} is not a valid input, please enter an integer from 0 to {l - 1}")
@@ -162,14 +183,14 @@ if __name__ == "__main__":
                 #ring2 = id2.f.parent()
                 #id2 = id2.id
                 #print(id1, id2)
-                #comp1 = tree.transition_maps[(id1, id2)] * tree.transition_maps[(id2, id1)]
+                #comp1 = transition(tree, id1, id2) * transition(tree, id2, id1)
                 #imgens = []
                 #for v in ring1.gens():
                     #imgens.append(comp1(v))
 
                 #print(imgens)
                 
-                #comp2 = tree.transition_maps[(id2, id1)] * tree.transition_maps[(id1, id2)]
+                #comp2 = transition(tree, id2, id1) * transition(tree, id1, id2)
                 #imgens = []
                 #for v in ring2.gens():
                     #imgens.append(comp2(v))
@@ -184,22 +205,24 @@ if __name__ == "__main__":
         if ledger.admissible_indices() == []:
             print("No more admissible blowups exist!")
 
-    print("All singularities have been resolved!")
+
+    smooth = True
 
     for affine_chart_leaf in tree.depth_first_search():
         affine_chart = affine_chart_leaf[-1].data
         if affine_chart.skipped == True:
+            smooth = False
             print(f"Polynomial {affine_chart.f} in chart {affine_chart.id} was skipped.")
     
-    
-        
+    if smooth:
 
+        print("All singularities have been resolved!")
+        if admissible:
+            print("The resolution was admissible.")
+        else:
+            print("The resolution was inadmissible")
 
-
-
-
-
-
-
-
+    else:
+        print("All viable components have been blownup.")
+        print("Some charts have non valid centers!")
 
